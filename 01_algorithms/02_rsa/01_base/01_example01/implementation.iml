@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/build" />
+    <output-test url="file://$MODULE_DIR$/build" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/main" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test" isTestSource="true" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="junit_platform_commons" level="project" />
+    <orderEntry type="library" name="junit_platform_engine" level="project" />
+    <orderEntry type="library" name="junit_platform_launcher" level="project" />
+    <orderEntry type="library" name="opentest4j" level="project" />
+    <orderEntry type="library" name="api_guardian" level="project" />
+    <orderEntry type="library" name="junit_api" level="project" />
+    <orderEntry type="library" name="junit_platform_runner" level="project" />
+  </component>
+</module>

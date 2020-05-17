@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="api_guardian">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/api_guardian.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

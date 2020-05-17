@@ -1,0 +1,20 @@
+<project>
+    <target name="clean">
+        <delete dir="../build"/>
+        <delete dir="jar"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="../build"/>
+        <javac srcdir="src" destdir="../build"/>
+    </target>
+
+    <target name="jar">
+        <mkdir dir="jar"/>
+        <jar destfile="jar/RSA.jar" basedir="../build">
+        </jar>
+    </target>
+
+    <target name="all" depends="clean, compile, jar">
+    </target>
+</project>
