@@ -1,21 +1,20 @@
+import java.io.File;
+import java.math.BigInteger;
 import java.util.Base64;
 
 public class Application {
     public static void main(String... args) {
-        System.out.println(args.length);
-        String plainMessage = "morpheus";
-        String key = null;
+        String plainMessage = "abc";
 
-        if(args.length == 3){
+        Cipher cipher = new Cipher(true);
+        String encryptedMessage = cipher.encrypt(plainMessage, new File(System.getProperty("user.dir") + "/data/SYD_pub.txt"));
 
-        }
-        RSA rsa = new RSA(48);
+        byte[] real = Base64.getDecoder().decode(encryptedMessage);
 
-        Cipher cipher = new Cipher();
-        byte[] encryptedMessage = cipher.encrypt(plainMessage, rsa.getPublicKey());
+        BigInteger bint = new BigInteger(real);
 
-        System.out.println("plainMessage     : " + plainMessage);
-        System.out.println("encryptedMessage : " + Base64.getEncoder().encodeToString(encryptedMessage));
-        System.out.println("decryptedMessage : " + cipher.decrypt(encryptedMessage, rsa.getPrivateKey()));
+        System.out.println(bint);
+
+        cipher.decrypt(encryptedMessage, new File(System.getProperty("user.dir") + "/data/SYD_pri.txt"));
     }
 }

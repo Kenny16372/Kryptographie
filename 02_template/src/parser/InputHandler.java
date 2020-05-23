@@ -18,11 +18,14 @@ public class InputHandler implements IHandler{
         // switch between possible commands
         switch(command.toLowerCase()){
             case "show":
-                ShowAlgorithm.handle(rest);
+                ShowAlgorithm.handle(rest, output);
                 break;
             case "encrypt": case "decrypt":
                 // submitting raw to keep the information if text is to be encrypted or decrypted
                 new EncryptionHandler().handle(raw, output);
+                break;
+            case "crack":
+                new CrackingHandler().handle(rest, output);
         }
     }
 }

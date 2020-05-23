@@ -25,12 +25,6 @@ public class Application {
         HSQLDB.instance.insertDataTableParticipants("branch_wuh", 1);
         HSQLDB.instance.insertDataTableParticipants("msa", 2);
 
-        Network network = new Network();
-        network.add(new Branch("branch_hkg"));
-        network.add(new Branch("branch_cpt"));
-        network.add(new Branch("branch_sfo"));
-        network.add(new Branch("branch_syd"));
-        network.add(new Branch("branch_wuh"));
 
         HSQLDB.instance.shutdown();
     }

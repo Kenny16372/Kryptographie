@@ -15,8 +15,18 @@ public enum Configuration {
     public final String password = "";
 
     // component
-    public String componentDirectory = userDirectory + fileSeparator + "component" + fileSeparator + "encryption" + fileSeparator;
+    public String componentDirectory = userDirectory + fileSeparator + "component" + fileSeparator;
 
     // encryption
     public String keyFileDirectory = userDirectory + fileSeparator + "data" + fileSeparator;
+
+    // logging
+    public String logDirectory = userDirectory + fileSeparator + "log" + fileSeparator;
+
+    // debug
+    public boolean debugMode = false;
+
+    public void switchDebugMode() {
+        this.debugMode = !this.debugMode;
+    }
 }

@@ -11,7 +11,7 @@
 
     <target name="jar">
         <mkdir dir="jar"/>
-        <jar destfile="jar/RSA.jar" basedir="../build">
+        <jar destfile="jar/rsa_cracker.jar" basedir="../build">
         </jar>
     </target>
 

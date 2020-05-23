@@ -1,4 +1,6 @@
 import java.math.BigInteger;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class Application {
     public static void main(String... args) {
@@ -10,8 +12,8 @@ public class Application {
         RSACracker rsaCracker = new RSACracker(e, n, cipher);
 
         try {
-            BigInteger plainMessage = rsaCracker.execute();
-            System.out.println("plainMessage : " + plainMessage);
+            BigInteger plainMessage = rsaCracker.execute(true);
+            System.out.println("plainMessage : " + new String(cipher.toByteArray(), StandardCharsets.UTF_8));
         } catch (RSACrackerException rsae) {
             System.out.println(rsae.getMessage());
         }

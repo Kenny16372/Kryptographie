@@ -2,6 +2,7 @@
 *.class
 
 # Log file
+.02_template/log
 *.log
 
 # BlueJ files

@@ -1,6 +1,7 @@
 package gui;
 
 import company.Branch;
+import configuration.Configuration;
 import encryption.RSA;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -13,6 +14,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import logging.Logger;
 import parser.InputHandler;
 
 import java.io.File;
@@ -25,6 +27,10 @@ import java.nio.charset.Charset;
 
 public class GUI extends Application {
     private InputHandler handler = new InputHandler();
+    private TextArea inputArea;
+    private TextArea outputArea;
+    private Button execute;
+    private Button close;
 
     public void start(Stage primaryStage) {
         primaryStage.setTitle("MSA | Mosbach Security Agency");
@@ -41,9 +47,6 @@ public class GUI extends Application {
         closeButton.setPrefSize(100, 20);
 
 
-
-
-
         TextArea commandLineArea = new TextArea();
         commandLineArea.setWrapText(true);
 
@@ -51,26 +54,16 @@ public class GUI extends Application {
         outputArea.setWrapText(true);
         outputArea.setEditable(false);
 
-        executeButton.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                // next three lines are just for demo creating key files
-                /*RSA rsa = new RSA();
-                Branch branch = new Branch("SYD");
-                branch.storeKeys(rsa.generateKeyPair());*/
+        this.inputArea = commandLineArea;
+        this.outputArea = outputArea;
+        this.execute = executeButton;
+        this.close = closeButton;
 
-                // get input and handle it
-                String raw = commandLineArea.getText();
-                handler.handle(raw, outputArea);
-            }
-        });
+        executeButton.setOnAction(this::handleExecute);
 
-
-
-        closeButton.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent actionEvent) {
-                // close window
-                System.exit(0);
-            }
+        closeButton.setOnAction(actionEvent -> {
+            // close window
+            System.exit(0);
         });
         hBox.getChildren().addAll(executeButton, closeButton);
 
@@ -81,9 +74,21 @@ public class GUI extends Application {
         Scene scene = new Scene(vbox, 950, 500);
 
         scene.setOnKeyPressed(e -> {
-            // not yet implemented
             if(e.getCode() == KeyCode.F3){
-                System.out.println("Debug mode activated!");
+                Configuration.instance.switchDebugMode();
+                if(Configuration.instance.debugMode){
+                    outputArea.setText("Debug mode activated");
+                } else{
+                    outputArea.setText("Debug mode deactivated");
+                }
+            } else if(e.getCode() == KeyCode.F8){
+                Logger.displayLatestLogFile(outputArea);
+            } else if(e.getCode() == KeyCode.F5){
+                this.handleExecute();
+            } else if(e.getCode() == KeyCode.K){        // create test key files
+                RSA rsa = new RSA();
+                Branch branch = new Branch("demo");
+                branch.storeKeys(rsa.generateKeyPair());
             }
         });
 
@@ -91,4 +96,29 @@ public class GUI extends Application {
         primaryStage.show();
     }
 
+    private void handleExecute(ActionEvent event) {
+        // get input and handle it
+        String raw = inputArea.getText();
+        handler.handle(raw, outputArea);
+    }
+
+    private void handleExecute(){
+        this.handleExecute(new ActionEvent());
+    }
+
+    public TextArea getInputArea() {
+        return inputArea;
+    }
+
+    public TextArea getOutputArea() {
+        return outputArea;
+    }
+
+    public Button getExecute() {
+        return execute;
+    }
+
+    public Button getClose() {
+        return close;
+    }
 }

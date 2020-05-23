@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.util.Base64;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -21,18 +22,18 @@ public class TestApplication {
 
         assertTrue(rsa.isCoPrime(rsa.getE(), rsa.getT()));
 
-        Cipher cipher = new Cipher();
-        byte[] encryptedMessage = cipher.encrypt(plainMessage, rsa.getPublicKey());
-        String decryptedMessage = cipher.decrypt(encryptedMessage, rsa.getPrivateKey());
+        Cipher cipher = new Cipher(false);
+        String encryptedMessage = cipher.encrypt(plainMessage, new File(System.getProperty("user.dir") + "/data/SYD_pub.txt"));
+        String decryptedMessage = cipher.decrypt(encryptedMessage, new File(System.getProperty("user.dir") + "/data/SYD_pri.txt"));
 
         System.out.println("plainMessage      : " + plainMessage);
-        System.out.println("encryptedMessage  : " + Base64.getEncoder().encodeToString(encryptedMessage));
+        System.out.println("encryptedMessage  : " + encryptedMessage);
         System.out.println("decryptedMessage  : " + decryptedMessage);
 
         assertEquals(plainMessage, decryptedMessage);
 
-        encryptedMessage = cipher.encrypt(plainMessage, rsa.getPrivateKey());
-        decryptedMessage = cipher.decrypt(encryptedMessage, rsa.getPublicKey());
+        encryptedMessage = cipher.encrypt(plainMessage, new File(System.getProperty("user.dir") + "/data/SYD_pri.txt"));
+        decryptedMessage = cipher.decrypt(encryptedMessage, new File(System.getProperty("user.dir") + "/data/SYD_pub.txt"));
 
         assertEquals(plainMessage, decryptedMessage);
     }

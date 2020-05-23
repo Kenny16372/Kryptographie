@@ -1,113 +1,89 @@
 package parser;
 
-import configuration.Algorithms;
+import configuration.Configuration;
+import encryption.Encryption;
 import javafx.scene.control.TextArea;
+import logging.Logger;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Scanner;
+import java.util.regex.MatchResult;
 
 public class EncryptionHandler implements IHandler {
-    private TextArea output;
 
     public void handle(String command, TextArea output){
-        this.output = output;
+        output.clear();
 
-        boolean encrypt;    // true: encryption; false: decryption
+        Scanner scanner = new Scanner(command);
+        scanner.findInLine("^\\s*(en|de)crypt\\s+(message)\\s+(\")([^\"]*)(\")\\s+(using)\\s+(\\S*)\\s+(and\\s+keyfile)\\s+(\\S*)\\s*$");
 
-        // get information, if text is to be encrypted or decrypted
-        if(command.startsWith("encrypt")){
-            encrypt = true;
-        } else {            // doesn't need to be checked for "decrypt" again; this already happened in InputHandler
-            encrypt = false;
-        }
-        command = command.substring("encrypt".length());
+        MatchResult result = scanner.match();
+        scanner.close();
 
-        // check for keyword "message"
-        command = command.stripLeading();
-        if(!command.startsWith("message")){
-            System.out.println(command);
-            throw new RuntimeException("Expected \"message\"");
-        }
-        command = command.substring("message".length()).stripLeading();
-
-        // get message
-        // starting at 1 because of leading "
-        int endOfMessage = command.indexOf("\"", 1);
-        if(endOfMessage == -1){
-            throw new RuntimeException("Please use quotation marks around the message");
-        }
-        String message = command.substring(1, endOfMessage);
-
-        // remove message from command
-        command = command.substring(endOfMessage + 1);
-        command = command.stripLeading();
-
-        // check if next word is "using"
-        if(!command.substring(0, command.indexOf(" ")).equals("using")){
-            throw new RuntimeException("Expected \"using\"");
-        }
-        command = command.substring("using".length()).stripLeading();
-
-        // get algorithm
-        int endOfAlgorithm = command.indexOf(" ");
-        String algorithm = command.substring(0, endOfAlgorithm);
-        command = command.substring(endOfAlgorithm).stripLeading();
-        System.out.println(algorithm);
-
-        // get name of keyfile
-        if(!command.substring(0, "and keyfile".length()).equals("and keyfile")){
-            System.out.println(command);
-            throw new RuntimeException("Expected \"and keyfile\"");
-        }
-        String keyfile = command.substring("and keyfile".length()).stripLeading();
-
-        // see above for meaning of encrypt
-        String result;
-        if(encrypt){
-            result = this.encrypt(message, algorithm, keyfile);
-        } else{
-            result = this.decrypt(message, algorithm, keyfile);
-        }
-
-        // display text
-        this.output.clear();
-        this.output.setText(result);
-    }
-
-    private String encrypt(String message, String algorithm, String keyfile){
-        // get correct class depending on algorithm
-        Algorithms algorithms = new Algorithms();
-        Class<?> Encryption = algorithms.getAlgorithm(algorithm);
+        boolean encrypt = true;
         try {
-            // create object Encryption
-            Object encryption = Encryption.getDeclaredConstructor().newInstance();
+            int pos = 1;
 
-            // return encrypted String
-            return (String) Encryption.getMethod("encrypt", String.class, String.class).invoke(encryption, message, keyfile);
+            // true: encryption; false: decryption; InputHandler assures that only commands starting with encrypt or decrypt are submitted
+            encrypt = result.group(pos++).equals("en");
 
-        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.getTargetException().printStackTrace();
+            if (!result.group(pos++).equals("message")) {
+                throw new RuntimeException("Expected keyword \"message\"");
+            }
+
+            if (!result.group(pos++).equals("\"")) {
+                throw new RuntimeException("Expected token (\")");
+            }
+
+            // get message
+            String message = result.group(pos++);
+
+            if (!result.group(pos++).equals("\"")) {
+                throw new RuntimeException("Expected token (\")");
+            }
+
+            if (!result.group(pos++).equals("using")) {
+                throw new RuntimeException("Expected keyword \"using\"");
+            }
+
+            // get algorithm
+            String algorithm = result.group(pos++);
+
+            if (!result.group(pos++).replaceAll("\\s+", "").equals("andkeyfile")) {
+                throw new RuntimeException("Expected keyword \"and keyfile\"");
+            }
+
+            // get name of keyfile
+            String keyfile = result.group(pos);
+
+            // logging
+            Logger logger = null;
+            if(Configuration.instance.debugMode){
+                logger = new Logger();
+                logger.startLogging(encrypt, algorithm);
+            }
+
+            Encryption encryption = new Encryption();
+            String returnedString;
+            if(encrypt){
+                returnedString = encryption.encrypt(message, algorithm, keyfile);
+            } else{
+                returnedString = encryption.decrypt(message, algorithm, keyfile);
+            }
+            if(logger != null){
+                logger.close();
+            }
+
+            // display text
+            output.setText(returnedString);
+
+        } catch (RuntimeException e){
+            String errorMessage = "Error parsing input\nMessage:\n" +
+                    e.getMessage() +
+                    "\nPlease use the format:\n" +
+                    (encrypt ? "en" : "de") + "crypt message \"[message]\" using [algorithm] and keyfile [filename]";
+            output.setText(errorMessage);
         }
-        return "Error";
-    }
 
-    private String decrypt(String message, String algorithm, String keyfile){
-        // get correct class depending on algorithm
-        Algorithms algorithms = new Algorithms();
-        Class<?> Encryption = algorithms.getAlgorithm(algorithm);
-        try {
-            // create object Encryption
-            Object encryption = Encryption.getDeclaredConstructor().newInstance();
-
-            // return decrypted String
-            return (String) Encryption.getMethod("decrypt", String.class, String.class).invoke(encryption, message, keyfile);
-
-        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.getTargetException().printStackTrace();
-        }
-        return "Error";
     }
 }

@@ -13,8 +13,9 @@ public class RSACracker {
         this.cipher = cipher;
     }
 
-    public BigInteger execute() throws RSACrackerException {
+    public BigInteger execute(boolean debug) throws RSACrackerException {
         BigInteger p, q, d;
+
         List<BigInteger> factorList = factorize(n);
 
         if (factorList.size() != 2) {
@@ -23,6 +24,11 @@ public class RSACracker {
 
         p = factorList.get(0);
         q = factorList.get(1);
+
+        if(debug){
+            System.out.println("Found factors for n: " + p + " and " + q);
+        }
+
         BigInteger phi = (p.subtract(BigInteger.ONE)).multiply(q.subtract(BigInteger.ONE));
         d = e.modInverse(phi);
         return cipher.modPow(d, n);

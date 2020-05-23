@@ -4,18 +4,17 @@ import java.nio.charset.StandardCharsets;
 public class Application {
     public static void main(String... args) {
         try {
-            int key = 5;
 
-            String text = "";
+            String text;
 
-            CaesarCipher caesarCipher = new CaesarCipher(key);
+            Cipher cipher = new Cipher(true);
 
             // encryption
             BufferedReader inputDataFileReader = new BufferedReader(new InputStreamReader(new FileInputStream(Configuration.instance.inputDataFile)));
             BufferedWriter encryptedDataFileWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(Configuration.instance.encryptedDataFile), StandardCharsets.UTF_8));
             while ((text = inputDataFileReader.readLine()) != null) {
                 System.out.println("plainText       : " + text);
-                String string = caesarCipher.encrypt(text);
+                String string = cipher.encrypt(text, new File(Configuration.instance.dataDirectory + "key.txt"));
                 System.out.println("encryptedString : " + string);
                 encryptedDataFileWriter.write(string + "\n");
                 encryptedDataFileWriter.flush();
@@ -24,10 +23,10 @@ public class Application {
             // decryption
             BufferedReader encryptedDataFileReader = new BufferedReader(new InputStreamReader(new FileInputStream(Configuration.instance.encryptedDataFile), StandardCharsets.UTF_8));
             while ((text = encryptedDataFileReader.readLine()) != null) {
-                System.out.println("decryptedString : " + caesarCipher.decrypt(text));
+                System.out.println("decryptedString : " + cipher.decrypt(text, new File(Configuration.instance.dataDirectory + "key.txt")));
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 }

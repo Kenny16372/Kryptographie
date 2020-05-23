@@ -2,14 +2,12 @@ package company;
 
 import com.google.common.eventbus.EventBus;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Network {
     private EventBus eventBus = new EventBus();
-    private List branches = new ArrayList<Branch>();
 
-    public void add(Branch branch){
-        this.branches.add(branch);
+    public Branch newBranch(String name){
+        Branch branch = new Branch(name);
+        this.eventBus.register(branch);
+        return branch;
     }
 }
