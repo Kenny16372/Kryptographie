@@ -45,6 +45,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1Y6gUHw9MrUD5tYgLdbaN1MXb2i" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -180,10 +181,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="689" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590053433216" />
-    <state x="613" y="113" key="CommitChangelistDialog2" timestamp="1591552553786">
+    <state x="613" y="113" key="CommitChangelistDialog2" timestamp="1591552593465">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="613" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591552553786" />
+    <state x="613" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591552593465" />
     <state x="740" y="278" key="FileChooserDialogImpl" timestamp="1591551932107">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -228,6 +229,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="663" y="412" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1590053062975" />
+    <state x="768" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591552633715">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="768" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591552633715" />
     <state x="689" y="288" key="extract.method.dialog" timestamp="1589309530849">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
