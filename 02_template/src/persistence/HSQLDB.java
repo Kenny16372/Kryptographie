@@ -54,6 +54,8 @@ public enum HSQLDB {
         return nextID;
     }
 
+    // Table types
+
     public void dropTableTypes() {
         System.out.println("--- dropTableTypes");
 
@@ -92,6 +94,8 @@ public enum HSQLDB {
         System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
         update(sqlStringBuilder.toString());
     }
+
+    // Table participants
 
     public void dropTableParticipants() {
         System.out.println("--- dropTableParticipants");
@@ -137,6 +141,47 @@ public enum HSQLDB {
         sqlStringBuilder.append("INSERT INTO participants (").append("id").append(",").append("name").append(",").append("type_id").append(")");
         sqlStringBuilder.append(" VALUES ");
         sqlStringBuilder.append("(").append(nextID).append(",").append("'").append(name).append("'").append(",").append(typeID);
+        sqlStringBuilder.append(")");
+        System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
+        update(sqlStringBuilder.toString());
+    }
+
+    // Table algorithms
+
+    public void dropTableAlgorithms() {
+        System.out.println("--- dropTableAlgorithms");
+
+        StringBuilder sqlStringBuilder = new StringBuilder();
+        sqlStringBuilder.append("DROP TABLE algorithms");
+        System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
+
+        update(sqlStringBuilder.toString());
+    }
+
+    public void createTableAlgorithms() {
+        System.out.println("--- createTableAlgorithms");
+
+        StringBuilder sqlStringBuilder01 = new StringBuilder();
+        sqlStringBuilder01.append("CREATE TABLE algorithms ( ");
+        sqlStringBuilder01.append("id TINYINT NOT NULL").append(",");
+        sqlStringBuilder01.append("name VARCHAR(10) NOT NULL").append(",");
+        sqlStringBuilder01.append("PRIMARY KEY (id)");
+        sqlStringBuilder01.append(" )");
+        System.out.println("sqlStringBuilder : " + sqlStringBuilder01.toString());
+        update(sqlStringBuilder01.toString());
+
+        StringBuilder sqlStringBuilder02 = new StringBuilder();
+        sqlStringBuilder02.append("CREATE UNIQUE INDEX idxTypes ON types (name)");
+        System.out.println("sqlStringBuilder : " + sqlStringBuilder02.toString());
+        update(sqlStringBuilder02.toString());
+    }
+
+    public void insertDataTableAlgorithms(String name) {
+        int nextID = getNextID("algorithms") + 1;
+        StringBuilder sqlStringBuilder = new StringBuilder();
+        sqlStringBuilder.append("INSERT INTO algorithms (").append("id").append(",").append("name").append(")");
+        sqlStringBuilder.append(" VALUES ");
+        sqlStringBuilder.append("(").append(nextID).append(",").append("'").append(name).append("'");
         sqlStringBuilder.append(")");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
         update(sqlStringBuilder.toString());
