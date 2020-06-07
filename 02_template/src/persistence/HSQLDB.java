@@ -108,7 +108,7 @@ public enum HSQLDB {
     }
 
     public void createTableParticipants() {
-        System.out.println("--- createTableTypes");
+        System.out.println("--- createTableParticipants");
 
         StringBuilder sqlStringBuilder01 = new StringBuilder();
         sqlStringBuilder01.append("CREATE TABLE participants ( ");
@@ -131,7 +131,6 @@ public enum HSQLDB {
         sqlStringBuilder03.append("REFERENCES participants (id) ");
         sqlStringBuilder03.append("ON DELETE CASCADE");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder03.toString());
-
         update(sqlStringBuilder03.toString());
     }
 
@@ -182,6 +181,58 @@ public enum HSQLDB {
         sqlStringBuilder.append("INSERT INTO algorithms (").append("id").append(",").append("name").append(")");
         sqlStringBuilder.append(" VALUES ");
         sqlStringBuilder.append("(").append(nextID).append(",").append("'").append(name).append("'");
+        sqlStringBuilder.append(")");
+        System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
+        update(sqlStringBuilder.toString());
+    }
+
+    // Table channel
+
+    public void dropTableChannel() {
+        System.out.println("--- dropTableChannel");
+
+        StringBuilder sqlStringBuilder = new StringBuilder();
+        sqlStringBuilder.append("DROP TABLE channel");
+        System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
+
+        update(sqlStringBuilder.toString());
+    }
+
+    public void createTableChannel() {
+        System.out.println("--- createTableChannel");
+
+        StringBuilder sqlStringBuilder01 = new StringBuilder();
+        sqlStringBuilder01.append("CREATE TABLE channel ( ");
+        sqlStringBuilder01.append("name VARCHAR(25) NOT NULL").append(",");
+        sqlStringBuilder01.append("participant_01 TINYINT NOT NULL").append(",");
+        sqlStringBuilder01.append("participant_02 TINYINT NOT NULL").append(",");
+        sqlStringBuilder01.append("PRIMARY KEY (name)");
+        sqlStringBuilder01.append(" )");
+        System.out.println("sqlStringBuilder : " + sqlStringBuilder01.toString());
+        update(sqlStringBuilder01.toString());
+
+        StringBuilder sqlStringBuilder02 = new StringBuilder();
+        sqlStringBuilder02.append("ALTER TABLE channel ADD CONSTRAINT fkChannel01 ");
+        sqlStringBuilder02.append("FOREIGN KEY (participant_01) ");
+        sqlStringBuilder02.append("REFERENCES participants (id) ");
+        sqlStringBuilder02.append("ON DELETE CASCADE");
+        System.out.println("sqlStringBuilder : " + sqlStringBuilder02.toString());
+        update(sqlStringBuilder02.toString());
+
+        StringBuilder sqlStringBuilder03 = new StringBuilder();
+        sqlStringBuilder03.append("ALTER TABLE channel ADD CONSTRAINT fkChannel02 ");
+        sqlStringBuilder03.append("FOREIGN KEY (participant_02) ");
+        sqlStringBuilder03.append("REFERENCES participants (id) ");
+        sqlStringBuilder03.append("ON DELETE CASCADE");
+        System.out.println("sqlStringBuilder : " + sqlStringBuilder03.toString());
+        update(sqlStringBuilder03.toString());
+    }
+
+    public void insertDataTableChannel(String name, int participant_01, int participant_02) {
+        StringBuilder sqlStringBuilder = new StringBuilder();
+        sqlStringBuilder.append("INSERT INTO channel (").append("name").append(",").append("participant_01").append(",").append("participant_02").append(")");
+        sqlStringBuilder.append(" VALUES ");
+        sqlStringBuilder.append("(").append("'").append(name).append("'").append(participant_01).append(participant_02);
         sqlStringBuilder.append(")");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
         update(sqlStringBuilder.toString());
