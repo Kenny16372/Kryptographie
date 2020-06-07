@@ -1,33 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2994c55f-25a1-424a-9316-44653ebdc10d" name="Default Changelist" comment="Ordnerstruktur anpassen">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/guava.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/hsqldb.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/javafx_base.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/javafx_controls.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/javafx_fxml.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/javafx_graphics.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/javafx_media.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/javafx_swing.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/javafx_swt.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/javafx_web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/implementation.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/glass.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/javafx.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/javafx_font.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/prism_d3d.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/prism_sw.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/library.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/library.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="2994c55f-25a1-424a-9316-44653ebdc10d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/src/configuration/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/configuration/Configuration.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,6 +130,21 @@
       <option name="presentableId" value="Default" />
       <updated>1552306874655</updated>
     </task>
+    <task id="LOCAL-00001" summary="Ordnerstruktur anpassen">
+      <created>1591552594700</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1591552594700</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Ordnerstruktur anpassen">
+      <created>1591552750004</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1591552750004</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -181,10 +172,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="689" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590053433216" />
-    <state x="613" y="113" key="CommitChangelistDialog2" timestamp="1591552593465">
+    <state x="613" y="113" key="CommitChangelistDialog2" timestamp="1591552749235">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="613" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591552593465" />
+    <state x="613" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591552749235" />
     <state x="740" y="278" key="FileChooserDialogImpl" timestamp="1591551932107">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -225,6 +216,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="311" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1591552056362" />
+    <state x="551" y="252" key="Vcs.Push.Dialog.v2" timestamp="1591552757193">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="551" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591552757193" />
     <state x="663" y="412" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1590053062975">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
