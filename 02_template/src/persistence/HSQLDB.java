@@ -304,6 +304,52 @@ public enum HSQLDB {
         update(sqlStringBuilder.toString());
     }
 
+    // Table postbox_[participant_name]
+
+    public void dropTablePostbox(String participantName) {
+        System.out.println("--- dropTablePostbox_" + participantName);
+
+        StringBuilder sqlStringBuilder = new StringBuilder();
+        sqlStringBuilder.append("DROP TABLE postbox_").append("'").append(participantName).append("'");
+        System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
+
+        update(sqlStringBuilder.toString());
+    }
+
+    public void createTablePostbox(String participantName) {
+        System.out.println("--- createTablePostbox_" + participantName);
+
+        StringBuilder sqlStringBuilder01 = new StringBuilder();
+        sqlStringBuilder01.append("CREATE TABLE postbox_").append("'").append(participantName).append("'").append( " ( ");
+        sqlStringBuilder01.append("id TINYINT NOT NULL").append(",");
+        sqlStringBuilder01.append("participant_from_id TINYINT NOT NULL").append(",");
+        sqlStringBuilder01.append("message VARCHAR(50) NOT NULL").append(",");
+        sqlStringBuilder01.append("timestamp INTEGER").append(",");
+        sqlStringBuilder01.append("PRIMARY KEY (id)");
+        sqlStringBuilder01.append(" )");
+        System.out.println("sqlStringBuilder : " + sqlStringBuilder01.toString());
+        update(sqlStringBuilder01.toString());
+
+        StringBuilder sqlStringBuilder02 = new StringBuilder();
+        sqlStringBuilder02.append("ALTER TABLE postbox_").append("'").append(participantName).append("'").append(" ADD CONSTRAINT fkPostbox01 ");
+        sqlStringBuilder02.append("FOREIGN KEY (participant_from_id) ");
+        sqlStringBuilder02.append("REFERENCES participants (id) ");
+        sqlStringBuilder02.append("ON DELETE CASCADE");
+        System.out.println("sqlStringBuilder : " + sqlStringBuilder02.toString());
+        update(sqlStringBuilder02.toString());
+    }
+
+    public void insertDataTablePostbox(String participantName, int participantFromID, String message) {
+        int nextID = getNextID("participants") + 1;
+        StringBuilder sqlStringBuilder = new StringBuilder();
+        sqlStringBuilder.append("INSERT INTO postbox_").append("'").append(participantName).append("'").append(" (").append("id").append(",").append("participant_from_id").append(",").append("message").append(",").append("timestamp").append(")");
+        sqlStringBuilder.append(" VALUES ");
+        sqlStringBuilder.append("(").append(nextID).append(",").append(participantFromID).append(",").append("'").append(message).append("'").append(",").append(System.currentTimeMillis());
+        sqlStringBuilder.append(")");
+        System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
+        update(sqlStringBuilder.toString());
+    }
+
     public void shutdown() {
         System.out.println("--- shutdown");
 
