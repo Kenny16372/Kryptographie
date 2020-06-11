@@ -9,7 +9,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public class Encryption {
 
-    public String encrypt(String cleartext, String algorithm, String keyFileName){
+    public String encrypt(String cleartext, String algorithm, String keyFileName) {
         return handle(cleartext, algorithm, keyFileName, true);
     }
 
@@ -17,7 +17,7 @@ public class Encryption {
         return handle(ciphertext, algorithm, keyFileName, false);
     }
 
-    private String handle(String cipherText, String algorithm, String keyFileName, boolean encrypt){
+    private String handle(String cipherText, String algorithm, String keyFileName, boolean encrypt) {
         try {
             // get class: Cipher
             Class<?> Cipher = Class.forName("Cipher", true, ComponentLoader.getClassLoader(algorithm));

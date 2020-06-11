@@ -7,25 +7,25 @@ import java.net.URLClassLoader;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RSA{
+public class RSA {
     URLClassLoader classLoader;
 
-    public RSA(){
+    public RSA() {
         classLoader = ComponentLoader.getClassLoader("rsa");
     }
 
-    public Map<String, Map<Character, String>> generateKeyPair(){
+    public Map<String, Map<Character, String>> generateKeyPair() {
         // wrapper for default key length
         return this.generateKeyPair(48);
     }
 
-    public Map<String, Map<Character, String>> generateKeyPair(int keyLength){
+    public Map<String, Map<Character, String>> generateKeyPair(int keyLength) {
         // schema of map: (privateKey/publicKey -> (e/n -> value))
         Map<String, Map<Character, String>> map = new HashMap<>();
 
         int counter = 1;
         boolean done = false;
-        while(!done){
+        while (!done) {
             try {
                 // get class: RSA
                 Class<?> Rsa = Class.forName("RSA", true, classLoader);
@@ -34,9 +34,9 @@ public class RSA{
                 Object rsa = null;
                 try {
                     rsa = Rsa.getDeclaredConstructor(int.class).newInstance(keyLength);
-                } catch (InstantiationException e){
+                } catch (InstantiationException e) {
                     e.printStackTrace();
-                } catch (Exception e){
+                } catch (Exception e) {
                     counter++;
                     continue;
                 }
@@ -62,7 +62,7 @@ public class RSA{
         return map;
     }
 
-    private Map<Character, String> getKeyComponents(Object key){
+    private Map<Character, String> getKeyComponents(Object key) {
         // schema: (n/e -> value)
         Map<Character, String> map = new HashMap<>();
         try {

@@ -5,13 +5,12 @@ import encryption.Encryption;
 import javafx.scene.control.TextArea;
 import logging.Logger;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
 import java.util.regex.MatchResult;
 
 public class EncryptionHandler implements IHandler {
 
-    public void handle(String command, TextArea output){
+    public void handle(String command, TextArea output) {
         output.clear();
 
         Scanner scanner = new Scanner(command);
@@ -58,26 +57,26 @@ public class EncryptionHandler implements IHandler {
 
             // logging
             Logger logger = null;
-            if(Configuration.instance.debugMode){
+            if (Configuration.instance.debugMode) {
                 logger = new Logger();
                 logger.startLogging(encrypt, algorithm);
             }
 
             Encryption encryption = new Encryption();
             String returnedString;
-            if(encrypt){
+            if (encrypt) {
                 returnedString = encryption.encrypt(message, algorithm, keyfile);
-            } else{
+            } else {
                 returnedString = encryption.decrypt(message, algorithm, keyfile);
             }
-            if(logger != null){
+            if (logger != null) {
                 logger.close();
             }
 
             // display text
             output.setText(returnedString);
 
-        } catch (RuntimeException e){
+        } catch (RuntimeException e) {
             String errorMessage = "Error parsing input\nMessage:\n" +
                     e.getMessage() +
                     "\nPlease use the format:\n" +

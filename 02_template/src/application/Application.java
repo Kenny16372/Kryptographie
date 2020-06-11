@@ -1,7 +1,5 @@
 package application;
 
-import company.Branch;
-import company.Network;
 import persistence.HSQLDB;
 
 public class Application {

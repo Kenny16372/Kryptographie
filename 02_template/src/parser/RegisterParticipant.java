@@ -1,28 +1,27 @@
 package parser;
 
-import application.Application;
 import javafx.scene.control.TextArea;
 import persistence.HSQLDB;
 
 public class RegisterParticipant {
-    public static void handle(String text, TextArea output){
+    public static void handle(String text, TextArea output) {
 
-        int indexFirstWhitespace =  text.indexOf(" ");
-        if(indexFirstWhitespace == -1){
+        int indexFirstWhitespace = text.indexOf(" ");
+        if (indexFirstWhitespace == -1) {
             return;
         }
         String command = text.substring(0, indexFirstWhitespace);
         String rest = text.substring(indexFirstWhitespace + 1).stripLeading();
 
-        if(command.stripLeading().equals("participant")){
+        if (command.stripLeading().equals("participant")) {
             getName(rest, output);
         }
     }
 
-    private static void getName(String text, TextArea output){
+    private static void getName(String text, TextArea output) {
 
-        int indexFirstWhitespace =  text.indexOf(" ");
-        if(indexFirstWhitespace == -1){
+        int indexFirstWhitespace = text.indexOf(" ");
+        if (indexFirstWhitespace == -1) {
             return;
         }
         String name = text.substring(0, indexFirstWhitespace);

@@ -54,14 +54,14 @@ public enum HSQLDB {
         return nextID;
     }
 
-    public int getCountName(String name){
+    public int getCountName(String name) {
         int result = 0;
         try {
             String sqlStatement = "SELECT COUNT(name) FROM participants WHERE name = '" + name + "'";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlStatement);
-            while (resultSet.next()){
-               result = resultSet.getInt(1);
+            while (resultSet.next()) {
+                result = resultSet.getInt(1);
             }
 
         } catch (SQLException sqle) {
@@ -70,13 +70,13 @@ public enum HSQLDB {
         return result;
     }
 
-    public int getTypeID(String type){
+    public int getTypeID(String type) {
         int result = 0;
         try {
             String sqlStatement = "SELECT id FROM types WHERE name = '" + type + "'";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlStatement);
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 result = resultSet.getInt(1);
             }
 
@@ -352,7 +352,7 @@ public enum HSQLDB {
         System.out.println("--- createTablePostbox_" + participantName);
 
         StringBuilder sqlStringBuilder01 = new StringBuilder();
-        sqlStringBuilder01.append("CREATE TABLE postbox_").append(participantName).append( " ( ");
+        sqlStringBuilder01.append("CREATE TABLE postbox_").append(participantName).append(" ( ");
         sqlStringBuilder01.append("id TINYINT NOT NULL").append(",");
         sqlStringBuilder01.append("participant_from_id TINYINT NOT NULL").append(",");
         sqlStringBuilder01.append("message VARCHAR(50) NOT NULL").append(",");

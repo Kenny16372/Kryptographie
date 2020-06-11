@@ -12,21 +12,21 @@ import java.util.Map;
 public class ComponentLoader {
     private static Map<String, URLClassLoader> classLoaderMap = new HashMap<>();
 
-    public static URLClassLoader getClassLoader(String algorithm){
+    public static URLClassLoader getClassLoader(String algorithm) {
         algorithm = algorithm.toLowerCase();
 
-        if(classLoaderMap.get(algorithm) != null){
+        if (classLoaderMap.get(algorithm) != null) {
             return classLoaderMap.get(algorithm);
         }
 
         File[] components = new File(Configuration.instance.componentDirectory).listFiles();
 
-        if(components == null){
+        if (components == null) {
             return null;
         }
 
-        for(File file: components){
-            if(file.getName().substring(0, file.getName().length() - 4).equalsIgnoreCase(algorithm)){
+        for (File file : components) {
+            if (file.getName().substring(0, file.getName().length() - 4).equalsIgnoreCase(algorithm)) {
                 try {
                     URL[] urls = {file.toURI().toURL()};
                     URLClassLoader classLoader = new URLClassLoader(urls);

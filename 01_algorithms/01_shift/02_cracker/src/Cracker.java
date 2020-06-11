@@ -7,7 +7,7 @@ import java.util.regex.MatchResult;
 import java.util.stream.Collectors;
 
 public class Cracker {
-    public String decrypt(String encryptedMessage){
+    public String decrypt(String encryptedMessage) {
         // store System.in and System.out
         PrintStream outOld = System.out;
         InputStream inOld = System.in;

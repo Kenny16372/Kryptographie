@@ -6,18 +6,18 @@ import javafx.scene.control.TextArea;
 import java.io.File;
 
 public class ShowAlgorithm {
-    public static void handle(String text, TextArea output){
-        if(text.stripLeading().equals("algorithm")){
+    public static void handle(String text, TextArea output) {
+        if (text.stripLeading().equals("algorithm")) {
             display(output);
         }
     }
 
-    private static void display(TextArea output){
+    private static void display(TextArea output) {
         StringBuilder algorithms = new StringBuilder();
 
-        for(String component: getComponentNames()){
+        for (String component : getComponentNames()) {
             // remove crackers
-            if(!component.contains("_cracker")){
+            if (!component.contains("_cracker")) {
                 algorithms.append(component);
                 algorithms.append('\n');
             }
@@ -25,22 +25,21 @@ public class ShowAlgorithm {
         output.setText(algorithms.toString());
     }
 
-    private static String[] getComponentNames(){
+    private static String[] getComponentNames() {
         // get folder of component directory
         File folder = new File(Configuration.instance.componentDirectory);
 
         // get files inside this folder
         File[] files = folder.listFiles();
-        if(files != null) {
+        if (files != null) {
             // return filenames without .jar extension
             String[] componentNames = new String[files.length];
-            for(int i = 0; i < files.length; i++){
+            for (int i = 0; i < files.length; i++) {
                 String fileName = files[i].getName();
                 componentNames[i] = fileName.substring(0, fileName.length() - 4);
             }
             return componentNames;
-        }
-        else {
+        } else {
             return new String[0];
         }
     }

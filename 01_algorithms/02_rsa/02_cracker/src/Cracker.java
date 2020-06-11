@@ -1,6 +1,4 @@
 import java.math.BigInteger;
-import java.nio.charset.Charset;
-import java.util.Arrays;
 import java.util.Base64;
 
 public class Cracker {
@@ -14,9 +12,9 @@ public class Cracker {
         this.debug = debug;
     }
 
-    public String decrypt(String encrypted){
+    public String decrypt(String encrypted) {
 
-        if(debug){
+        if (debug) {
             System.out.println("Ciphertext: " + encrypted);
             System.out.println("Recieved keys: ");
             System.out.println("\te: " + e);
@@ -31,8 +29,8 @@ public class Cracker {
 
             String result = new String(bint.toByteArray());
 
-            if(debug){
-                System.out.println("Decrypted message: " +  result);
+            if (debug) {
+                System.out.println("Decrypted message: " + result);
             }
 
             return result;

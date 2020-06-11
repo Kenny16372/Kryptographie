@@ -5,7 +5,6 @@ import configuration.Configuration;
 import encryption.RSA;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,15 +15,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import logging.Logger;
 import parser.InputHandler;
-
-import java.io.File;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.math.BigInteger;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.nio.charset.Charset;
-import java.sql.SQLException;
 
 public class GUI extends Application {
     private InputHandler handler = new InputHandler();
@@ -75,18 +65,18 @@ public class GUI extends Application {
         Scene scene = new Scene(vbox, 950, 500);
 
         scene.setOnKeyPressed(e -> {
-            if(e.getCode() == KeyCode.F3){
+            if (e.getCode() == KeyCode.F3) {
                 Configuration.instance.switchDebugMode();
-                if(Configuration.instance.debugMode){
+                if (Configuration.instance.debugMode) {
                     outputArea.setText("Debug mode activated");
-                } else{
+                } else {
                     outputArea.setText("Debug mode deactivated");
                 }
-            } else if(e.getCode() == KeyCode.F8){
+            } else if (e.getCode() == KeyCode.F8) {
                 Logger.displayLatestLogFile(outputArea);
-            } else if(e.getCode() == KeyCode.F5){
+            } else if (e.getCode() == KeyCode.F5) {
                 this.handleExecute();
-            } else if(e.getCode() == KeyCode.K){        // create test key files
+            } else if (e.getCode() == KeyCode.K) {        // create test key files
                 RSA rsa = new RSA();
                 Branch branch = new Branch("demo");
                 branch.storeKeys(rsa.generateKeyPair());
@@ -97,13 +87,13 @@ public class GUI extends Application {
         primaryStage.show();
     }
 
-    private void handleExecute(ActionEvent event){
+    private void handleExecute(ActionEvent event) {
         // get input and handle it
         String raw = inputArea.getText();
         handler.handle(raw, outputArea);
     }
 
-    private void handleExecute(){
+    private void handleExecute() {
         this.handleExecute(new ActionEvent());
     }
 

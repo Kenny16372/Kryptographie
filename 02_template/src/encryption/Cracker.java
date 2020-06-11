@@ -8,7 +8,7 @@ import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 
 public class Cracker {
-    public String decrypt(String cipherText, String algorithm, String keyFileName){
+    public String decrypt(String cipherText, String algorithm, String keyFileName) {
         algorithm = algorithm + "_cracker";
 
         try {
@@ -17,7 +17,7 @@ public class Cracker {
 
             File keyFile = null;
 
-            if(keyFileName != null){
+            if (keyFileName != null) {
                 // get keyfile
                 keyFile = new File(Configuration.instance.keyFileDirectory + keyFileName);
             }

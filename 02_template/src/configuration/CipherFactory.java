@@ -10,13 +10,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CipherFactory {
-    public Object getCipher(Class<?> clazz, String algorithm, File keyFile){
-        if(clazz == null || algorithm == null){
+    public Object getCipher(Class<?> clazz, String algorithm, File keyFile) {
+        if (clazz == null || algorithm == null) {
             return null;
         }
         try {
             switch (algorithm.toLowerCase()) {
-                case "rsa": case "shift":
+                case "rsa":
+                case "shift":
                     return clazz.getDeclaredConstructor(boolean.class).newInstance(Configuration.instance.debugMode);
                 case "rsa_cracker":
                     Map<Character, BigInteger> map = this.loadKey(keyFile);
@@ -27,14 +28,14 @@ public class CipherFactory {
                 default:
                     throw new RuntimeException("No such algorithm: " + algorithm);
             }
-        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e){
+        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
 
         return null;
     }
 
-    public Object getCipher(Class<?> clazz, String algorithm){
+    public Object getCipher(Class<?> clazz, String algorithm) {
         return this.getCipher(clazz, algorithm, null);
     }
 

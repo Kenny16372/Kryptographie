@@ -10,14 +10,14 @@ import java.util.Map;
 public class Branch {
     private String name;
 
-    public Branch(String name){
+    public Branch(String name) {
         this.name = name;
     }
 
-    public void storeKeys(Map<String, Map<Character, String>> keys){
+    public void storeKeys(Map<String, Map<Character, String>> keys) {
         // stores keys for this branch in the format "<n>\n<e>"
         // public key
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter(Configuration.instance.keyFileDirectory + this.name + "_pub.txt"))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(Configuration.instance.keyFileDirectory + this.name + "_pub.txt"))) {
             bw.write("{\"n\":");
             bw.write(keys.get("publicKey").get('n') + ",");
             bw.write("\"e\":");
@@ -29,7 +29,7 @@ public class Branch {
         }
 
         // private key
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter(Configuration.instance.keyFileDirectory + this.name + "_pri.txt"))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(Configuration.instance.keyFileDirectory + this.name + "_pri.txt"))) {
             bw.write("{\"n\":");
             bw.write(keys.get("privateKey").get('n') + ",");
             bw.write("\"e\":");

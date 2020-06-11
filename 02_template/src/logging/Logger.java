@@ -4,7 +4,8 @@ import configuration.Configuration;
 import javafx.scene.control.TextArea;
 
 import java.io.*;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Logger {
@@ -12,14 +13,14 @@ public class Logger {
     private File logFile = null;
     private PrintStream redirection = null;
 
-    public void startLogging(boolean encrypt, String algorithm){
+    public void startLogging(boolean encrypt, String algorithm) {
         this.out = System.out;
 
         long timestamp = System.currentTimeMillis() / 1000L;
         try {
             this.logFile = new File(Configuration.instance.logDirectory + (encrypt ? "en" : "de") + "crypt_" + algorithm.toUpperCase() + "_" + timestamp + ".txt");
 
-            if(!this.logFile.createNewFile()){
+            if (!this.logFile.createNewFile()) {
                 System.err.println("Couldn't create log file: " + this.logFile.getName());
             }
 
@@ -32,8 +33,8 @@ public class Logger {
         }
     }
 
-    public void close(){
-        if(this.redirection != null){
+    public void close() {
+        if (this.redirection != null) {
             this.redirection.close();
         }
 
@@ -45,26 +46,26 @@ public class Logger {
         this.out = null;
     }
 
-    public static void displayLatestLogFile(TextArea output){
+    public static void displayLatestLogFile(TextArea output) {
         output.clear();
 
-        try(BufferedReader br = new BufferedReader(new FileReader(Configuration.instance.logDirectory + getLatestFile()))){
+        try (BufferedReader br = new BufferedReader(new FileReader(Configuration.instance.logDirectory + getLatestFile()))) {
             output.setText(br.lines().collect(Collectors.joining("\n")));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private static String getLatestFile(){
+    private static String getLatestFile() {
         File[] logFiles = new File(Configuration.instance.logDirectory).listFiles();
         Map<Long, String> map = new HashMap<>();
         long max = 0L;
 
-        if(logFiles == null){
+        if (logFiles == null) {
             return null;
         }
 
-        for(File file: logFiles){
+        for (File file : logFiles) {
             String filename = file.getName();
 
             int indexLastUnderscore = filename.lastIndexOf('_');

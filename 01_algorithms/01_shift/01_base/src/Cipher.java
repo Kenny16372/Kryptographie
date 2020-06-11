@@ -1,4 +1,3 @@
-import java.io.*;
 import java.util.Scanner;
 
 public class Cipher {
@@ -13,24 +12,24 @@ public class Cipher {
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        if(debug){
+        if (debug) {
             System.out.println("Encrypting message: " + plainText);
         }
 
         for (int i = 0; i < plainText.length(); i++) {
             int charCode = plainText.codePointAt(i) + key;
 
-            charCode = charCode % (int)'z';
+            charCode = charCode % (int) 'z';
 
-            if(charCode < (int)'A'){
-                charCode = charCode + ((int)'A') - 1;
+            if (charCode < (int) 'A') {
+                charCode = charCode + ((int) 'A') - 1;
             }
 
             char character = (char) (charCode);
             stringBuilder.append(character);
         }
 
-        if(debug){
+        if (debug) {
             System.out.println("Ciphertext: " + stringBuilder.toString());
         }
 
@@ -48,7 +47,7 @@ public class Cipher {
             e.printStackTrace();
         }
 
-        if(debug){
+        if (debug) {
             System.out.println("Read key from file \"" + keyFile.getName() + "\": " + key);
         }
 
@@ -60,23 +59,23 @@ public class Cipher {
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        if(debug){
+        if (debug) {
             System.out.println("Decrypting message: " + cipherText);
         }
 
         for (int i = 0; i < cipherText.length(); i++) {
             int charCode = cipherText.codePointAt(i) - key;
 
-            if(charCode < (int)'A'){
+            if (charCode < (int) 'A') {
                 charCode -= 'A';
-                charCode += ((int)'z') + 1;
+                charCode += ((int) 'z') + 1;
             }
 
             char character = (char) (charCode);
             stringBuilder.append(character);
         }
 
-        if(debug){
+        if (debug) {
             System.out.println("Plaintext: " + stringBuilder.toString());
         }
 

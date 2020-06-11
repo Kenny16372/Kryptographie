@@ -25,7 +25,7 @@ public class RSACracker {
         p = factorList.get(0);
         q = factorList.get(1);
 
-        if(debug){
+        if (debug) {
             System.out.println("Found factors for n: " + p + " and " + q);
         }
 
