@@ -29,6 +29,11 @@ public class Application {
         HSQLDB.instance.insertDataTableParticipants("branch_wuh", 1);
         HSQLDB.instance.insertDataTableParticipants("msa", 2);
 
+        HSQLDB.instance.insertDataTableChannel("hkg_wuh", 1, 5);
+        HSQLDB.instance.insertDataTableChannel("hkg_cpt", 1, 2);
+        HSQLDB.instance.insertDataTableChannel("cpt_syd", 2, 4);
+        HSQLDB.instance.insertDataTableChannel("syd_sfo", 4, 3);
+
         HSQLDB.instance.shutdown();
     }
 }

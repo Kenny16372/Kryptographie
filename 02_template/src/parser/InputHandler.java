@@ -29,6 +29,8 @@ public class InputHandler implements IHandler {
                 new CrackingHandler().handle(rest, output);
             case "register":
                 new RegisterParticipant().handle(rest, output);
+            case "create":
+                new CreateChannel().handle(rest, output);
         }
     }
 }

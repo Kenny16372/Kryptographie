@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2994c55f-25a1-424a-9316-44653ebdc10d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/02_template/src/parser/CreateChannel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/02_template/src/application/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/application/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/src/company/Branch.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/company/Branch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/src/company/Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/company/Network.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/src/configuration/CipherFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/configuration/CipherFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/src/encryption/Cracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/encryption/Cracker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/src/encryption/Encryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/encryption/Encryption.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/src/general/ComponentLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/general/ComponentLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/src/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/gui/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/src/logging/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/logging/Logger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/src/parser/CrackingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/parser/CrackingHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/src/parser/EncryptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/parser/EncryptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/02_template/src/parser/InputHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/parser/InputHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/src/parser/RegisterParticipant.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/parser/RegisterParticipant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/src/parser/ShowAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/parser/ShowAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/src/persistence/HSQLDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/persistence/HSQLDB.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,13 +165,21 @@
       <option name="project" value="LOCAL" />
       <updated>1591898989057</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Reformat Code">
+      <created>1591899372034</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1591899372034</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ordnerstruktur anpassen" />
     <MESSAGE value="Register participant" />
-    <option name="LAST_COMMIT_MESSAGE" value="Register participant" />
+    <MESSAGE value="Reformat Code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reformat Code" />
   </component>
   <component name="WindowStateProjectService">
     <state x="451" y="93" key="#Project_Structure" timestamp="1589309673265">
@@ -205,11 +202,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="689" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590053433216" />
-    <state x="613" y="113" key="CommitChangelistDialog2" timestamp="1591898988332">
+    <state x="613" y="113" key="CommitChangelistDialog2" timestamp="1591899371314">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="613" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591552749235" />
-    <state x="613" y="113" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591898988332" />
+    <state x="613" y="113" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591899371314" />
     <state x="740" y="278" key="FileChooserDialogImpl" timestamp="1591877051127">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -259,11 +256,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="311" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1591552056362" />
-    <state x="551" y="252" key="Vcs.Push.Dialog.v2" timestamp="1591899053612">
+    <state x="551" y="252" key="Vcs.Push.Dialog.v2" timestamp="1591899379249">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="551" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591552757193" />
-    <state x="551" y="252" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591899053612" />
+    <state x="551" y="252" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591899379249" />
     <state x="663" y="412" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1590053062975">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
