@@ -11,9 +11,15 @@ public class Application {
 
         HSQLDB.instance.dropTableParticipants();
         HSQLDB.instance.dropTableTypes();
+        HSQLDB.instance.dropTableAlgorithms();
+        HSQLDB.instance.dropTableChannel();
+        HSQLDB.instance.dropTableMessages();
 
         HSQLDB.instance.createTableTypes();
         HSQLDB.instance.createTableParticipants();
+        HSQLDB.instance.createTableAlgorithms();
+        HSQLDB.instance.createTableChannel();
+        HSQLDB.instance.createTableMessages();
 
         HSQLDB.instance.insertDataTableTypes("normal");
         HSQLDB.instance.insertDataTableTypes("intruder");
@@ -24,7 +30,6 @@ public class Application {
         HSQLDB.instance.insertDataTableParticipants("branch_syd", 1);
         HSQLDB.instance.insertDataTableParticipants("branch_wuh", 1);
         HSQLDB.instance.insertDataTableParticipants("msa", 2);
-
 
         HSQLDB.instance.shutdown();
     }

@@ -54,6 +54,38 @@ public enum HSQLDB {
         return nextID;
     }
 
+    public int getCountName(String name){
+        int result = 0;
+        try {
+            String sqlStatement = "SELECT COUNT(name) FROM participants WHERE name = '" + name + "'";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sqlStatement);
+            while (resultSet.next()){
+               result = resultSet.getInt(1);
+            }
+
+        } catch (SQLException sqle) {
+            System.out.println(sqle.getMessage());
+        }
+        return result;
+    }
+
+    public int getTypeID(String type){
+        int result = 0;
+        try {
+            String sqlStatement = "SELECT id FROM types WHERE name = '" + type + "'";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sqlStatement);
+            while (resultSet.next()){
+                result = resultSet.getInt(1);
+            }
+
+        } catch (SQLException sqle) {
+            System.out.println(sqle.getMessage());
+        }
+        return result;
+    }
+
     // Table types
 
     public void dropTableTypes() {
@@ -320,7 +352,7 @@ public enum HSQLDB {
         System.out.println("--- createTablePostbox_" + participantName);
 
         StringBuilder sqlStringBuilder01 = new StringBuilder();
-        sqlStringBuilder01.append("CREATE TABLE postbox_").append("'").append(participantName).append("'").append( " ( ");
+        sqlStringBuilder01.append("CREATE TABLE postbox_").append(participantName).append( " ( ");
         sqlStringBuilder01.append("id TINYINT NOT NULL").append(",");
         sqlStringBuilder01.append("participant_from_id TINYINT NOT NULL").append(",");
         sqlStringBuilder01.append("message VARCHAR(50) NOT NULL").append(",");
@@ -331,7 +363,7 @@ public enum HSQLDB {
         update(sqlStringBuilder01.toString());
 
         StringBuilder sqlStringBuilder02 = new StringBuilder();
-        sqlStringBuilder02.append("ALTER TABLE postbox_").append("'").append(participantName).append("'").append(" ADD CONSTRAINT fkPostbox01 ");
+        sqlStringBuilder02.append("ALTER TABLE postbox_").append(participantName).append(" ADD CONSTRAINT fkPostbox_" + participantName + " ");
         sqlStringBuilder02.append("FOREIGN KEY (participant_from_id) ");
         sqlStringBuilder02.append("REFERENCES participants (id) ");
         sqlStringBuilder02.append("ON DELETE CASCADE");
@@ -342,7 +374,7 @@ public enum HSQLDB {
     public void insertDataTablePostbox(String participantName, int participantFromID, String message) {
         int nextID = getNextID("participants") + 1;
         StringBuilder sqlStringBuilder = new StringBuilder();
-        sqlStringBuilder.append("INSERT INTO postbox_").append("'").append(participantName).append("'").append(" (").append("id").append(",").append("participant_from_id").append(",").append("message").append(",").append("timestamp").append(")");
+        sqlStringBuilder.append("INSERT INTO postbox_").append(participantName).append(" (").append("id").append(",").append("participant_from_id").append(",").append("message").append(",").append("timestamp").append(")");
         sqlStringBuilder.append(" VALUES ");
         sqlStringBuilder.append("(").append(nextID).append(",").append(participantFromID).append(",").append("'").append(message).append("'").append(",").append(System.currentTimeMillis());
         sqlStringBuilder.append(")");

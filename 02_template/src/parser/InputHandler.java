@@ -3,7 +3,7 @@ package parser;
 import javafx.scene.control.TextArea;
 
 public class InputHandler implements IHandler{
-    public void handle(String raw, TextArea output) {
+    public void handle(String raw, TextArea output){
         // remove leading and trailing whitespace
         raw = raw.trim();
 
@@ -26,6 +26,8 @@ public class InputHandler implements IHandler{
                 break;
             case "crack":
                 new CrackingHandler().handle(rest, output);
+            case "register":
+                new RegisterParticipant().handle(rest, output);
         }
     }
 }

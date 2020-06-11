@@ -24,6 +24,7 @@ import java.math.BigInteger;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.charset.Charset;
+import java.sql.SQLException;
 
 public class GUI extends Application {
     private InputHandler handler = new InputHandler();
@@ -96,7 +97,7 @@ public class GUI extends Application {
         primaryStage.show();
     }
 
-    private void handleExecute(ActionEvent event) {
+    private void handleExecute(ActionEvent event){
         // get input and handle it
         String raw = inputArea.getText();
         handler.handle(raw, outputArea);
