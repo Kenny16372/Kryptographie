@@ -27,10 +27,13 @@ public class InputHandler implements IHandler {
                 break;
             case "crack":
                 new CrackingHandler().handle(rest, output);
+                break;
             case "register":
                 new RegisterParticipant().handle(rest, output);
+                break;
             case "create":
                 new CreateChannel().handle(rest, output);
+                break;
         }
     }
 }

@@ -1,6 +1,5 @@
 package gui;
 
-import company.Branch;
 import configuration.Configuration;
 import encryption.RSA;
 import javafx.application.Application;
@@ -78,8 +77,8 @@ public class GUI extends Application {
                 this.handleExecute();
             } else if (e.getCode() == KeyCode.K) {        // create test key files
                 RSA rsa = new RSA();
-                Branch branch = new Branch("demo");
-                branch.storeKeys(rsa.generateKeyPair());
+                //Branch branch = new Branch("demo");
+                //branch.storeKeys(rsa.generateKeyPair());
             }
         });
 

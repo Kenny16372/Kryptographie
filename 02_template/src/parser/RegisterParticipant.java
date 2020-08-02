@@ -1,6 +1,7 @@
 package parser;
 
 import javafx.scene.control.TextArea;
+import network.Network;
 import persistence.HSQLDB;
 
 public class RegisterParticipant {
@@ -28,6 +29,7 @@ public class RegisterParticipant {
         String rest = text.substring(indexFirstWhitespace + 1).stripLeading();
         String type = rest.substring(10).stripLeading();
 
+        // TODO Datenbankabfrage nicht nötig, auf Liste der Branches in BranchController ändern (BranchController.instance.getBranch() != null)
         HSQLDB.instance.setupConnection();
         int result = HSQLDB.instance.getCountName(name);
         HSQLDB.instance.shutdown();
@@ -40,6 +42,7 @@ public class RegisterParticipant {
             HSQLDB.instance.setupConnection();
             int typeID = HSQLDB.instance.getTypeID(type);
             HSQLDB.instance.insertDataTableParticipants(name, typeID);
+            Network.instance.createParticipant(name, type);
             HSQLDB.instance.createTablePostbox(name);
             HSQLDB.instance.shutdown();
         } else output.setText(messageExist);
