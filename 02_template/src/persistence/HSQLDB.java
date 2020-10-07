@@ -1,8 +1,11 @@
 package persistence;
 
 import configuration.Configuration;
+import org.hsqldb.result.Result;
 
 import java.sql.*;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public enum HSQLDB {
     instance;
@@ -34,6 +37,21 @@ public enum HSQLDB {
         } catch (SQLException sqle) {
             System.out.println(sqle.getMessage());
         }
+    }
+
+    private synchronized ResultSet select(String sqlStatement){
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(sqlStatement);
+
+            statement.close();
+
+            return result;
+        } catch (SQLException sqle) {
+            System.out.println(sqle.getMessage());
+        }
+
+        return null;
     }
 
     private int getNextID(String table) {
@@ -166,7 +184,7 @@ public enum HSQLDB {
         update(sqlStringBuilder03.toString());
     }
 
-    public void insertDataTableParticipants(String name, int typeID) {
+    public int insertDataTableParticipants(String name, int typeID) {      // TODO: Escaping user input
         int nextID = getNextID("participants") + 1;
         StringBuilder sqlStringBuilder = new StringBuilder();
         sqlStringBuilder.append("INSERT INTO participants (").append("id").append(",").append("name").append(",").append("type_id").append(")");
@@ -175,6 +193,42 @@ public enum HSQLDB {
         sqlStringBuilder.append(")");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
         update(sqlStringBuilder.toString());
+        return nextID;
+    }
+
+    public List<Map<String, String>> getAllParticipants(){
+        StringBuilder sqlStringBuilder = new StringBuilder();
+        sqlStringBuilder.append("SELECT participants.name AS Name, participants.id AS Id, types.name AS Type FROM participants INNER JOIN types ON participants.type_id = types.id;");
+
+        ResultSet resultSet = select(sqlStringBuilder.toString());
+
+        List<Map<String, String>> participants = new ArrayList<>();
+
+        if(resultSet == null){
+            return participants;
+        }
+
+        try {
+            while(resultSet.next()){
+                String name = resultSet.getString("Name");
+                String type = resultSet.getString("Type");
+                String id = Integer.toString(resultSet.getInt("Id"));
+
+                Map<String, String> participant = new HashMap<>();
+
+                participant.put("name", name);
+                participant.put("type", type);
+                participant.put("id", id);
+
+                participants.add(participant);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+            return new ArrayList<>();
+        }
+
+        return participants;
     }
 
     // Table algorithms
@@ -230,6 +284,40 @@ public enum HSQLDB {
         update(sqlStringBuilder.toString());
     }
 
+    public Map<String, Set<Integer>> getAllChannels(){
+        StringBuilder sqlStringBuilder = new StringBuilder();
+        Map<String, Set<Integer>> channel = new HashMap<>();
+
+        sqlStringBuilder.append("SELECT * from channel");
+
+        ResultSet resultSet = select(sqlStringBuilder.toString());
+
+        if(resultSet == null){
+            return channel;
+        }
+
+        try{
+            while(resultSet.next()){
+                String channelName = resultSet.getString("name");
+                int participant1 = resultSet.getInt("participant_01");
+                int participant2 = resultSet.getInt("participant_02");
+
+                Set<Integer> participants = new HashSet<>();
+
+
+
+                participants.add(participant1);
+                participants.add(participant2);
+
+                channel.put(channelName, participants);
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return channel;
+    }
+
     public void createTableChannel() {
         System.out.println("--- createTableChannel");
 
@@ -262,10 +350,19 @@ public enum HSQLDB {
 
     public void insertDataTableChannel(String name, int participant01, int participant02) {
         StringBuilder sqlStringBuilder = new StringBuilder();
-        sqlStringBuilder.append("INSERT INTO channel (").append("name").append(",").append("participant01").append(",").append("participant02").append(")");
+        sqlStringBuilder.append("INSERT INTO channel (").append("name").append(",").append("participant_01").append(",").append("participant_02").append(")");
         sqlStringBuilder.append(" VALUES ");
         sqlStringBuilder.append("(").append("'").append(name).append("'").append(",").append(participant01).append(",").append(participant02);
         sqlStringBuilder.append(")");
+        System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
+        update(sqlStringBuilder.toString());
+    }
+
+    public void dropChannel(String channelName){
+        StringBuilder sqlStringBuilder = new StringBuilder();
+        sqlStringBuilder.append("DELETE FROM channel WHERE name='");
+        sqlStringBuilder.append(channelName);
+        sqlStringBuilder.append("'");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
         update(sqlStringBuilder.toString());
     }

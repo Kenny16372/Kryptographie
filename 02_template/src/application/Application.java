@@ -1,5 +1,6 @@
 package application;
 
+import network.Network;
 import persistence.HSQLDB;
 
 public class Application {
@@ -35,5 +36,7 @@ public class Application {
         HSQLDB.instance.insertDataTableChannel("syd_sfo", 4, 3);
 
         HSQLDB.instance.shutdown();
+
+        Network.instance.startup();
     }
 }

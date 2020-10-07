@@ -13,7 +13,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import logging.Logger;
+import network.Network;
 import parser.InputHandler;
+import persistence.HSQLDB;
 
 public class GUI extends Application {
     private InputHandler handler = new InputHandler();
@@ -21,6 +23,11 @@ public class GUI extends Application {
     private TextArea outputArea;
     private Button execute;
     private Button close;
+
+    public void init(){
+        HSQLDB.instance.setupConnection();
+        Network.instance.startup();
+    }
 
     public void start(Stage primaryStage) {
         primaryStage.setTitle("MSA | Mosbach Security Agency");
@@ -62,6 +69,7 @@ public class GUI extends Application {
         vbox.getChildren().addAll(hBox, commandLineArea, outputArea);
 
         Scene scene = new Scene(vbox, 950, 500);
+        commandLineArea.requestFocus();
 
         scene.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.F3) {
@@ -84,6 +92,10 @@ public class GUI extends Application {
 
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    public void stop(){
+        HSQLDB.instance.shutdown();
     }
 
     private void handleExecute(ActionEvent event) {

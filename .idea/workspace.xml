@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2994c55f-25a1-424a-9316-44653ebdc10d" name="Default Changelist" comment="RegisterParticipant und CreateChannel erstellt !!!Nicht ausführlich getestet!!!">
-      <change afterPath="$PROJECT_DIR$/02_template/src/network/BranchController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/02_template/src/network/Intruder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/02_template/src/network/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/02_template/src/network/Network.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/02_template/src/network/Participant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/02_template/src/network/ParticipantType.java" afterDir="false" />
+    <list default="true" id="2994c55f-25a1-424a-9316-44653ebdc10d" name="Default Changelist" comment="bis drop channel alles erstellt, create channel wirft einen komischen Fehler">
+      <change afterPath="$PROJECT_DIR$/02_template/src/network/Branch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/02_template/src/parser/DropHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/02_template/src/parser/ShowChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/02_template/src/parser/ShowHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02_template/build/META-INF/implementation.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/02_template/hsqldb/datastore.db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/hsqldb/datastore.db.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/02_template/hsqldb/datastore.db.script" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/hsqldb/datastore.db.script" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/implementation.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/src/company/Branch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/src/company/Network.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/02_template/src/application/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/application/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/02_template/src/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/gui/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02_template/src/network/BranchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/network/ParticipantController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02_template/src/network/Intruder.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/network/Intruder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02_template/src/network/Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/network/Network.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02_template/src/network/Participant.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/network/Participant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/02_template/src/parser/CreateChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/parser/CreateChannel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/02_template/src/parser/InputHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/parser/InputHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/02_template/src/parser/RegisterParticipant.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/parser/RegisterParticipant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02_template/src/parser/ShowAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/parser/ShowAlgorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02_template/src/persistence/HSQLDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/persistence/HSQLDB.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,22 +60,25 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Kenny\Desktop\Kryptographie" />
-      <recent name="C:\Users\Kenny\Desktop\Kryptographie\.idea" />
-      <recent name="C:\Users\Kenny\Desktop\Kryptographie\02_template\component" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Kenny\Desktop\Kryptographie\02_template\component" />
       <recent name="C:\Users\Kenny\Desktop\library\02_template\component\encryption" />
       <recent name="C:\Users\Kenny\Desktop\library\02_template\component\cracking" />
       <recent name="C:\Users\Kenny\Desktop\library\02_template\component" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="MoveInnerDialog.RECENTS_KEY">
+      <recent name="network" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Kenny\Desktop\Kryptographie" />
+      <recent name="C:\Users\Kenny\Desktop\Kryptographie\.idea" />
+      <recent name="C:\Users\Kenny\Desktop\Kryptographie\02_template\component" />
     </key>
   </component>
   <component name="RunManager" selected="Application.GUI">
@@ -133,18 +139,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -184,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591899372034</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="RegisterParticipant und CreateChannel erstellt !!!Nicht ausführlich getestet!!!">
+      <created>1596398163856</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1596398163856</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -192,114 +194,119 @@
     <MESSAGE value="Register participant" />
     <MESSAGE value="Reformat Code" />
     <MESSAGE value="RegisterParticipant und CreateChannel erstellt !!!Nicht ausführlich getestet!!!" />
-    <option name="LAST_COMMIT_MESSAGE" value="RegisterParticipant und CreateChannel erstellt !!!Nicht ausführlich getestet!!!" />
+    <MESSAGE value="bis drop channel alles erstellt, create channel wirft einen komischen Fehler" />
+    <option name="LAST_COMMIT_MESSAGE" value="bis drop channel alles erstellt, create channel wirft einen komischen Fehler" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="451" y="93" key="#Project_Structure" timestamp="1589309673265">
+    <state x="413" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601980334401">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="451" y="93" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1589309673265" />
-    <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591550431242">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591550431242" />
-    <state x="727" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591551049731">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="727" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1591551049731" />
+    <state x="413" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601980334401" />
     <state x="1019" y="307" key="#com.intellij.ide.util.MemberChooser" timestamp="1596397889253">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="764" y="228" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1590053245807" />
     <state x="1019" y="307" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400@0.0.2560.1400" timestamp="1596397889253" />
-    <state x="689" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1590053433216">
+    <state x="820" y="444" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1601920984438">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="689" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590053433216" />
-    <state x="817" y="152" key="CommitChangelistDialog2" timestamp="1596398118718">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="613" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1591552749235" />
-    <state x="817" y="152" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1596398118718" />
-    <state x="613" y="113" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591899371314" />
-    <state x="740" y="278" key="FileChooserDialogImpl" timestamp="1591877051127">
+    <state x="820" y="444" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601920984438" />
+    <state x="752" y="355" key="#com.intellij.refactoring.move.moveInner.MoveInnerDialog" timestamp="1601920989151">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="278" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1591551932107" />
-    <state x="740" y="278" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591877051127" />
-    <state width="2559" height="406" key="GridCell.Tab.0.bottom" timestamp="1596398118760">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="1919" height="288" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591552553801" />
-    <state width="2559" height="406" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1596398118760" />
-    <state width="1877" height="165" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591898873272" />
-    <state width="2559" height="406" key="GridCell.Tab.0.center" timestamp="1596398118760">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="1919" height="288" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591552553801" />
-    <state width="2559" height="406" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1596398118760" />
-    <state width="1877" height="165" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591898873272" />
-    <state width="2559" height="406" key="GridCell.Tab.0.left" timestamp="1596398118759">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="1919" height="288" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591552553801" />
-    <state width="2559" height="406" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1596398118759" />
-    <state width="1877" height="165" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591898873272" />
-    <state width="2559" height="406" key="GridCell.Tab.0.right" timestamp="1596398118760">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="1919" height="288" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591552553801" />
-    <state width="2559" height="406" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1596398118760" />
-    <state width="1877" height="165" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591898873272" />
-    <state width="2559" height="499" key="GridCell.Tab.1.bottom" timestamp="1596397649570">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="1919" height="355" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590257484900" />
-    <state width="2559" height="499" key="GridCell.Tab.1.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1596397649570" />
-    <state width="1877" height="241" key="GridCell.Tab.1.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591898827612" />
-    <state width="2559" height="499" key="GridCell.Tab.1.center" timestamp="1596397649570">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="1919" height="355" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590257484900" />
-    <state width="2559" height="499" key="GridCell.Tab.1.center/0.0.2560.1400@0.0.2560.1400" timestamp="1596397649570" />
-    <state width="1877" height="241" key="GridCell.Tab.1.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591898827612" />
-    <state width="2559" height="499" key="GridCell.Tab.1.left" timestamp="1596397649570">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="1919" height="355" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590257484899" />
-    <state width="2559" height="499" key="GridCell.Tab.1.left/0.0.2560.1400@0.0.2560.1400" timestamp="1596397649570" />
-    <state width="1877" height="241" key="GridCell.Tab.1.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591898827612" />
-    <state width="2559" height="499" key="GridCell.Tab.1.right" timestamp="1596397649570">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="1919" height="355" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590257484900" />
-    <state width="2559" height="499" key="GridCell.Tab.1.right/0.0.2560.1400@0.0.2560.1400" timestamp="1596397649570" />
-    <state width="1877" height="241" key="GridCell.Tab.1.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591898827612" />
-    <state x="311" y="0" key="SettingsEditor" timestamp="1591552056362">
+    <state x="752" y="355" key="#com.intellij.refactoring.move.moveInner.MoveInnerDialog/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601920989151" />
+    <state x="430" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1601920900228">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="311" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1591552056362" />
-    <state x="551" y="252" key="Vcs.Push.Dialog.v2" timestamp="1591899379249">
+    <state x="430" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601920900228" />
+    <state x="613" y="113" key="CommitChangelistDialog2" timestamp="1602097825431">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="551" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591552757193" />
-    <state x="551" y="252" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591899379249" />
-    <state x="663" y="412" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1590053062975">
+    <state x="613" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1602097825431" />
+    <state x="817" y="152" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1596398162747" />
+    <state width="1875" height="288" key="GridCell.Tab.0.bottom" timestamp="1602097825508">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="663" y="412" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1590053062975" />
-    <state x="768" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591552633715">
+    <state width="1875" height="288" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602097825508" />
+    <state width="2559" height="499" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292156" />
+    <state width="1875" height="256" key="GridCell.Tab.0.bottom/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368740" />
+    <state width="1875" height="288" key="GridCell.Tab.0.center" timestamp="1602097825508">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="768" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1591552633715" />
-    <state x="689" y="288" key="extract.method.dialog" timestamp="1589309530849">
+    <state width="1875" height="288" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602097825508" />
+    <state width="2559" height="499" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292156" />
+    <state width="1875" height="256" key="GridCell.Tab.0.center/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368739" />
+    <state width="1875" height="288" key="GridCell.Tab.0.left" timestamp="1602097825508">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="689" y="288" key="extract.method.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589309530849" />
-    <state x="831" y="303" width="896" height="913" key="search.everywhere.popup" timestamp="1596395083385">
+    <state width="1875" height="288" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602097825508" />
+    <state width="2559" height="499" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292156" />
+    <state width="1875" height="256" key="GridCell.Tab.0.left/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368739" />
+    <state width="1875" height="288" key="GridCell.Tab.0.right" timestamp="1602097825508">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1875" height="288" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602097825508" />
+    <state width="2559" height="499" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292156" />
+    <state width="1875" height="256" key="GridCell.Tab.0.right/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368740" />
+    <state width="1875" height="256" key="GridCell.Tab.1.bottom" timestamp="1602097635893">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1875" height="256" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602097635893" />
+    <state width="2559" height="499" key="GridCell.Tab.1.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292157" />
+    <state width="1875" height="256" key="GridCell.Tab.1.bottom/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368740" />
+    <state width="1875" height="256" key="GridCell.Tab.1.center" timestamp="1602097635892">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1875" height="256" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602097635892" />
+    <state width="2559" height="499" key="GridCell.Tab.1.center/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292156" />
+    <state width="1875" height="256" key="GridCell.Tab.1.center/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368740" />
+    <state width="1875" height="256" key="GridCell.Tab.1.left" timestamp="1602097635892">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1875" height="256" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602097635892" />
+    <state width="2559" height="499" key="GridCell.Tab.1.left/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292156" />
+    <state width="1875" height="256" key="GridCell.Tab.1.left/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368740" />
+    <state width="1875" height="256" key="GridCell.Tab.1.right" timestamp="1602097635893">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1875" height="256" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602097635893" />
+    <state width="2559" height="499" key="GridCell.Tab.1.right/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292157" />
+    <state width="1875" height="256" key="GridCell.Tab.1.right/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368740" />
+    <state x="460" y="164" key="SettingsEditor" timestamp="1601977297556">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="460" y="164" key="SettingsEditor/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601977297556" />
+    <state x="735" y="339" key="Vcs.Push.Dialog.v2" timestamp="1596398209241">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1590053030075" />
+    <state x="735" y="339" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1596398209241" />
+    <state x="768" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1601910105260">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="768" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601910105260" />
+    <state x="987" y="491" key="git4idea.merge.GitPullDialog" timestamp="1596398195377">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="987" y="491" key="git4idea.merge.GitPullDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1596398195377" />
+    <state x="623" y="225" width="672" height="679" key="search.everywhere.popup" timestamp="1602086526415">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="679" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602086526415" />
     <state x="831" y="303" width="896" height="913" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1596395083385" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/02_template/src/parser/ShowHandler.java</url>
+          <line>9</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/implementation$GUI.ic" NAME="GUI Coverage Results" MODIFIED="1602096755468" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>gui.*</FILTER>
+    </SUITE>
   </component>
 </project>

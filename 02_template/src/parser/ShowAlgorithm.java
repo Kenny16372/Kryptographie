@@ -6,13 +6,8 @@ import javafx.scene.control.TextArea;
 import java.io.File;
 
 public class ShowAlgorithm {
-    public static void handle(String text, TextArea output) {
-        if (text.stripLeading().equals("algorithm")) {
-            display(output);
-        }
-    }
 
-    private static void display(TextArea output) {
+    public static void display(TextArea output) {
         StringBuilder algorithms = new StringBuilder();
 
         for (String component : getComponentNames()) {
