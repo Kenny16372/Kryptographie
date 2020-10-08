@@ -45,6 +45,9 @@ public class InputHandler implements IHandler {
             case "drop":
                 new DropHandler().handle(rest, output);
                 break;
+            case "send":
+                new SendMessage().handle(rest, output);
+                break;
             case "help":
             default:
                 output.setText("Mögliche Befehle:\n" +

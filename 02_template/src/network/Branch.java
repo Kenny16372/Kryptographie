@@ -41,8 +41,9 @@ public class Branch extends Participant {
     }
 
     @Subscribe
-    public void inboundMessage(Message message){
-
+    @Override
+    public void receiveMessage(Message message){
+        System.out.println("Message handled");
     }
 
     public void remove(){

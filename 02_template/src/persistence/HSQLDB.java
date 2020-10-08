@@ -197,10 +197,9 @@ public enum HSQLDB {
     }
 
     public List<Map<String, String>> getAllParticipants(){
-        StringBuilder sqlStringBuilder = new StringBuilder();
-        sqlStringBuilder.append("SELECT participants.name AS Name, participants.id AS Id, types.name AS Type FROM participants INNER JOIN types ON participants.type_id = types.id;");
 
-        ResultSet resultSet = select(sqlStringBuilder.toString());
+        ResultSet resultSet = select("SELECT participants.name AS Name, participants.id AS Id, types.name AS Type " +
+                "FROM participants INNER JOIN types ON participants.type_id = types.id");
 
         List<Map<String, String>> participants = new ArrayList<>();
 
@@ -249,7 +248,7 @@ public enum HSQLDB {
         StringBuilder sqlStringBuilder01 = new StringBuilder();
         sqlStringBuilder01.append("CREATE TABLE algorithms ( ");
         sqlStringBuilder01.append("id TINYINT NOT NULL").append(",");
-        sqlStringBuilder01.append("name VARCHAR(10) NOT NULL").append(",");
+        sqlStringBuilder01.append("name VARCHAR(10) NOT NULL UNIQUE").append(",");
         sqlStringBuilder01.append("PRIMARY KEY (id)");
         sqlStringBuilder01.append(" )");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder01.toString());
@@ -266,10 +265,30 @@ public enum HSQLDB {
         StringBuilder sqlStringBuilder = new StringBuilder();
         sqlStringBuilder.append("INSERT INTO algorithms (").append("id").append(",").append("name").append(")");
         sqlStringBuilder.append(" VALUES ");
-        sqlStringBuilder.append("(").append(nextID).append(",").append("'").append(name).append("'");
+        sqlStringBuilder.append("(").append(nextID).append(",").append("'").append(name.toLowerCase()).append("'");
         sqlStringBuilder.append(")");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
         update(sqlStringBuilder.toString());
+    }
+
+    private int getAlgorithmId(String name){
+        String sql = "SELECT * FROM algorithms WHERE name='" +
+                name.toLowerCase() +
+                "' LIMIT 1";
+        ResultSet resultSet = select(sql);
+
+        if(resultSet == null){
+            return -1;
+        }
+
+        try {
+            resultSet.next();
+            return resultSet.getInt("id");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return -1;
     }
 
     // Table channel
@@ -285,12 +304,9 @@ public enum HSQLDB {
     }
 
     public Map<String, Set<Integer>> getAllChannels(){
-        StringBuilder sqlStringBuilder = new StringBuilder();
         Map<String, Set<Integer>> channel = new HashMap<>();
 
-        sqlStringBuilder.append("SELECT * from channel");
-
-        ResultSet resultSet = select(sqlStringBuilder.toString());
+        ResultSet resultSet = select("SELECT * from channel");
 
         if(resultSet == null){
             return channel;
@@ -422,12 +438,50 @@ public enum HSQLDB {
         update(sqlStringBuilder04.toString());
     }
 
-    public void insertDataTableMessages(int participantFromID, int participantToID, String plainMessage, int algorithmID, String encryptedMessage, String keyfile) {
+    public void insertDataTableMessages(int participantFromID, int participantToID, String plainMessage, String algorithmName, String encryptedMessage, String keyfile) {
+        int algorithmId = getAlgorithmId(algorithmName);
+
         int nextID = getNextID("messages") + 1;
         StringBuilder sqlStringBuilder = new StringBuilder();
-        sqlStringBuilder.append("INSERT INTO messages (").append("id").append(",").append("participant_from_id").append(",").append("participant_to_id").append("plain_message").append(",").append("algorithm_id").append(",").append("encrypted_message").append(",").append("keyfile").append(",").append("timestamp").append(")");
+        sqlStringBuilder.append("INSERT INTO messages (")
+                .append("id").append(",")
+                .append("participant_from_id")
+                .append(",")
+                .append("participant_to_id")
+                .append(',')
+                .append("plain_message")
+                .append(",")
+                .append("algorithm_id")
+                .append(",")
+                .append("encrypted_message")
+                .append(",")
+                .append("keyfile")
+                .append(",")
+                .append("timestamp")
+                .append(")");
         sqlStringBuilder.append(" VALUES ");
-        sqlStringBuilder.append("(").append(nextID).append(",").append(participantFromID).append(",").append(participantToID).append(",").append("'").append(plainMessage).append("'").append(",").append(algorithmID).append(",").append("'").append(encryptedMessage).append("'").append(",").append("'").append(keyfile).append("'").append(",").append(System.currentTimeMillis());
+        sqlStringBuilder.append("(")
+                .append(nextID)
+                .append(",")
+                .append(participantFromID)
+                .append(",")
+                .append(participantToID)
+                .append(",")
+                .append("'")
+                .append(plainMessage)
+                .append("'")
+                .append(",")
+                .append(algorithmId)
+                .append(",")
+                .append("'")
+                .append(encryptedMessage)
+                .append("'")
+                .append(",")
+                .append("'")
+                .append(keyfile)
+                .append("'")
+                .append(",")
+                .append(System.currentTimeMillis() / 1000);
         sqlStringBuilder.append(")");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
         update(sqlStringBuilder.toString());

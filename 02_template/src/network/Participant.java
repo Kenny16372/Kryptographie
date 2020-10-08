@@ -1,5 +1,7 @@
 package network;
 
+import com.google.common.eventbus.Subscribe;
+
 public abstract class Participant {
     protected ParticipantType type;
     protected String name;
@@ -13,5 +15,18 @@ public abstract class Participant {
 
     public String getName() {
         return name;
+    }
+
+    @Subscribe
+    public void receiveMessage(Message message){
+        System.out.println("Participant received message");
+    }
+
+    public ParticipantType getType() {
+        return type;
+    }
+
+    public int getId() {
+        return id;
     }
 }

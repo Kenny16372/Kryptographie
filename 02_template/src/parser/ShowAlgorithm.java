@@ -20,7 +20,7 @@ public class ShowAlgorithm {
         output.setText(algorithms.toString());
     }
 
-    private static String[] getComponentNames() {
+    public static String[] getComponentNames() {
         // get folder of component directory
         File folder = new File(Configuration.instance.componentDirectory);
 

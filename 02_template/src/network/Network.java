@@ -2,6 +2,7 @@ package network;
 
 import com.google.common.eventbus.EventBus;
 import javafx.util.Pair;
+import parser.ShowAlgorithm;
 import persistence.HSQLDB;
 
 import java.util.*;
@@ -17,6 +18,7 @@ public enum Network {
         ParticipantController.instance.startup();
 
         loadChannels();
+        updateAlgorithms();
     }
 
     private void loadChannels(){
@@ -37,6 +39,14 @@ public enum Network {
             EventBus eventBus = new EventBus(channelName);
 
             this.channels.put(channelName, new Pair<>(eventBus, branches));
+        }
+    }
+
+    private void updateAlgorithms(){
+        for(String name: ShowAlgorithm.getComponentNames()){
+            if(!name.endsWith("_cracker")){
+                HSQLDB.instance.insertDataTableAlgorithms(name);
+            }
         }
     }
 
@@ -64,11 +74,26 @@ public enum Network {
 
         for(Object listener: branches){
             eventBus.register(listener);
+            eventBus.post(new Message("12345"));
         }
 
         channels.put(channelName, new Pair<>(eventBus, branches));
 
+        List<Branch> branchArray = new ArrayList<>(branches);
+        HSQLDB.instance.insertDataTableChannel(channelName, branchArray.get(0).getId(), branchArray.get(1).getId());
+
         return channelName;
+    }
+
+    public String getChannelByBranches(Set<Branch> branches){
+        for(String channel: channels.keySet()){
+            Pair<EventBus, Set<Branch>> pair = channels.get(channel);
+
+            if(pair.getValue().equals(branches)){
+                return channel;
+            }
+        }
+        return null;
     }
 
     public boolean dropChannel(String channelName){
@@ -81,7 +106,7 @@ public enum Network {
         channels.remove(channelName);
         HSQLDB.instance.dropChannel(channelName);
 
-        return result;
+        return true;
     }
 
     // check if channel specified by name has an underlying EventBus including non-null branches
@@ -109,17 +134,26 @@ public enum Network {
         return ParticipantController.instance.getParticipantByName(name) != null;
     }
 
-    // wrapper for sending messages to an eventBus
-    public void postMessage(String eventBusIdentifier, Message message){
-        EventBus eventBus = channels.get(eventBusIdentifier).getKey();
+    // wrapper for sending messages to a channel
+    public void postMessage(String channelName, String plaintext, String encrypted, int fromId, int toId, String algorithm, String keyfile){
+        Message message = new Message(encrypted);
+        EventBus eventBus = channels.get(channelName).getKey();
 
         if(eventBus != null){
             eventBus.post(message);
         }
+
+        HSQLDB.instance.insertDataTableMessages(fromId, toId, plaintext, algorithm, encrypted, keyfile);
     }
 
     // intruder use only; official way to access EventBuses is via their identifier
     public EventBus getEventBus(String identifier){
-        return channels.get(identifier).getKey();
+        Pair<EventBus, Set<Branch>> eventBus = channels.get(identifier);
+
+        if(eventBus != null){
+            return channels.get(identifier).getKey();
+        }
+
+        return null;
     }
 }
