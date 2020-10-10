@@ -185,6 +185,7 @@ public enum HSQLDB {
     }
 
     public int insertDataTableParticipants(String name, int typeID) {      // TODO: Escaping user input
+        System.out.println("--- createParticipant " + name);
         int nextID = getNextID("participants") + 1;
         StringBuilder sqlStringBuilder = new StringBuilder();
         sqlStringBuilder.append("INSERT INTO participants (").append("id").append(",").append("name").append(",").append("type_id").append(")");
@@ -514,7 +515,7 @@ public enum HSQLDB {
         update(sqlStringBuilder01.toString());
 
         StringBuilder sqlStringBuilder02 = new StringBuilder();
-        sqlStringBuilder02.append("ALTER TABLE postbox_").append(participantName).append(" ADD CONSTRAINT fkPostbox_" + participantName);
+        sqlStringBuilder02.append("ALTER TABLE postbox_").append(participantName).append(" ADD CONSTRAINT fkPostbox_" + participantName + " ");
         sqlStringBuilder02.append("FOREIGN KEY (participant_from_id) ");
         sqlStringBuilder02.append("REFERENCES participants (id) ");
         sqlStringBuilder02.append("ON DELETE CASCADE");

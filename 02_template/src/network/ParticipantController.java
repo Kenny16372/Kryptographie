@@ -31,8 +31,26 @@ public enum ParticipantController {
         }
 
         participantMap.put(id, participant);
-
         return true;
+    }
+
+    public void createParticipant(String name, String type){
+        int typeId;
+        switch (type){
+            case "normal":
+                typeId = 1;
+                break;
+            case "intruder":
+                typeId = 2;
+                break;
+            default:
+                typeId = 1;
+        }
+        HSQLDB.instance.insertDataTableParticipants(name, typeId);
+    }
+
+    public void createPostbox(String name){
+        HSQLDB.instance.createTablePostbox(name);
     }
 
     public void startup(){
@@ -58,6 +76,10 @@ public enum ParticipantController {
     // returns a set of participant objects corresponding to the given participant names
     public Set<Participant> getParticipants(String... participantNames){
         return Arrays.stream(participantNames).map(this::getParticipantByName).filter(Objects::nonNull).collect(Collectors.toSet());
+    }
+
+    public Map<Integer, Participant> getParticipantMap() {
+        return participantMap;
     }
 
 }
