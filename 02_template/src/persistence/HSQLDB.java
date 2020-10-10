@@ -163,8 +163,8 @@ public enum HSQLDB {
         StringBuilder sqlStringBuilder01 = new StringBuilder();
         sqlStringBuilder01.append("CREATE TABLE participants ( ");
         sqlStringBuilder01.append("id TINYINT NOT NULL").append(",");
-        sqlStringBuilder01.append("name VARCHAR(50) NOT NULL").append(",");
-        sqlStringBuilder01.append("type_id TINYINT NULL").append(",");
+        sqlStringBuilder01.append("name VARCHAR(50) NOT NULL UNIQUE").append(",");
+        sqlStringBuilder01.append("type_id TINYINT NOT NULL").append(",");
         sqlStringBuilder01.append("PRIMARY KEY (id)");
         sqlStringBuilder01.append(" )");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder01.toString());
@@ -178,7 +178,7 @@ public enum HSQLDB {
         StringBuilder sqlStringBuilder03 = new StringBuilder();
         sqlStringBuilder03.append("ALTER TABLE participants ADD CONSTRAINT fkParticipants01 ");
         sqlStringBuilder03.append("FOREIGN KEY (type_id) ");
-        sqlStringBuilder03.append("REFERENCES participants (id) ");
+        sqlStringBuilder03.append("REFERENCES types (id) ");
         sqlStringBuilder03.append("ON DELETE CASCADE");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder03.toString());
         update(sqlStringBuilder03.toString());
@@ -493,7 +493,7 @@ public enum HSQLDB {
         System.out.println("--- dropTablePostbox_" + participantName);
 
         StringBuilder sqlStringBuilder = new StringBuilder();
-        sqlStringBuilder.append("DROP TABLE postbox_").append("'").append(participantName).append("'");
+        sqlStringBuilder.append("DROP TABLE postbox_").append(participantName);
         System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
 
         update(sqlStringBuilder.toString());
@@ -514,7 +514,7 @@ public enum HSQLDB {
         update(sqlStringBuilder01.toString());
 
         StringBuilder sqlStringBuilder02 = new StringBuilder();
-        sqlStringBuilder02.append("ALTER TABLE postbox_").append(participantName).append(" ADD CONSTRAINT fkPostbox_" + participantName + " ");
+        sqlStringBuilder02.append("ALTER TABLE postbox_").append(participantName).append(" ADD CONSTRAINT fkPostbox_" + participantName);
         sqlStringBuilder02.append("FOREIGN KEY (participant_from_id) ");
         sqlStringBuilder02.append("REFERENCES participants (id) ");
         sqlStringBuilder02.append("ON DELETE CASCADE");
