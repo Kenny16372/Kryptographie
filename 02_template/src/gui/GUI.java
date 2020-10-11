@@ -25,7 +25,7 @@ public class GUI extends Application {
     private Button execute;
     private Button close;
 
-    public void init(){
+    public void init() {
         HSQLDB.instance.setupConnection();
         Network.instance.startup();
     }
@@ -95,7 +95,7 @@ public class GUI extends Application {
         primaryStage.show();
     }
 
-    public void stop(){
+    public void stop() {
         HSQLDB.instance.shutdown();
     }
 

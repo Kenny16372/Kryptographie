@@ -1,8 +1,6 @@
 package parser;
 
 import javafx.scene.control.TextArea;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 
 public class InputHandler implements IHandler {
     public void handle(String raw, TextArea output) {
@@ -17,7 +15,7 @@ public class InputHandler implements IHandler {
             // no whitespace in input
             command = raw;
             rest = "";
-        } else{
+        } else {
             // split at first whitespace
             command = raw.substring(0, indexFirstWhitespace);
             rest = raw.substring(indexFirstWhitespace + 1).stripLeading();

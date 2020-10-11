@@ -7,7 +7,7 @@ public abstract class Participant {
     protected String name;
     protected int id;
 
-    Participant(String name, ParticipantType type, int id){
+    Participant(String name, ParticipantType type, int id) {
         this.name = name;
         this.type = type;
         this.id = id;
@@ -18,7 +18,7 @@ public abstract class Participant {
     }
 
     @Subscribe
-    public void receiveMessage(Message message){
+    public void receiveMessage(Message message) {
         System.out.println("Participant received message");
     }
 

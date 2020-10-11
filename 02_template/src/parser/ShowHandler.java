@@ -7,7 +7,7 @@ public class ShowHandler {
         if (text.stripLeading().equals("algorithm")) {
             ShowAlgorithm.display(output);
         }
-        switch (text.stripLeading().toLowerCase()){
+        switch (text.stripLeading().toLowerCase()) {
             case "algorithm":
                 ShowAlgorithm.display(output);
                 break;

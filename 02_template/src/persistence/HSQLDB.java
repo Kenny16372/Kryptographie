@@ -1,11 +1,9 @@
 package persistence;
 
 import configuration.Configuration;
-import org.hsqldb.result.Result;
 
 import java.sql.*;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public enum HSQLDB {
     instance;
@@ -39,14 +37,14 @@ public enum HSQLDB {
         }
     }
 
-    private synchronized ResultSet select(String sqlStatement){
+    private synchronized ResultSet select(String sqlStatement) {
         try {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery(sqlStatement);
 
             statement.close();
 
-            if(result.isLast()){
+            if (result.isLast()) {
                 return null;
             }
 
@@ -74,38 +72,6 @@ public enum HSQLDB {
         }
 
         return nextID;
-    }
-
-    public int getCountName(String name) {
-        int result = 0;
-        try {
-            String sqlStatement = "SELECT COUNT(name) FROM participants WHERE name = '" + name + "'";
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sqlStatement);
-            while (resultSet.next()) {
-                result = resultSet.getInt(1);
-            }
-
-        } catch (SQLException sqle) {
-            System.out.println(sqle.getMessage());
-        }
-        return result;
-    }
-
-    public int getTypeID(String type) {
-        int result = 0;
-        try {
-            String sqlStatement = "SELECT id FROM types WHERE name = '" + type + "'";
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sqlStatement);
-            while (resultSet.next()) {
-                result = resultSet.getInt(1);
-            }
-
-        } catch (SQLException sqle) {
-            System.out.println(sqle.getMessage());
-        }
-        return result;
     }
 
     // Table types
@@ -143,7 +109,7 @@ public enum HSQLDB {
         StringBuilder sqlStringBuilder = new StringBuilder();
         sqlStringBuilder.append("INSERT INTO types (").append("id").append(",").append("name").append(")");
         sqlStringBuilder.append(" VALUES ");
-        sqlStringBuilder.append("(").append(nextID).append(",").append("'").append(name).append("'");
+        sqlStringBuilder.append("(").append(nextID).append(",").append("'").append(name.toLowerCase()).append("'");
         sqlStringBuilder.append(")");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
         update(sqlStringBuilder.toString());
@@ -167,7 +133,7 @@ public enum HSQLDB {
         StringBuilder sqlStringBuilder01 = new StringBuilder();
         sqlStringBuilder01.append("CREATE TABLE participants ( ");
         sqlStringBuilder01.append("id TINYINT NOT NULL").append(",");
-        sqlStringBuilder01.append("name VARCHAR(50) NOT NULL UNIQUE").append(",");
+        sqlStringBuilder01.append("name VARCHAR(50) NOT NULL").append(",");
         sqlStringBuilder01.append("type_id TINYINT NOT NULL").append(",");
         sqlStringBuilder01.append("PRIMARY KEY (id)");
         sqlStringBuilder01.append(" )");
@@ -175,7 +141,7 @@ public enum HSQLDB {
         update(sqlStringBuilder01.toString());
 
         StringBuilder sqlStringBuilder02 = new StringBuilder();
-        sqlStringBuilder02.append("CREATE UNIQUE INDEX idxParticipants ON types (name)");
+        sqlStringBuilder02.append("CREATE UNIQUE INDEX idxParticipants ON participants (name)");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder02.toString());
         update(sqlStringBuilder02.toString());
 
@@ -189,31 +155,31 @@ public enum HSQLDB {
     }
 
     public int insertDataTableParticipants(String name, int typeID) {      // TODO: Escaping user input
-        System.out.println("--- createParticipant " + name);
+        System.out.println("--- createParticipant " + name.toLowerCase());
         int nextID = getNextID("participants") + 1;
         StringBuilder sqlStringBuilder = new StringBuilder();
         sqlStringBuilder.append("INSERT INTO participants (").append("id").append(",").append("name").append(",").append("type_id").append(")");
         sqlStringBuilder.append(" VALUES ");
-        sqlStringBuilder.append("(").append(nextID).append(",").append("'").append(name).append("'").append(",").append(typeID);
+        sqlStringBuilder.append("(").append(nextID).append(",").append("'").append(name.toLowerCase()).append("'").append(",").append(typeID);
         sqlStringBuilder.append(")");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
         update(sqlStringBuilder.toString());
         return nextID;
     }
 
-    public List<Map<String, String>> getAllParticipants(){
+    public List<Map<String, String>> getAllParticipants() {
 
         ResultSet resultSet = select("SELECT participants.name AS Name, participants.id AS Id, types.name AS Type " +
                 "FROM participants INNER JOIN types ON participants.type_id = types.id");
 
         List<Map<String, String>> participants = new ArrayList<>();
 
-        if(resultSet == null){
+        if (resultSet == null) {
             return participants;
         }
 
         try {
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 String name = resultSet.getString("Name");
                 String type = resultSet.getString("Type");
                 String id = Integer.toString(resultSet.getInt("Id"));
@@ -253,20 +219,20 @@ public enum HSQLDB {
         StringBuilder sqlStringBuilder01 = new StringBuilder();
         sqlStringBuilder01.append("CREATE TABLE algorithms ( ");
         sqlStringBuilder01.append("id TINYINT NOT NULL").append(",");
-        sqlStringBuilder01.append("name VARCHAR(10) NOT NULL UNIQUE").append(",");
+        sqlStringBuilder01.append("name VARCHAR(10) NOT NULL").append(",");
         sqlStringBuilder01.append("PRIMARY KEY (id)");
         sqlStringBuilder01.append(" )");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder01.toString());
         update(sqlStringBuilder01.toString());
 
         StringBuilder sqlStringBuilder02 = new StringBuilder();
-        sqlStringBuilder02.append("CREATE UNIQUE INDEX idxTypes ON types (name)");
+        sqlStringBuilder02.append("CREATE UNIQUE INDEX idxTypes ON algorithms (name)");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder02.toString());
         update(sqlStringBuilder02.toString());
     }
 
     public void insertDataTableAlgorithms(String name) {
-        if(getAlgorithmId(name) != -1){
+        if (getAlgorithmId(name) != -1) {
             // algorithm is already stored in the table
             return;
         }
@@ -281,13 +247,13 @@ public enum HSQLDB {
         update(sqlStringBuilder.toString());
     }
 
-    private int getAlgorithmId(String name){
+    private int getAlgorithmId(String name) {
         String sql = "SELECT id FROM algorithms WHERE name='" +
                 name.toLowerCase() +
                 "' LIMIT 1";
         ResultSet resultSet = select(sql);
 
-        if(resultSet == null){
+        if (resultSet == null) {
             return -1;
         }
 
@@ -311,37 +277,6 @@ public enum HSQLDB {
         System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
 
         update(sqlStringBuilder.toString());
-    }
-
-    public Map<String, Set<Integer>> getAllChannels(){
-        Map<String, Set<Integer>> channel = new HashMap<>();
-
-        ResultSet resultSet = select("SELECT * from channel");
-
-        if(resultSet == null){
-            return channel;
-        }
-
-        try{
-            while(resultSet.next()){
-                String channelName = resultSet.getString("name");
-                int participant1 = resultSet.getInt("participant_01");
-                int participant2 = resultSet.getInt("participant_02");
-
-                Set<Integer> participants = new HashSet<>();
-
-
-
-                participants.add(participant1);
-                participants.add(participant2);
-
-                channel.put(channelName, participants);
-            }
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-
-        return channel;
     }
 
     public void createTableChannel() {
@@ -384,7 +319,35 @@ public enum HSQLDB {
         update(sqlStringBuilder.toString());
     }
 
-    public void dropChannel(String channelName){
+    public Map<String, Set<Integer>> getAllChannels() {
+        Map<String, Set<Integer>> channel = new HashMap<>();
+
+        ResultSet resultSet = select("SELECT * from channel");
+
+        if (resultSet == null) {
+            return channel;
+        }
+
+        try {
+            while (resultSet.next()) {
+                String channelName = resultSet.getString("name");
+                int participant1 = resultSet.getInt("participant_01");
+                int participant2 = resultSet.getInt("participant_02");
+
+                Set<Integer> participants = new HashSet<>();
+
+                participants.add(participant1);
+                participants.add(participant2);
+
+                channel.put(channelName, participants);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return channel;
+    }
+
+    public void dropChannel(String channelName) {
         StringBuilder sqlStringBuilder = new StringBuilder();
         sqlStringBuilder.append("DELETE FROM channel WHERE name='");
         sqlStringBuilder.append(channelName);
@@ -500,20 +463,20 @@ public enum HSQLDB {
     // Table postbox_[participant_name]
 
     public void dropTablePostbox(String participantName) {
-        System.out.println("--- dropTablePostbox_" + participantName);
+        System.out.println("--- dropTablePostbox_" + participantName.toLowerCase());
 
         StringBuilder sqlStringBuilder = new StringBuilder();
-        sqlStringBuilder.append("DROP TABLE postbox_").append(participantName);
+        sqlStringBuilder.append("DROP TABLE postbox_").append(participantName.toLowerCase());
         System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
 
         update(sqlStringBuilder.toString());
     }
 
     public void createTablePostbox(String participantName) {
-        System.out.println("--- createTablePostbox_" + participantName);
+        System.out.println("--- createTablePostbox_" + participantName.toLowerCase());
 
         StringBuilder sqlStringBuilder01 = new StringBuilder();
-        sqlStringBuilder01.append("CREATE TABLE postbox_").append(participantName).append(" ( ");
+        sqlStringBuilder01.append("CREATE TABLE postbox_").append(participantName.toLowerCase()).append(" ( ");
         sqlStringBuilder01.append("id TINYINT NOT NULL").append(",");
         sqlStringBuilder01.append("participant_from_id TINYINT NOT NULL").append(",");
         sqlStringBuilder01.append("message VARCHAR(50) NOT NULL").append(",");
@@ -524,7 +487,7 @@ public enum HSQLDB {
         update(sqlStringBuilder01.toString());
 
         StringBuilder sqlStringBuilder02 = new StringBuilder();
-        sqlStringBuilder02.append("ALTER TABLE postbox_").append(participantName).append(" ADD CONSTRAINT fkPostbox_" + participantName + " ");
+        sqlStringBuilder02.append("ALTER TABLE postbox_").append(participantName.toLowerCase()).append(" ADD CONSTRAINT fkPostbox_" + participantName.toLowerCase() + " ");
         sqlStringBuilder02.append("FOREIGN KEY (participant_from_id) ");
         sqlStringBuilder02.append("REFERENCES participants (id) ");
         sqlStringBuilder02.append("ON DELETE CASCADE");
@@ -535,7 +498,7 @@ public enum HSQLDB {
     public void insertDataTablePostbox(String participantName, int participantFromID, String message) {
         int nextID = getNextID("participants") + 1;
         StringBuilder sqlStringBuilder = new StringBuilder();
-        sqlStringBuilder.append("INSERT INTO postbox_").append(participantName).append(" (").append("id").append(",").append("participant_from_id").append(",").append("message").append(",").append("timestamp").append(")");
+        sqlStringBuilder.append("INSERT INTO postbox_").append(participantName.toLowerCase()).append(" (").append("id").append(",").append("participant_from_id").append(",").append("message").append(",").append("timestamp").append(")");
         sqlStringBuilder.append(" VALUES ");
         sqlStringBuilder.append("(").append(nextID).append(",").append(participantFromID).append(",").append("'").append(message).append("'").append(",").append(System.currentTimeMillis());
         sqlStringBuilder.append(")");

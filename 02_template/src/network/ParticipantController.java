@@ -2,7 +2,6 @@ package network;
 
 import persistence.HSQLDB;
 
-import javax.print.DocFlavor;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -11,15 +10,15 @@ public enum ParticipantController {
 
     private Map<Integer, Participant> participantMap = new HashMap<>();
 
-    public boolean createParticipant(String name, int id, String type){
+    public boolean createParticipant(String name, int id, String type) {
         Participant participant;
 
-        if(participantMap.get(id) != null){
+        if (participantMap.get(id) != null) {
             System.out.println("Tried creating duplicate participant " + name);
             return false;
         }
 
-        switch (type){
+        switch (type) {
             case "normal":
                 participant = new Branch(name, id);
                 break;
@@ -34,9 +33,9 @@ public enum ParticipantController {
         return true;
     }
 
-    public void createParticipant(String name, String type){
+    public void createParticipant(String name, String type) {
         int typeId;
-        switch (type){
+        switch (type) {
             case "intruder":
                 typeId = 2;
                 break;
@@ -48,32 +47,32 @@ public enum ParticipantController {
         createParticipant(name, id, type);
     }
 
-    public void createPostbox(String name){
+    public void createPostbox(String name) {
         HSQLDB.instance.createTablePostbox(name);
     }
 
-    public void startup(){
+    public void startup() {
         List<Map<String, String>> participants = HSQLDB.instance.getAllParticipants();
 
-        for(Map<String, String> participant: participants){
+        for (Map<String, String> participant : participants) {
             createParticipant(participant.get("name"), Integer.parseInt(participant.get("id")), participant.get("type"));
         }
     }
 
-    public void removeParticipant(int id){
+    public void removeParticipant(int id) {
         participantMap.remove(id);
     }
 
-    public Participant getParticipant(int id){
+    public Participant getParticipant(int id) {
         return participantMap.get(id);
     }
 
-    public Participant getParticipantByName(String name){
+    public Participant getParticipantByName(String name) {
         return participantMap.values().stream().filter(participant -> participant.name.equals(name)).findFirst().orElse(null);
     }
 
     // returns a set of participant objects corresponding to the given participant names
-    public Set<Participant> getParticipants(String... participantNames){
+    public Set<Participant> getParticipants(String... participantNames) {
         return Arrays.stream(participantNames).map(this::getParticipantByName).filter(Objects::nonNull).collect(Collectors.toSet());
     }
 

@@ -42,11 +42,11 @@ public class Branch extends Participant {
 
     @Subscribe
     @Override
-    public void receiveMessage(Message message){
+    public void receiveMessage(Message message) {
         System.out.println("Message handled");
     }
 
-    public void remove(){
+    public void remove() {
         ParticipantController.instance.removeParticipant(id);
     }
 }

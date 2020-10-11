@@ -14,24 +14,24 @@ public enum Network {
     // channels: Identifier -> (EventBus, Branch)
     private Map<String, Pair<EventBus, Set<Branch>>> channels = new HashMap<>();
 
-    public void startup(){
+    public void startup() {
         ParticipantController.instance.startup();
 
         loadChannels();
         updateAlgorithms();
     }
 
-    private void loadChannels(){
+    private void loadChannels() {
         Map<String, Set<Integer>> channels = HSQLDB.instance.getAllChannels();
 
-        for(String channelName: channels.keySet()){
+        for (String channelName : channels.keySet()) {
             Set<Integer> branchIds = channels.get(channelName);
             Set<Branch> branches = new HashSet<>();
 
-            for(int id: branchIds){
+            for (int id : branchIds) {
                 Participant participant = ParticipantController.instance.getParticipant(id);
 
-                if(participant.type.equals(ParticipantType.normal)){
+                if (participant.type.equals(ParticipantType.normal)) {
                     branches.add((Branch) participant);
                 }
             }
@@ -42,18 +42,18 @@ public enum Network {
         }
     }
 
-    private void updateAlgorithms(){
-        for(String name: ShowAlgorithm.getComponentNames()){
-            if(!name.endsWith("_cracker")){
+    private void updateAlgorithms() {
+        for (String name : ShowAlgorithm.getComponentNames()) {
+            if (!name.endsWith("_cracker")) {
                 HSQLDB.instance.insertDataTableAlgorithms(name);
             }
         }
     }
 
-    public Map<String, Set<Branch>> getChannels(){
+    public Map<String, Set<Branch>> getChannels() {
         Map<String, Set<Branch>> result = new HashMap<>();
 
-        for(String channel: channels.keySet()){
+        for (String channel : channels.keySet()) {
             Set<Branch> branches = channels.get(channel).getValue();
 
             result.put(channel, branches);
@@ -62,17 +62,17 @@ public enum Network {
         return result;
     }
 
-    public String createChannel(String channelName, String... listeners){
+    public String createChannel(String channelName, String... listeners) {
         Set<Participant> participants = ParticipantController.instance.getParticipants(listeners);
         Set<Branch> branches = participants.stream().map(participant -> (Branch) participant).collect(Collectors.toSet());
 
-        if(channelName.isBlank()){
+        if (channelName.isBlank()) {
             channelName = branches.stream().map(Branch::getName).map(String::toUpperCase).sorted().collect(Collectors.joining("_"));
         }
 
         EventBus eventBus = new EventBus(channelName);
 
-        for(Object listener: branches){
+        for (Object listener : branches) {
             eventBus.register(listener);
             eventBus.post(new Message("12345"));
         }
@@ -85,21 +85,21 @@ public enum Network {
         return channelName;
     }
 
-    public String getChannelByBranches(Set<Branch> branches){
-        for(String channel: channels.keySet()){
+    public String getChannelByBranches(Set<Branch> branches) {
+        for (String channel : channels.keySet()) {
             Pair<EventBus, Set<Branch>> pair = channels.get(channel);
 
-            if(pair.getValue().equals(branches)){
+            if (pair.getValue().equals(branches)) {
                 return channel;
             }
         }
         return null;
     }
 
-    public boolean dropChannel(String channelName){
+    public boolean dropChannel(String channelName) {
         boolean result = channels.get(channelName) != null;
 
-        if(!result){
+        if (!result) {
             return false;
         }
 
@@ -110,9 +110,9 @@ public enum Network {
     }
 
     // check if channel specified by name has an underlying EventBus including non-null branches
-    public boolean channelExists(String name){
+    public boolean channelExists(String name) {
         Pair<EventBus, Set<Branch>> eventBus = channels.get(name);
-        if(eventBus != null){
+        if (eventBus != null) {
             Set<Branch> branches = eventBus.getValue();
 
             return eventBus.getKey() != null && branches != null && branches.size() > 0;
@@ -122,7 +122,7 @@ public enum Network {
     }
 
     // check if a channel with exactly these branches already exists
-    public boolean connectionExists(String... participantNames){
+    public boolean connectionExists(String... participantNames) {
         // get set of participants from names
         Set<Participant> participants = ParticipantController.instance.getParticipants(participantNames);
 
@@ -130,16 +130,16 @@ public enum Network {
         return channels.values().stream().map(Pair::getValue).anyMatch(participants::equals);
     }
 
-    public boolean participantNameUnused(String name){
+    public boolean participantNameUnused(String name) {
         return ParticipantController.instance.getParticipantByName(name) != null;
     }
 
     // wrapper for sending messages to a channel
-    public void postMessage(String channelName, String plaintext, String encrypted, int fromId, int toId, String algorithm, String keyfile){
+    public void postMessage(String channelName, String plaintext, String encrypted, int fromId, int toId, String algorithm, String keyfile) {
         Message message = new Message(encrypted);
         EventBus eventBus = channels.get(channelName).getKey();
 
-        if(eventBus != null){
+        if (eventBus != null) {
             eventBus.post(message);
         }
 
@@ -147,10 +147,10 @@ public enum Network {
     }
 
     // intruder use only; official way to access EventBuses is via their identifier
-    public EventBus getEventBus(String identifier){
+    public EventBus getEventBus(String identifier) {
         Pair<EventBus, Set<Branch>> eventBus = channels.get(identifier);
 
-        if(eventBus != null){
+        if (eventBus != null) {
             return channels.get(identifier).getKey();
         }
 

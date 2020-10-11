@@ -1,8 +1,6 @@
 package application;
 
 import network.Network;
-import network.Participant;
-import network.ParticipantController;
 import persistence.HSQLDB;
 
 import java.util.List;
@@ -14,7 +12,7 @@ public class Application {
         HSQLDB.instance.setupConnection();
 
         List<Map<String, String>> participants = HSQLDB.instance.getAllParticipants();
-        for(Map<String, String> participant: participants){
+        for (Map<String, String> participant : participants) {
             HSQLDB.instance.dropTablePostbox(participant.get("name"));
             System.out.println(participant.get("name"));
         }

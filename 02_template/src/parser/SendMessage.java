@@ -9,12 +9,11 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class SendMessage {
     private static final Encryption encryption = new Encryption();
 
-    public static boolean handle(String text, TextArea output){
+    public static boolean handle(String text, TextArea output) {
         String errorText = "ERROR\nCouldn't parse input. Please use the following format:\nsend message \"[content]\" from [sender] to [receiver]" +
                 "using [algorithm] and keyfile [keyfile]\n";
 
@@ -26,14 +25,14 @@ public class SendMessage {
         MatchResult result = null;
         try {
             result = scanner.match();
-        } catch (IllegalStateException e){
+        } catch (IllegalStateException e) {
             output.setText(errorText);
             return false;
         } finally {
             scanner.close();
         }
 
-        if(result.groupCount() != 12){
+        if (result.groupCount() != 12) {
             output.setText(errorText);
             return false;
         }
@@ -51,16 +50,16 @@ public class SendMessage {
         String andKeyfile = result.group(11);
         String keyfile = result.group(12);
 
-        if( !messageKeyword.equalsIgnoreCase("message") ||
-            !firstQuotationMark.equals("\"") ||
-            !secondQuotationMark.equals("\"") ||
-            !from.equalsIgnoreCase("from") ||
-            !to.equalsIgnoreCase("to") ||
-            !using.equalsIgnoreCase("using") ||
-            !andKeyfile.replaceAll("\\s", "").equalsIgnoreCase("andkeyfile")) {
+        if (!messageKeyword.equalsIgnoreCase("message") ||
+                !firstQuotationMark.equals("\"") ||
+                !secondQuotationMark.equals("\"") ||
+                !from.equalsIgnoreCase("from") ||
+                !to.equalsIgnoreCase("to") ||
+                !using.equalsIgnoreCase("using") ||
+                !andKeyfile.replaceAll("\\s", "").equalsIgnoreCase("andkeyfile")) {
 
-                output.setText(errorText);
-                return false;
+            output.setText(errorText);
+            return false;
         }
 
         Set<Branch> branches = new HashSet<>();
@@ -68,20 +67,20 @@ public class SendMessage {
         Branch branch2 = null;
 
         Participant participant1 = ParticipantController.instance.getParticipantByName(sender);
-        if(participant1.getType() != ParticipantType.normal){
+        if (participant1.getType() != ParticipantType.normal) {
             output.appendText("ERROR\nCan't send message from " + participant1.getName() + "\n");
         } else {
             branch1 = (Branch) participant1;
         }
 
         Participant participant2 = ParticipantController.instance.getParticipantByName(receiver);
-        if(participant2.getType() != ParticipantType.normal){
+        if (participant2.getType() != ParticipantType.normal) {
             output.appendText("ERROR\nCan't send message to " + participant2.getName() + "\n");
         } else {
             branch2 = (Branch) participant2;
         }
 
-        if(branch1 == null || branch2 == null){
+        if (branch1 == null || branch2 == null) {
             return false;
         }
 
@@ -90,7 +89,7 @@ public class SendMessage {
 
         String channelName = Network.instance.getChannelByBranches(branches);
 
-        if(channelName == null){
+        if (channelName == null) {
             output.appendText("ERROR\nNo valid channel from " + sender + " to " + receiver + "\n");
             return false;
         }

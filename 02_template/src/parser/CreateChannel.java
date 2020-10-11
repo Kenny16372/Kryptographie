@@ -1,7 +1,7 @@
 package parser;
 
-import network.Network;
 import javafx.scene.control.TextArea;
+import network.Network;
 
 import java.util.Scanner;
 import java.util.regex.MatchResult;
@@ -16,14 +16,14 @@ public class CreateChannel {
         MatchResult result = null;
         try {
             result = scanner.match();
-        } catch (IllegalStateException e){
+        } catch (IllegalStateException e) {
             output.setText("ERROR\nCouldn't parse input. Please use the following format:\ncreate channel <CHANNEL_NAME> from <PARTICIPANT_1> to <PARTICIPANT_2>");
             return;
         } finally {
             scanner.close();
         }
 
-        if(result.groupCount() != 3){
+        if (result.groupCount() != 3) {
             output.setText("ERROR\nCouldn't parse input. Please use the following format:\ncreate channel <CHANNEL_NAME> from <PARTICIPANT_1> to <PARTICIPANT_2>");
             return;
         }
@@ -33,8 +33,8 @@ public class CreateChannel {
         String participant2 = result.group(3);
 
         // Check if participants are valid branches
-        if(!Network.instance.participantNameUnused(participant1)){
-            if(!Network.instance.participantNameUnused(participant2)){
+        if (!Network.instance.participantNameUnused(participant1)) {
+            if (!Network.instance.participantNameUnused(participant2)) {
                 output.setText(String.format("Branches %s and %s don't exist", participant1, participant2));
             } else {
                 output.setText(String.format("Branch %s doesn't exist", participant1));
@@ -43,21 +43,21 @@ public class CreateChannel {
         }
 
         // check if participants are equal
-        if(participant1.equalsIgnoreCase(participant2)){
+        if (participant1.equalsIgnoreCase(participant2)) {
             output.setText(String.format("%s and %s are identical – cannot create channel on itself", participant1, participant2));
 
-            if(!participant1.equals(participant2)){
+            if (!participant1.equals(participant2)) {
                 output.appendText("\nBranch names are case-insensitive");
             }
             return;
         }
 
-        if(Network.instance.channelExists(channelName)){
+        if (Network.instance.channelExists(channelName)) {
             output.setText(String.format("Channel %s already exists", channelName));
             return;
         }
 
-        if(Network.instance.connectionExists(participant1, participant2)){
+        if (Network.instance.connectionExists(participant1, participant2)) {
             output.setText(String.format("Communication channel between %s and %s already exists", participant1, participant2));
             return;
         }
@@ -67,7 +67,7 @@ public class CreateChannel {
         output.setText(String.format("Channel %s from %s to %s successfully created", channelName, participant1, participant2));
     }
 
-    public static String createEventBus(String channelName, String participant1, String participant2){
+    public static String createEventBus(String channelName, String participant1, String participant2) {
         return Network.instance.createChannel(channelName, participant1, participant2);
     }
 }

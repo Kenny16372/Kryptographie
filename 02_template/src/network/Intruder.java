@@ -10,13 +10,13 @@ public class Intruder extends Participant {
     }
 
     // registers itself to a specified EventBus
-    public void infiltrateEventBus(EventBus eventBus){
+    public void infiltrateEventBus(EventBus eventBus) {
         eventBus.register(this);
     }
 
     // intercept messages
     @Subscribe
-    public void handleMessage(Message message){
+    public void handleMessage(Message message) {
         System.out.println(message);
     }
 }

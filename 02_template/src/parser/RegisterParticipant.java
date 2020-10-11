@@ -3,7 +3,6 @@ package parser;
 import javafx.scene.control.TextArea;
 import network.Participant;
 import network.ParticipantController;
-import persistence.HSQLDB;
 
 import java.util.Map;
 
@@ -36,7 +35,7 @@ public class RegisterParticipant {
 
         Map<Integer, Participant> participants = ParticipantController.instance.getParticipantMap();
         for (Map.Entry<Integer, Participant> participant : participants.entrySet()) {
-            if(participant.getValue().getName().equals(name)){
+            if (participant.getValue().getName().equals(name)) {
                 mustCreateParticipant = false;
                 break;
             }

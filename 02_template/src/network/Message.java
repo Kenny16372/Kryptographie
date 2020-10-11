@@ -8,16 +8,16 @@ public class Message {
         this.content = content;
     }
 
-    public void encrypt(String algorithm, String keyFile){
+    public void encrypt(String algorithm, String keyFile) {
         this.encrypted = true;
     }
 
-    public void decrypt(String algorithm, String keyFile){
+    public void decrypt(String algorithm, String keyFile) {
         this.encrypted = false;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return content;
     }
 }
