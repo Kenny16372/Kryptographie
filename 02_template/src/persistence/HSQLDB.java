@@ -267,6 +267,7 @@ public enum HSQLDB {
 
     public void insertDataTableAlgorithms(String name) {
         if(getAlgorithmId(name) != -1){
+            // algorithm is already stored in the table
             return;
         }
 
@@ -281,7 +282,7 @@ public enum HSQLDB {
     }
 
     private int getAlgorithmId(String name){
-        String sql = "SELECT * FROM algorithms WHERE name='" +
+        String sql = "SELECT id FROM algorithms WHERE name='" +
                 name.toLowerCase() +
                 "' LIMIT 1";
         ResultSet resultSet = select(sql);
@@ -293,16 +294,11 @@ public enum HSQLDB {
         try {
             resultSet.next();
 
-            if(resultSet.isAfterLast()){
-                return -1;
-            }
-
             return resultSet.getInt("id");
         } catch (SQLException e) {
-            e.printStackTrace();
+            // resultSet is empty
+            return -1;
         }
-
-        return -1;
     }
 
     // Table channel

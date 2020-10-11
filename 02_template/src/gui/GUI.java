@@ -3,6 +3,7 @@ package gui;
 import configuration.Configuration;
 import encryption.RSA;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -60,7 +61,7 @@ public class GUI extends Application {
 
         closeButton.setOnAction(actionEvent -> {
             // close window
-            System.exit(0);
+            Platform.exit();
         });
         hBox.getChildren().addAll(executeButton, closeButton);
 
