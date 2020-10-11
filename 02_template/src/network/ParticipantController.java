@@ -37,16 +37,15 @@ public enum ParticipantController {
     public void createParticipant(String name, String type){
         int typeId;
         switch (type){
-            case "normal":
-                typeId = 1;
-                break;
             case "intruder":
                 typeId = 2;
                 break;
+            case "normal":
             default:
                 typeId = 1;
         }
-        HSQLDB.instance.insertDataTableParticipants(name, typeId);
+        int id = HSQLDB.instance.insertDataTableParticipants(name, typeId);
+        createParticipant(name, id, type);
     }
 
     public void createPostbox(String name){

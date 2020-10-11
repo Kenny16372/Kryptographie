@@ -46,9 +46,13 @@ public enum HSQLDB {
 
             statement.close();
 
+            if(result.isLast()){
+                return null;
+            }
+
             return result;
         } catch (SQLException sqle) {
-            System.out.println(sqle.getMessage());
+            sqle.printStackTrace();
         }
 
         return null;
@@ -262,6 +266,10 @@ public enum HSQLDB {
     }
 
     public void insertDataTableAlgorithms(String name) {
+        if(getAlgorithmId(name) != -1){
+            return;
+        }
+
         int nextID = getNextID("algorithms") + 1;
         StringBuilder sqlStringBuilder = new StringBuilder();
         sqlStringBuilder.append("INSERT INTO algorithms (").append("id").append(",").append("name").append(")");
@@ -284,6 +292,11 @@ public enum HSQLDB {
 
         try {
             resultSet.next();
+
+            if(resultSet.isAfterLast()){
+                return -1;
+            }
+
             return resultSet.getInt("id");
         } catch (SQLException e) {
             e.printStackTrace();
