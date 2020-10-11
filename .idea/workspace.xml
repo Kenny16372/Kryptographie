@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2994c55f-25a1-424a-9316-44653ebdc10d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/hsqldb/datastore.db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/hsqldb/datastore.db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/src/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/gui/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/src/persistence/HSQLDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/persistence/HSQLDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02_template/src/encryption/Cracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/encryption/Cracker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02_template/src/parser/CrackingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/parser/CrackingHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602410106063</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Einlesen Algorithmen funktioniert; nebenbei Bug entfernt, dass die DB nicht geschlossen wird">
+      <created>1602413592881</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1602413592881</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -205,7 +211,8 @@
     <MESSAGE value="bis drop channel alles erstellt, create channel wirft einen komischen Fehler" />
     <MESSAGE value="fast alles geht" />
     <MESSAGE value="teilnehmer hinzufügen geht; muss noch was mit dem einlesen von den Algorithmen machen, da spinnt HSQLDB ein bisschen" />
-    <option name="LAST_COMMIT_MESSAGE" value="teilnehmer hinzufügen geht; muss noch was mit dem einlesen von den Algorithmen machen, da spinnt HSQLDB ein bisschen" />
+    <MESSAGE value="Einlesen Algorithmen funktioniert; nebenbei Bug entfernt, dass die DB nicht geschlossen wird" />
+    <option name="LAST_COMMIT_MESSAGE" value="Einlesen Algorithmen funktioniert; nebenbei Bug entfernt, dass die DB nicht geschlossen wird" />
   </component>
   <component name="WindowStateProjectService">
     <state x="439" y="93" key="#Project_Structure" timestamp="1602412062691">
@@ -233,37 +240,37 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="430" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601920900228" />
-    <state x="613" y="113" key="CommitChangelistDialog2" timestamp="1602410105363">
+    <state x="613" y="113" key="CommitChangelistDialog2" timestamp="1602413592006">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="613" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1602410105363" />
+    <state x="613" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1602413592006" />
     <state x="817" y="152" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1596398162747" />
     <state x="665" y="260" key="FileChooserDialogImpl" timestamp="1602148116133">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="665" y="260" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1602148116133" />
-    <state width="1875" height="288" key="GridCell.Tab.0.bottom" timestamp="1602413303082">
+    <state width="1875" height="288" key="GridCell.Tab.0.bottom" timestamp="1602413609236">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1875" height="288" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602413303082" />
+    <state width="1875" height="288" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602413609236" />
     <state width="2559" height="499" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292156" />
     <state width="1875" height="256" key="GridCell.Tab.0.bottom/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368740" />
-    <state width="1875" height="288" key="GridCell.Tab.0.center" timestamp="1602413303082">
+    <state width="1875" height="288" key="GridCell.Tab.0.center" timestamp="1602413609236">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1875" height="288" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602413303082" />
+    <state width="1875" height="288" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602413609236" />
     <state width="2559" height="499" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292156" />
     <state width="1875" height="256" key="GridCell.Tab.0.center/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368739" />
-    <state width="1875" height="288" key="GridCell.Tab.0.left" timestamp="1602413303082">
+    <state width="1875" height="288" key="GridCell.Tab.0.left" timestamp="1602413609235">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1875" height="288" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602413303082" />
+    <state width="1875" height="288" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602413609235" />
     <state width="2559" height="499" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292156" />
     <state width="1875" height="256" key="GridCell.Tab.0.left/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368739" />
-    <state width="1875" height="288" key="GridCell.Tab.0.right" timestamp="1602413303082">
+    <state width="1875" height="288" key="GridCell.Tab.0.right" timestamp="1602413609236">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1875" height="288" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602413303082" />
+    <state width="1875" height="288" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602413609236" />
     <state width="2559" height="499" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292156" />
     <state width="1875" height="256" key="GridCell.Tab.0.right/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368740" />
     <state width="1875" height="256" key="GridCell.Tab.1.bottom" timestamp="1602413223754">
@@ -294,10 +301,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="460" y="164" key="SettingsEditor/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601977297556" />
-    <state x="551" y="252" key="Vcs.Push.Dialog.v2" timestamp="1602410110661">
+    <state x="551" y="252" key="Vcs.Push.Dialog.v2" timestamp="1602413598872">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="551" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1602410110661" />
+    <state x="551" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1602413598872" />
     <state x="735" y="339" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1596398209241" />
     <state x="768" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602407639929">
       <screen x="0" y="0" width="1920" height="1040" />

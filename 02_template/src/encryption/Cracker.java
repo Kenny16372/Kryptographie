@@ -9,7 +9,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public class Cracker {
     public String decrypt(String cipherText, String algorithm, String keyFileName) {
-        algorithm = algorithm + "_cracker";
+        algorithm = algorithm.toLowerCase() + "_cracker";
 
         try {
             // get class: Cipher

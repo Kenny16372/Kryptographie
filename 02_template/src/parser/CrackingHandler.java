@@ -13,7 +13,7 @@ public class CrackingHandler {
 
         try {
             Scanner scanner = new Scanner(command);
-            scanner.findInLine("^(encrypted\\s+message)\\s+(\")([^\"]*)(\")\\s+(using)\\s+(\\S+)(?:\\s*$)|(?:(and\\s+keyfile)\\s+(\\S+)\\s*$)");
+            scanner.findInLine("^(encrypted\\s+message)\\s+(\")([^\"]*)(\")\\s+(using)\\s+(\\S+)\\s*$");
 
             MatchResult result = scanner.match();
             scanner.close();
@@ -44,18 +44,9 @@ public class CrackingHandler {
 
             String algorithm = result.group(pos++);
 
-            String keyFileName = null;
-            if (result.group(pos) != null) {
-                if (!(result.group(pos++).replaceAll("\\s+", "").equals("andkeyfile"))) {
-                    throw new RuntimeException("Expected keyword \"and keyfile\"");
-                }
-
-                keyFileName = result.group(pos);
-            }
-
             Cracker cracker = new Cracker();
 
-            String plaintext = cracker.decrypt(message, algorithm, keyFileName);
+            String plaintext = cracker.decrypt(message, algorithm, "keyFileName");
 
             String resultText = plaintext.indexOf(',') == -1 ? plaintext : "The plaintext word probably is one of these: " + plaintext;
             output.setText(resultText);
