@@ -16,7 +16,7 @@ public class Cracker {
 
         if (debug) {
             System.out.println("Ciphertext: " + encrypted);
-            System.out.println("Recieved keys: ");
+            System.out.println("Received keys: ");
             System.out.println("\te: " + e);
             System.out.println("\tn: " + n);
         }
@@ -36,6 +36,11 @@ public class Cracker {
             return result;
         } catch (RSACrackerException ex) {
             ex.printStackTrace();
+        } catch (InterruptedException interruptedException) {
+            if(debug){
+                System.out.println("Time limit for cracking reached. Aborting");
+            }
+            return null;
         }
         return null;
     }

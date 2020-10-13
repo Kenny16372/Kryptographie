@@ -88,9 +88,9 @@ public class GUI extends Application {
                 this.handleExecute();
             } else if (e.getCode() == KeyCode.K) {        // create test key files
                 RSA rsa = new RSA();
-                ParticipantController.instance.createParticipant("test", "normal");
-                Branch branch = (Branch) ParticipantController.instance.getParticipantByName("test");
-                branch.storeKeys(rsa.generateKeyPair(16));
+                ParticipantController.instance.createParticipant("demo", "normal");
+                Branch branch = (Branch) ParticipantController.instance.getParticipantByName("demo");
+                branch.storeKeys(rsa.generateKeyPair(32));
             }
         });
 

@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="016f4cab-f591-4943-8243-5c1e14431634" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/SYD_pri.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/SYD_pri.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Cipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Cipher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../02_cracker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../02_cracker/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../02_cracker/jar/rsa_cracker.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../02_cracker/jar/rsa_cracker.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../02_cracker/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../02_cracker/src/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../02_template/component/rsa_cracker.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../02_template/component/rsa_cracker.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../02_template/hsqldb/datastore.db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../02_template/hsqldb/datastore.db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../02_template/hsqldb/datastore.db.script" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../02_template/hsqldb/datastore.db.script" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../02_template/src/encryption/Cracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../02_template/src/encryption/Cracker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../02_template/src/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../02_template/src/gui/GUI.java" afterDir="false" />
-    </list>
+    <list default="true" id="016f4cab-f591-4943-8243-5c1e14431634" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,22 +87,22 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1875" height="280" key="GridCell.Tab.0.bottom" timestamp="1602588198467">
+    <state width="1875" height="280" key="GridCell.Tab.0.bottom" timestamp="1602589202732">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1875" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602588198467" />
-    <state width="1875" height="280" key="GridCell.Tab.0.center" timestamp="1602588198467">
+    <state width="1875" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602589202732" />
+    <state width="1875" height="280" key="GridCell.Tab.0.center" timestamp="1602589202732">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1875" height="280" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602588198467" />
-    <state width="1875" height="280" key="GridCell.Tab.0.left" timestamp="1602588198467">
+    <state width="1875" height="280" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602589202732" />
+    <state width="1875" height="280" key="GridCell.Tab.0.left" timestamp="1602589202732">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1875" height="280" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602588198467" />
-    <state width="1875" height="280" key="GridCell.Tab.0.right" timestamp="1602588198467">
+    <state width="1875" height="280" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602589202732" />
+    <state width="1875" height="280" key="GridCell.Tab.0.right" timestamp="1602589202732">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1875" height="280" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602588198467" />
+    <state width="1875" height="280" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602589202732" />
     <state width="1875" height="347" key="GridCell.Tab.1.bottom" timestamp="1602586024014">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -46,6 +46,8 @@ public class CrackingHandler {
 
             Cracker cracker = new Cracker();
 
+            output.setText("This might take up to 30 seconds");
+
             String plaintext = cracker.decrypt(message, algorithm);
 
             String resultText = plaintext.indexOf(',') == -1 ? plaintext : "The plaintext word probably is one of these: " + plaintext;

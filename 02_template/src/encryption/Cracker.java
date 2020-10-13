@@ -45,8 +45,10 @@ public class Cracker {
             }
 
             // wait 30 seconds or until the task runners complete
+            executor.shutdown();
+            executor.awaitTermination(30L, TimeUnit.SECONDS);
             executor.shutdownNow();
-            executor.awaitTermination(2L, TimeUnit.SECONDS);
+            executor.awaitTermination(100L, TimeUnit.MILLISECONDS);
 
             // return the cracked passwords as comma separated string
             return futures.stream().filter(FutureTask::isDone).filter(future -> !future.isCancelled()).map(future -> {

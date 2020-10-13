@@ -1,8 +1,10 @@
 import java.math.BigInteger;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
-public class RSACracker {
+public class RSACracker extends Thread{
     private final BigInteger e;
     private final BigInteger n;
     private final BigInteger cipher;
@@ -13,7 +15,7 @@ public class RSACracker {
         this.cipher = cipher;
     }
 
-    public BigInteger execute(boolean debug) throws RSACrackerException {
+    public BigInteger execute(boolean debug) throws RSACrackerException, InterruptedException {
         BigInteger p, q, d;
 
         List<BigInteger> factorList = factorize(n);
@@ -34,14 +36,13 @@ public class RSACracker {
         return cipher.modPow(d, n);
     }
 
-    public List<BigInteger> factorize(BigInteger n) {
+    public List<BigInteger> factorize(BigInteger n) throws InterruptedException {
         BigInteger two = BigInteger.valueOf(2);
         List<BigInteger> factorList = new LinkedList<>();
 
         if (n.compareTo(two) < 0) {
             throw new IllegalArgumentException("must be greater than one");
         }
-
         while (n.mod(two).equals(BigInteger.ZERO)) {
             factorList.add(two);
             n = n.divide(two);
@@ -50,12 +51,17 @@ public class RSACracker {
         if (n.compareTo(BigInteger.ONE) > 0) {
             BigInteger factor = BigInteger.valueOf(3);
             while (factor.multiply(factor).compareTo(n) <= 0) {
+                // Thread interrupted
+                if(interrupted()){
+                    throw new InterruptedException();
+                }
                 if (n.mod(factor).equals(BigInteger.ZERO)) {
                     factorList.add(factor);
                     n = n.divide(factor);
                 } else {
                     factor = factor.add(two);
                 }
+
             }
             factorList.add(n);
         }
