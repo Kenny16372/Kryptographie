@@ -38,6 +38,10 @@ public enum Network {
 
             EventBus eventBus = new EventBus(channelName);
 
+            for(Branch branch: branches){
+                eventBus.register(branch);
+            }
+
             this.channels.put(channelName, new Pair<>(eventBus, branches));
         }
     }
@@ -74,7 +78,6 @@ public enum Network {
 
         for (Object listener : branches) {
             eventBus.register(listener);
-            eventBus.post(new Message("12345"));
         }
 
         channels.put(channelName, new Pair<>(eventBus, branches));
@@ -136,7 +139,7 @@ public enum Network {
 
     // wrapper for sending messages to a channel
     public void postMessage(String channelName, String plaintext, String encrypted, int fromId, int toId, String algorithm, String keyfile) {
-        Message message = new Message(encrypted);
+        Message message = new Message(encrypted, algorithm, fromId);
         EventBus eventBus = channels.get(channelName).getKey();
 
         if (eventBus != null) {

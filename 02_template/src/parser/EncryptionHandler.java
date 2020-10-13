@@ -55,6 +55,17 @@ public class EncryptionHandler implements IHandler {
             // get name of keyfile
             String keyfile = result.group(pos);
 
+            // check if correct key was used
+            if(encrypt){
+                if(!keyfile.endsWith("pub.txt")){
+                    output.appendText("Warning\nDid you mean to use a public key?");
+                }
+            } else{
+                if(!keyfile.endsWith("pri.txt")){
+                    output.appendText("Warning\nDid you mean to use a private key?");
+                }
+            }
+
             // logging
             Logger logger = null;
             if (Configuration.instance.debugMode) {

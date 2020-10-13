@@ -1,19 +1,23 @@
 package network;
 
 public class Message {
-    private String content;
-    private boolean encrypted = false;
+    private final String content;
+    private final String algorithm;
+    private final int idSender;
+    // the keyfile will not be sent to increase the workload on the intruder
 
-    public Message(String content) {
+    public Message(String content, String algorithm, int idSender) {
         this.content = content;
+        this.algorithm = algorithm;
+        this.idSender = idSender;
     }
 
-    public void encrypt(String algorithm, String keyFile) {
-        this.encrypted = true;
+    public String getAlgorithm() {
+        return algorithm;
     }
 
-    public void decrypt(String algorithm, String keyFile) {
-        this.encrypted = false;
+    public int getIdSender() {
+        return idSender;
     }
 
     @Override

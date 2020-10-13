@@ -1,5 +1,6 @@
 package encryption;
 
+import configuration.Configuration;
 import general.ComponentLoader;
 
 import java.lang.reflect.InvocationTargetException;
@@ -16,14 +17,14 @@ public class RSA {
 
     public Map<String, Map<Character, String>> generateKeyPair() {
         // wrapper for default key length
-        return this.generateKeyPair(48);
+        return this.generateKeyPair(Configuration.instance.defaultKeyLength);
     }
 
     public Map<String, Map<Character, String>> generateKeyPair(int keyLength) {
         // schema of map: ("privateKey"/"publicKey" -> ('e'/'n' -> value))
         Map<String, Map<Character, String>> map = new HashMap<>();
 
-        int counter = 1;
+        //int counter = 1;
         boolean done = false;
         while (!done) {
             try {
@@ -33,11 +34,12 @@ public class RSA {
                 // create a new RSA object
                 Object rsa = null;
                 try {
+                    // Somehow this doesn't work at first, but after a few tries it does (BigInteger not invertible)
                     rsa = Rsa.getDeclaredConstructor(int.class).newInstance(keyLength);
                 } catch (InstantiationException e) {
                     e.printStackTrace();
                 } catch (Exception e) {
-                    counter++;
+                    //counter++;
                     continue;
                 }
 
@@ -57,7 +59,7 @@ public class RSA {
             }
         }
 
-        System.out.println("BigInteger worked on the " + counter + ". try!");
+        //System.out.println("BigInteger worked on the " + counter + ". try!");
 
         return map;
     }

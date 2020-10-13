@@ -25,13 +25,15 @@ public class CipherFactory {
                     // since there is no way of knowing which keyfile was used to encrypt the message, we need to try all of them
                     List<Map<Character, BigInteger>> keys = this.loadKeys();
 
-                    // the next lines instantiate the Objects with the key components ('e' and 'n') and if the debug mode is enabled
+                    // the next lines instantiate the Objects with the key components ('e' and 'n')
                     // returned is a list of Objects containing the Cracker instances
                     // these are inserted into the returnValue list
                     returnValue.addAll(keys.stream().map(map -> {
                         try {
+                            // for cracking the debug mode is ignored, meaning no log file will be created
                             return clazz.getDeclaredConstructor(boolean.class, BigInteger.class, BigInteger.class)
-                                    .newInstance(Configuration.instance.debugMode, map.get('e'), map.get('n'));
+                                    .newInstance(/*Configuration.instance.debugMode*/false, map.get('e'), map.get('n'));
+
                         } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
                             e.printStackTrace();
                             return null;

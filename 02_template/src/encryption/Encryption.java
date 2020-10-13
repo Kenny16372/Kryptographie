@@ -3,12 +3,17 @@ package encryption;
 import configuration.CipherFactory;
 import configuration.Configuration;
 import general.ComponentLoader;
+import network.Message;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public class Encryption {
+
+    public String decrypt(Message message, String keyFile){
+        return decrypt(message.toString(), message.getAlgorithm(), keyFile);
+    }
 
     public String encrypt(String cleartext, String algorithm, String keyFileName) {
         return handle(cleartext, algorithm, keyFileName, true);

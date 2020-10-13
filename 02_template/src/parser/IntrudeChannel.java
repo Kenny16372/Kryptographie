@@ -65,6 +65,8 @@ public class IntrudeChannel {
 
         intruder.infiltrateEventBus(eventBus);
 
+        output.setText(intruder.getName() + " successfully intruded " + channelName);
+
         return true;
     }
 }

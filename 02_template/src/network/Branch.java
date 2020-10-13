@@ -2,6 +2,8 @@ package network;
 
 import com.google.common.eventbus.Subscribe;
 import configuration.Configuration;
+import encryption.RSA;
+import gui.GUI;
 import persistence.HSQLDB;
 
 import java.io.BufferedWriter;
@@ -12,6 +14,8 @@ import java.util.Map;
 public class Branch extends Participant {
     Branch(String name, int id) {
         super(name, ParticipantType.normal, id);
+
+        createKeys();
     }
 
     public void storeKeys(Map<String, Map<Character, String>> keys) {
@@ -43,10 +47,20 @@ public class Branch extends Participant {
 
     @Subscribe
     @Override
-    public void receiveMessage(String message, String algorithm, String keyfile, Participant participant01, Participant participant02) {
-        String decrypted = encryption.decrypt(message, algorithm, keyfile);
-        HSQLDB.instance.insertDataTablePostbox(participant02.getName(), participant01.getId(), decrypted);
-        System.out.println("Participant received new message");
+    public void receiveMessage(Message message) {
+        if(message.getIdSender() == id){
+            return;
+        }
+
+        String decrypted = encryption.decrypt(message, this.name + "_pri.txt");
+        HSQLDB.instance.insertDataTablePostbox(this.name, message.getIdSender(), decrypted);
+        GUI.getOutputArea().appendText("Branch " + name + " received a new message: " + decrypted + "\n");
+    }
+
+    private void createKeys(){
+        RSA rsa = new RSA();
+        Map<String, Map<Character, String>> keys = rsa.generateKeyPair();
+        storeKeys(keys);
     }
 
     public void remove() {

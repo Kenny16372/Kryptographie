@@ -21,3 +21,16 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# key files
+/02_template/data/branch_wuh_pub.txt
+/02_template/data/branch_wuh_pri.txt
+/02_template/data/branch_syd_pub.txt
+/02_template/data/branch_cpt_pri.txt
+/02_template/data/branch_cpt_pub.txt
+/02_template/data/branch_sfo_pri.txt
+/02_template/data/branch_hkg_pub.txt
+/02_template/data/branch_syd_pri.txt
+/02_template/data/branch_sfo_pub.txt
+/02_template/data/branch_hkg_pri.txt
+/02_template/log/*

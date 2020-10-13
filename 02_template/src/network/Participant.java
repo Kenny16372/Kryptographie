@@ -20,7 +20,7 @@ public abstract class Participant {
     }
 
     @Subscribe
-    public void receiveMessage(String message, String algorithm, String keyfile, Participant participant01, Participant participant02) {
+    public void receiveMessage(Message message) {
         System.out.println("Participant received new message");
     }
 

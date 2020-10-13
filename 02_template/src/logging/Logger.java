@@ -25,7 +25,7 @@ public class Logger {
                 }
             }
 
-            this.logFile = new File(Configuration.instance.logDirectory + (encrypt ? "en" : "de") + "crypt_" + algorithm.toUpperCase() + "_" + timestamp + ".txt");
+            this.logFile = new File(Configuration.instance.logDirectory + (encrypt ? "en" : "de") + "crypt_" + algorithm.toUpperCase() + "_" + timestamp + ".log");
 
             if (!this.logFile.createNewFile()) {
                 System.err.println("Couldn't create log file: " + this.logFile.getName());
@@ -54,8 +54,6 @@ public class Logger {
     }
 
     public static void displayLatestLogFile(TextArea output) {
-        output.clear();
-
         try (BufferedReader br = new BufferedReader(new FileReader(Configuration.instance.logDirectory + getLatestFile()))) {
             output.setText(br.lines().collect(Collectors.joining("\n")));
         } catch (IOException e) {

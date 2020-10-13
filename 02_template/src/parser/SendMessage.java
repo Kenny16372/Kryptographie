@@ -22,7 +22,7 @@ public class SendMessage {
         Scanner scanner = new Scanner(text);
         scanner.findInLine(Pattern.compile("^\\s*(message)\\s+(\")([^\"]*)(\")\\s+(from)\\s+(\\S+)\\s+(to)\\s+(\\S+)\\s+(using)\\s+(\\S*)\\s+(and\\s+keyfile)\\s+(\\S*)\\s*$", Pattern.CASE_INSENSITIVE));
 
-        MatchResult result = null;
+        MatchResult result;
         try {
             result = scanner.match();
         } catch (IllegalStateException e) {
@@ -56,36 +56,36 @@ public class SendMessage {
                 !from.equalsIgnoreCase("from") ||
                 !to.equalsIgnoreCase("to") ||
                 !using.equalsIgnoreCase("using") ||
-                !andKeyfile.replaceAll("\\s", "").equalsIgnoreCase("andkeyfile")) {
+                !andKeyfile.replaceAll("\\s+", "").equalsIgnoreCase("andkeyfile")) {
 
             output.setText(errorText);
             return false;
         }
 
         Set<Branch> branches = new HashSet<>();
-        Branch branch1 = null;
-        Branch branch2 = null;
+        Branch branchFrom = null;
+        Branch branchTo = null;
 
-        Participant participant1 = ParticipantController.instance.getParticipantByName(sender);
-        if (participant1.getType() != ParticipantType.normal) {
-            output.appendText("ERROR\nCan't send message from " + participant1.getName() + "\n");
+        Participant participantFrom = ParticipantController.instance.getParticipantByName(sender);
+        if (participantFrom.getType() != ParticipantType.normal) {
+            output.appendText("ERROR\nCan't send message from " + participantFrom.getName() + "\n");
         } else {
-            branch1 = (Branch) participant1;
+            branchFrom = (Branch) participantFrom;
         }
 
-        Participant participant2 = ParticipantController.instance.getParticipantByName(receiver);
-        if (participant2.getType() != ParticipantType.normal) {
-            output.appendText("ERROR\nCan't send message to " + participant2.getName() + "\n");
+        Participant participantTo = ParticipantController.instance.getParticipantByName(receiver);
+        if (participantTo.getType() != ParticipantType.normal) {
+            output.appendText("ERROR\nCan't send message to " + participantTo.getName() + "\n");
         } else {
-            branch2 = (Branch) participant2;
+            branchTo = (Branch) participantTo;
         }
 
-        if (branch1 == null || branch2 == null) {
+        if (branchFrom == null || branchTo == null) {
             return false;
         }
 
-        branches.add(branch1);
-        branches.add(branch2);
+        branches.add(branchFrom);
+        branches.add(branchTo);
 
         String channelName = Network.instance.getChannelByBranches(branches);
 
@@ -94,11 +94,18 @@ public class SendMessage {
             return false;
         }
 
+        if(!keyfile.endsWith("pub.txt")){
+            output.appendText("Warning\nDid you mean to use the public key?\n");
+        }
+
+        if(!keyfile.substring(0, keyfile.length() - 8).equals(branchTo.getName())){
+            output.appendText("ERROR\nTo prevent security leaks, you need to use the keyfile of the target branch\n");
+            return false;
+        }
+
         String encrypted = encryption.encrypt(message, algorithm, keyfile);
 
-        Network.instance.postMessage(channelName, message, encrypted, branch1.getId(), branch2.getId(), algorithm, keyfile);
-        branch1.receiveMessage(encrypted, algorithm, keyfile, branch1, branch2);
-        output.appendText(receiver + " received new message");
+        Network.instance.postMessage(channelName, message, encrypted, branchFrom.getId(), branchTo.getId(), algorithm, keyfile);
 
         return true;
     }

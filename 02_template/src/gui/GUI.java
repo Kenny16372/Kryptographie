@@ -23,7 +23,7 @@ import persistence.HSQLDB;
 public class GUI extends Application {
     private InputHandler handler = new InputHandler();
     private TextArea inputArea;
-    private TextArea outputArea;
+    private static TextArea outputArea;
     private Button execute;
     private Button close;
 
@@ -88,8 +88,8 @@ public class GUI extends Application {
                 this.handleExecute();
             } else if (e.getCode() == KeyCode.K) {        // create test key files
                 RSA rsa = new RSA();
-                ParticipantController.instance.createParticipant("demo", "normal");
-                Branch branch = (Branch) ParticipantController.instance.getParticipantByName("demo");
+                ParticipantController.instance.createParticipant("test32bit", "normal");
+                Branch branch = (Branch) ParticipantController.instance.getParticipantByName("test32bit");
                 branch.storeKeys(rsa.generateKeyPair(32));
             }
         });
@@ -116,7 +116,7 @@ public class GUI extends Application {
         return inputArea;
     }
 
-    public TextArea getOutputArea() {
+    public static TextArea getOutputArea() {
         return outputArea;
     }
 
