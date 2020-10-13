@@ -2,6 +2,7 @@ package network;
 
 import com.google.common.eventbus.Subscribe;
 import configuration.Configuration;
+import persistence.HSQLDB;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -42,8 +43,10 @@ public class Branch extends Participant {
 
     @Subscribe
     @Override
-    public void receiveMessage(Message message) {
-        System.out.println("Message handled");
+    public void receiveMessage(String message, String algorithm, String keyfile, Participant participant01, Participant participant02) {
+        String decrypted = encryption.decrypt(message, algorithm, keyfile);
+        HSQLDB.instance.insertDataTablePostbox(participant02.getName(), participant01.getId(), decrypted);
+        System.out.println("Participant received new message");
     }
 
     public void remove() {

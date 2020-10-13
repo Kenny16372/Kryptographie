@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2994c55f-25a1-424a-9316-44653ebdc10d" name="Default Changelist" comment="">
+    <list default="true" id="2994c55f-25a1-424a-9316-44653ebdc10d" name="Default Changelist" comment="Register participants">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01_algorithms/02_rsa/01_base/01_example01/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/01_algorithms/02_rsa/01_base/01_example01/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01_algorithms/02_rsa/01_base/01_example01/data/SYD_pri.txt" beforeDir="false" afterPath="$PROJECT_DIR$/01_algorithms/02_rsa/01_base/01_example01/data/SYD_pri.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01_algorithms/02_rsa/01_base/01_example01/src/main/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/01_algorithms/02_rsa/01_base/01_example01/src/main/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01_algorithms/02_rsa/01_base/01_example01/src/main/Cipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/01_algorithms/02_rsa/01_base/01_example01/src/main/Cipher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01_algorithms/02_rsa/02_cracker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/01_algorithms/02_rsa/02_cracker/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01_algorithms/02_rsa/02_cracker/jar/rsa_cracker.jar" beforeDir="false" afterPath="$PROJECT_DIR$/01_algorithms/02_rsa/02_cracker/jar/rsa_cracker.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01_algorithms/02_rsa/02_cracker/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/01_algorithms/02_rsa/02_cracker/src/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/component/rsa_cracker.jar" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/component/rsa_cracker.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/02_template/hsqldb/datastore.db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/hsqldb/datastore.db.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/02_template/hsqldb/datastore.db.script" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/hsqldb/datastore.db.script" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/src/encryption/Cracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/encryption/Cracker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/src/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/gui/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02_template/src/network/Branch.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/network/Branch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02_template/src/network/Participant.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/network/Participant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02_template/src/parser/SendMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/parser/SendMessage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,17 +51,8 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Kenny\Desktop\Kryptographie\02_template\component" />
-      <recent name="C:\Users\Kenny\Desktop\library\02_template\component\encryption" />
-      <recent name="C:\Users\Kenny\Desktop\library\02_template\component\cracking" />
-      <recent name="C:\Users\Kenny\Desktop\library\02_template\component" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
-    </key>
-    <key name="MoveInnerDialog.RECENTS_KEY">
-      <recent name="network" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Kenny\Desktop\Kryptographie\02_template\component" />
@@ -76,8 +60,17 @@
       <recent name="C:\Users\Kenny\Desktop\Kryptographie" />
       <recent name="C:\Users\Kenny\Desktop\Kryptographie\.idea" />
     </key>
+    <key name="MoveInnerDialog.RECENTS_KEY">
+      <recent name="network" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Kenny\Desktop\Kryptographie\02_template\component" />
+      <recent name="C:\Users\Kenny\Desktop\library\02_template\component\encryption" />
+      <recent name="C:\Users\Kenny\Desktop\library\02_template\component\cracking" />
+      <recent name="C:\Users\Kenny\Desktop\library\02_template\component" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.GUI">
+  <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="application.Application" />
       <module name="implementation" />
@@ -128,14 +121,26 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GUI" />
         <item itemvalue="Application.Application" />
+        <item itemvalue="Application.GUI" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Cipher" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -275,53 +280,61 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="665" y="260" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1602148116133" />
-    <state width="1875" height="288" key="GridCell.Tab.0.bottom" timestamp="1602588982843">
+    <state width="1877" height="151" key="GridCell.Tab.0.bottom" timestamp="1602595824670">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1875" height="288" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602588982843" />
     <state width="2559" height="499" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292156" />
+    <state width="1877" height="151" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602595824670" />
     <state width="1875" height="256" key="GridCell.Tab.0.bottom/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368740" />
-    <state width="1875" height="288" key="GridCell.Tab.0.center" timestamp="1602588982843">
+    <state width="1877" height="151" key="GridCell.Tab.0.center" timestamp="1602595824670">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1875" height="288" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602588982843" />
     <state width="2559" height="499" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292156" />
+    <state width="1877" height="151" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602595824670" />
     <state width="1875" height="256" key="GridCell.Tab.0.center/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368739" />
-    <state width="1875" height="288" key="GridCell.Tab.0.left" timestamp="1602588982843">
+    <state width="1877" height="151" key="GridCell.Tab.0.left" timestamp="1602595824670">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1875" height="288" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602588982843" />
     <state width="2559" height="499" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292156" />
+    <state width="1877" height="151" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602595824670" />
     <state width="1875" height="256" key="GridCell.Tab.0.left/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368739" />
-    <state width="1875" height="288" key="GridCell.Tab.0.right" timestamp="1602588982843">
+    <state width="1877" height="151" key="GridCell.Tab.0.right" timestamp="1602595824670">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1875" height="288" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602588982843" />
     <state width="2559" height="499" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292156" />
+    <state width="1877" height="151" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602595824670" />
     <state width="1875" height="256" key="GridCell.Tab.0.right/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368740" />
-    <state width="1875" height="451" key="GridCell.Tab.1.bottom" timestamp="1602588949256">
+    <state width="1877" height="334" key="GridCell.Tab.1.bottom" timestamp="1602595428711">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1875" height="451" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602588949256" />
     <state width="2559" height="499" key="GridCell.Tab.1.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292157" />
+    <state width="1877" height="334" key="GridCell.Tab.1.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602595428711" />
     <state width="1875" height="256" key="GridCell.Tab.1.bottom/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368740" />
-    <state width="1875" height="451" key="GridCell.Tab.1.center" timestamp="1602588949255">
+    <state width="1877" height="334" key="GridCell.Tab.1.center" timestamp="1602595428711">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1875" height="451" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602588949255" />
     <state width="2559" height="499" key="GridCell.Tab.1.center/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292156" />
+    <state width="1877" height="334" key="GridCell.Tab.1.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602595428711" />
     <state width="1875" height="256" key="GridCell.Tab.1.center/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368740" />
-    <state width="1875" height="451" key="GridCell.Tab.1.left" timestamp="1602588949255">
+    <state width="1877" height="334" key="GridCell.Tab.1.left" timestamp="1602595428711">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1875" height="451" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602588949255" />
     <state width="2559" height="499" key="GridCell.Tab.1.left/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292156" />
+    <state width="1877" height="334" key="GridCell.Tab.1.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602595428711" />
     <state width="1875" height="256" key="GridCell.Tab.1.left/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368740" />
-    <state width="1875" height="451" key="GridCell.Tab.1.right" timestamp="1602588949255">
+    <state width="1877" height="334" key="GridCell.Tab.1.right" timestamp="1602595428711">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1875" height="451" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602588949255" />
     <state width="2559" height="499" key="GridCell.Tab.1.right/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292157" />
+    <state width="1877" height="334" key="GridCell.Tab.1.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602595428711" />
     <state width="1875" height="256" key="GridCell.Tab.1.right/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368740" />
     <state width="1875" height="451" key="GridCell.Tab.2.bottom" timestamp="1602588949256">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -431,11 +444,16 @@
           <line>9</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/02_template/src/persistence/HSQLDB.java</url>
+          <line>502</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
-        <PinnedItemInfo parentTag="org.hsqldb.jdbc.JDBCResultSet" memberName="fetchSize" />
+        <PinnedItemInfo />
       </pinned-members>
     </pin-to-top-manager>
   </component>

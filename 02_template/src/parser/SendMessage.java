@@ -97,6 +97,8 @@ public class SendMessage {
         String encrypted = encryption.encrypt(message, algorithm, keyfile);
 
         Network.instance.postMessage(channelName, message, encrypted, branch1.getId(), branch2.getId(), algorithm, keyfile);
+        branch1.receiveMessage(encrypted, algorithm, keyfile, branch1, branch2);
+        output.appendText(receiver + " received new message");
 
         return true;
     }

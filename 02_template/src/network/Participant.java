@@ -1,11 +1,13 @@
 package network;
 
 import com.google.common.eventbus.Subscribe;
+import encryption.Encryption;
 
 public abstract class Participant {
     protected ParticipantType type;
     protected String name;
     protected int id;
+    protected Encryption encryption = new Encryption();
 
     Participant(String name, ParticipantType type, int id) {
         this.name = name;
@@ -18,8 +20,8 @@ public abstract class Participant {
     }
 
     @Subscribe
-    public void receiveMessage(Message message) {
-        System.out.println("Participant received message");
+    public void receiveMessage(String message, String algorithm, String keyfile, Participant participant01, Participant participant02) {
+        System.out.println("Participant received new message");
     }
 
     public ParticipantType getType() {
