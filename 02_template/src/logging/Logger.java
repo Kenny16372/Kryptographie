@@ -18,6 +18,13 @@ public class Logger {
 
         long timestamp = System.currentTimeMillis() / 1000L;
         try {
+            File logDir = new File(Configuration.instance.logDirectory);
+            if(!logDir.exists()){
+                if(!logDir.mkdir()){
+                    System.err.println("Couldn't create log directory");
+                }
+            }
+
             this.logFile = new File(Configuration.instance.logDirectory + (encrypt ? "en" : "de") + "crypt_" + algorithm.toUpperCase() + "_" + timestamp + ".txt");
 
             if (!this.logFile.createNewFile()) {

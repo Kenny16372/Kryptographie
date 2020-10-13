@@ -3,20 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="016f4cab-f591-4943-8243-5c1e14431634" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../01_base/01_example01/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../01_base/01_example01/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jar/rsa_cracker.jar" beforeDir="false" afterPath="$PROJECT_DIR$/jar/rsa_cracker.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cracker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RSACracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RSACracker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_template/component/rsa_cracker.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_template/component/rsa_cracker.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_template/data/demo_pri.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_template/data/demo_pri.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_template/data/demo_pub.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_template/data/demo_pub.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../02_template/hsqldb/datastore.db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_template/hsqldb/datastore.db.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../02_template/hsqldb/datastore.db.script" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_template/hsqldb/datastore.db.script" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_template/src/encryption/Cracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_template/src/encryption/Cracker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_template/src/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_template/src/gui/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_template/src/parser/CrackingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_template/src/parser/CrackingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../02_template/src/logging/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_template/src/logging/Logger.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
