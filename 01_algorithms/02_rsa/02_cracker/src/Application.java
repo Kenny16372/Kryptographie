@@ -1,20 +1,20 @@
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 public class Application {
     public static void main(String... args) {
-        BigInteger e = BigInteger.valueOf(12371);
-        BigInteger n = new BigInteger("517815623413379");
+        BigInteger e = BigInteger.valueOf(1998280363);
+        BigInteger n = BigInteger.valueOf(1998369953);
 
-        BigInteger cipher = new BigInteger("127881381553746");
+        BigInteger cipher = new BigInteger("211092863");
 
-        RSACracker rsaCracker = new RSACracker(e, n, cipher);
+        Cracker cracker = new Cracker(true, e, n);
 
-        try {
-            BigInteger plainMessage = rsaCracker.execute(true);
-            System.out.println("plainMessage : " + new String(cipher.toByteArray(), StandardCharsets.UTF_8));
-        } catch (RSACrackerException rsae) {
-            System.out.println(rsae.getMessage());
-        }
+        //BigInteger plainBigInt = cracker.execute(true);
+
+        String plainMessage = cracker.decrypt("DJUFfw==");
+
+        System.out.println("plainMessage : " + plainMessage);
     }
 }

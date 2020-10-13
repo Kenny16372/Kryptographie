@@ -49,7 +49,7 @@ public class Cracker {
             executor.awaitTermination(2L, TimeUnit.SECONDS);
 
             // return the cracked passwords as comma separated string
-            return futures.stream().filter(future -> !future.isCancelled()).map(future -> {
+            return futures.stream().filter(FutureTask::isDone).filter(future -> !future.isCancelled()).map(future -> {
                 try {
                     return future.get();
                 } catch (InterruptedException | ExecutionException e) {

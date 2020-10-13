@@ -47,7 +47,9 @@ public class Cipher {
         BigInteger bigInteger = new BigInteger(value);
         System.out.println(bigInteger);
 
-        String res = new String(crypt(bigInteger, key).toByteArray());
+        String res = crypt(bigInteger, key).toString();
+
+        System.out.println(res);
 
         String msg = new String(crypt(new BigInteger(Base64.getDecoder().decode(cipher)), key).toByteArray());
 

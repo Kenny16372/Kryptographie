@@ -15,6 +15,6 @@ public class Application {
 
         System.out.println(bint);
 
-        cipher.decrypt(encryptedMessage, new File(System.getProperty("user.dir") + "/data/SYD_pri.txt"));
+        cipher.decrypt("DJUFfw==", new File(System.getProperty("user.dir") + "/data/SYD_pri.txt"));
     }
 }

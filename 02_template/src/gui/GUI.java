@@ -14,7 +14,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import logging.Logger;
+import network.Branch;
 import network.Network;
+import network.ParticipantController;
 import parser.InputHandler;
 import persistence.HSQLDB;
 
@@ -86,8 +88,9 @@ public class GUI extends Application {
                 this.handleExecute();
             } else if (e.getCode() == KeyCode.K) {        // create test key files
                 RSA rsa = new RSA();
-                //Branch branch = new Branch("demo");
-                //branch.storeKeys(rsa.generateKeyPair());
+                ParticipantController.instance.createParticipant("test", "normal");
+                Branch branch = (Branch) ParticipantController.instance.getParticipantByName("test");
+                branch.storeKeys(rsa.generateKeyPair(16));
             }
         });
 
