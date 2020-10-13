@@ -2,43 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="016f4cab-f591-4943-8243-5c1e14431634" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../01_shift/01_base/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../01_shift/01_base/data/key.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../01_shift/01_base/src/Cipher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../01_shift/02_cracker/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../01_shift/02_cracker/src/Cracker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../01_shift/02_cracker/src/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../01_base/01_example01/.idea/ant.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../01_base/01_example01/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../01_base/01_example01/data/SYD_pri.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../01_base/01_example01/data/SYD_pub.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Cracker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../02_template/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../02_template/log/encrypt_RSA_1589828461.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../02_template/src/logging/Logger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../01_shift/01_base/data/encrypted.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../01_shift/01_base/data/encrypted.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../01_shift/01_base/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../01_shift/01_base/src/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../01_shift/01_base/src/CaesarCipher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../01_base/01_example01/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../01_base/01_example01/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01_base/01_example01/data/SYD_pri.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../01_base/01_example01/data/SYD_pri.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../01_base/01_example01/data/SYD_pub.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../01_base/01_example01/data/SYD_pub.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../01_base/01_example01/src/main/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/../01_base/01_example01/src/main/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../01_base/01_example01/src/main/Cipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../01_base/01_example01/src/main/Cipher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../01_base/01_example01/src/test/TestApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../01_base/01_example01/src/test/TestApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RSACracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RSACracker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_template/build/META-INF/implementation.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_template/component/encryption/encryption.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_template/data/SYD_pri.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_template/data/SYD_pub.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_template/src/application/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_template/src/application/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_template/src/company/Branch.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_template/src/company/Branch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_template/src/company/Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_template/src/company/Network.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_template/src/configuration/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_template/src/configuration/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../02_template/hsqldb/datastore.db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_template/hsqldb/datastore.db.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../02_template/src/configuration/CipherFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_template/src/configuration/CipherFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../02_template/src/encryption/Cracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_template/src/encryption/Cracker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../02_template/src/encryption/Encryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_template/src/encryption/Encryption.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../02_template/src/encryption/RSA.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_template/src/encryption/RSA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../02_template/src/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_template/src/gui/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../02_template/src/parser/CrackingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_template/src/parser/CrackingHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../02_template/src/parser/EncryptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../02_template/src/parser/EncryptionHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -61,12 +37,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-13" />
-    <option name="y" value="-13" />
-    <option name="width" value="1944" />
-    <option name="height" value="1058" />
-  </component>
   <component name="ProjectId" id="1VVx60AuNsMfhSuHziJbQbzbX3j" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -88,7 +58,7 @@
       <recent name="C:\Users\Kenny\Desktop\library\01_algorithms\02_rsa\02_cracker" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Test">
+  <component name="RunManager" selected="Application.Application">
     <configuration name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Application" />
       <module name="implementation" />
@@ -105,11 +75,12 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Test" />
         <item itemvalue="Application.Application" />
+        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>

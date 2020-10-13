@@ -1,70 +1,92 @@
 package configuration;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigInteger;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class CipherFactory {
-    public Object getCipher(Class<?> clazz, String algorithm, File keyFile) {
+    public List<Object> getCipher(Class<?> clazz, String algorithm) {
         if (clazz == null || algorithm == null) {
             return null;
         }
+
+        List<Object> returnValue = new LinkedList<>();
+
         try {
             switch (algorithm.toLowerCase()) {
                 case "rsa":
                 case "shift":
-                    return clazz.getDeclaredConstructor(boolean.class).newInstance(Configuration.instance.debugMode);
+                    returnValue.add(clazz.getDeclaredConstructor(boolean.class).newInstance(Configuration.instance.debugMode));
+                    break;
                 case "rsa_cracker":
-                    Map<Character, BigInteger> map = this.loadKey(keyFile);
-                    return clazz.getDeclaredConstructor(boolean.class, BigInteger.class, BigInteger.class)
-                            .newInstance(Configuration.instance.debugMode, map.get('e'), map.get('n'));
+                    // list of all possible keys
+                    // since there is no way of knowing which keyfile was used to encrypt the message, we need to try all of them
+                    List<Map<Character, BigInteger>> keys = this.loadKeys();
+
+                    // the next lines instantiate the Objects with the key components ('e' and 'n') and if the debug mode is enabled
+                    // returned is a list of Objects containing the Cracker instances
+                    // these are inserted into the returnValue list
+                    returnValue.addAll(keys.stream().map(map -> {
+                        try {
+                            return clazz.getDeclaredConstructor(boolean.class, BigInteger.class, BigInteger.class)
+                                    .newInstance(Configuration.instance.debugMode, map.get('e'), map.get('n'));
+                        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+                            e.printStackTrace();
+                            return null;
+                        }
+                    }).filter(Objects::nonNull).collect(Collectors.toList()));
+                    break;
                 case "shift_cracker":
-                    return clazz.getDeclaredConstructor().newInstance();
+                    returnValue.add(clazz.getDeclaredConstructor().newInstance());    // TODO Debugmode
+                    break;
                 default:
-                    throw new RuntimeException("No such algorithm: " + algorithm);
+                    System.out.println("No such algorithm: " + algorithm);
             }
         } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
 
-        return null;
+        return returnValue;
     }
 
-    public Object getCipher(Class<?> clazz, String algorithm) {
-        return this.getCipher(clazz, algorithm, null);
-    }
+    private List<Map<Character, BigInteger>> loadKeys() {
+        List<Map<Character, BigInteger>> keys = new ArrayList<>();
 
-    private Map<Character, BigInteger> loadKey(File keyFile) {
-        Map<Character, BigInteger> map = new HashMap<>();
+        File keyFileDir = new File(Configuration.instance.keyFileDirectory);
 
-        try (BufferedReader br = new BufferedReader(new FileReader(keyFile))) {
+        FilenameFilter fileNameFilter = (dir, name) -> name.endsWith("_pub.txt");
 
-            String filecontent = br.readLine();
+        for(File keyFile: Objects.requireNonNull(keyFileDir.listFiles(fileNameFilter))) {
+            Map<Character, BigInteger> map = new HashMap<>();
 
-            filecontent = filecontent.substring(1, filecontent.length() - 1);
+            try (BufferedReader br = new BufferedReader(new FileReader(keyFile))) {
 
-            String[] parts = filecontent.split(",");
+                String filecontent = br.readLine();
 
-            for (String part : parts) {
-                // name of key part at index 0; value at index 1
-                String[] mapping = part.split(":");
+                filecontent = filecontent.substring(1, filecontent.length() - 1);
 
-                // save it to the correct variable
-                if (mapping[0].contains("e")) {
-                    map.put('e', new BigInteger(mapping[1]));
-                } else if (mapping[0].contains("n")) {
-                    map.put('n', new BigInteger(mapping[1]));
+                String[] parts = filecontent.split(",");
+
+                for (String part : parts) {
+                    // name of key part at index 0; value at index 1
+                    String[] mapping = part.split(":");
+
+                    // save it to the correct variable
+                    if (mapping[0].contains("e")) {
+                        map.put('e', new BigInteger(mapping[1]));
+                    } else if (mapping[0].contains("n")) {
+                        map.put('n', new BigInteger(mapping[1]));
+                    }
                 }
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
-        } catch (IOException ex) {
-            ex.printStackTrace();
+
+            keys.add(map);
         }
 
-        return map;
+        return keys;
     }
 }

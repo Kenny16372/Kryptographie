@@ -2,43 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="016f4cab-f591-4943-8243-5c1e14431634" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../01_shift/01_base/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../01_shift/01_base/data/key.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../01_shift/01_base/src/Cipher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../01_shift/02_cracker/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../01_shift/02_cracker/src/Cracker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../01_shift/02_cracker/src/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/ant.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/SYD_pri.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/SYD_pub.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../02_cracker/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../02_cracker/src/Cracker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../02_cracker/src/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../02_template/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../02_template/log/encrypt_RSA_1589828461.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../../02_template/src/logging/Logger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../01_shift/01_base/data/encrypted.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01_shift/01_base/data/encrypted.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../01_shift/01_base/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../01_shift/01_base/src/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../01_shift/01_base/src/CaesarCipher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/SYD_pri.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/SYD_pri.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/SYD_pub.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/SYD_pub.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Cipher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Cipher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/TestApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/TestApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../02_cracker/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../02_cracker/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../02_cracker/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../02_cracker/build.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../02_cracker/src/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../02_cracker/src/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../02_cracker/src/RSACracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../02_cracker/src/RSACracker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../02_template/build/META-INF/implementation.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../02_template/component/encryption/encryption.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../02_template/data/SYD_pri.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../02_template/data/SYD_pub.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../02_template/src/application/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../02_template/src/application/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../02_template/src/company/Branch.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../02_template/src/company/Branch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../02_template/src/company/Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../02_template/src/company/Network.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../02_template/src/configuration/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../02_template/src/configuration/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../02_template/hsqldb/datastore.db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../02_template/hsqldb/datastore.db.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../02_template/src/configuration/CipherFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../02_template/src/configuration/CipherFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../02_template/src/encryption/Cracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../02_template/src/encryption/Cracker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../02_template/src/encryption/Encryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../02_template/src/encryption/Encryption.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../../02_template/src/encryption/RSA.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../02_template/src/encryption/RSA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../../02_template/src/gui/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../02_template/src/gui/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../02_template/src/parser/CrackingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../02_template/src/parser/CrackingHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../../02_template/src/parser/EncryptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../02_template/src/parser/EncryptionHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -111,6 +87,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -125,57 +102,48 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="413" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589724663195">
+    <state width="1875" height="280" key="GridCell.Tab.0.bottom" timestamp="1602509921275">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="413" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589724663195" />
-    <state x="764" y="235" key="#com.intellij.ide.util.MemberChooser" timestamp="1589914026740">
+    <state width="1875" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602509921275" />
+    <state width="1875" height="280" key="GridCell.Tab.0.center" timestamp="1602509921274">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="764" y="235" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1589914026740" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1589994128355">
+    <state width="1875" height="280" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602509921274" />
+    <state width="1875" height="280" key="GridCell.Tab.0.left" timestamp="1602509921274">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589994128355" />
-    <state width="1919" height="288" key="GridCell.Tab.0.bottom" timestamp="1590000259769">
+    <state width="1875" height="280" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602509921274" />
+    <state width="1875" height="280" key="GridCell.Tab.0.right" timestamp="1602509921274">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1919" height="288" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1590000259769" />
-    <state width="1919" height="288" key="GridCell.Tab.0.center" timestamp="1590000259769">
+    <state width="1875" height="280" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602509921274" />
+    <state width="1875" height="347" key="GridCell.Tab.1.bottom" timestamp="1602504388450">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1919" height="288" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1590000259769" />
-    <state width="1919" height="288" key="GridCell.Tab.0.left" timestamp="1590000259769">
+    <state width="1875" height="347" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602504388450" />
+    <state width="1875" height="347" key="GridCell.Tab.1.center" timestamp="1602504388450">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1919" height="288" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1590000259769" />
-    <state width="1919" height="288" key="GridCell.Tab.0.right" timestamp="1590000259769">
+    <state width="1875" height="347" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602504388450" />
+    <state width="1875" height="347" key="GridCell.Tab.1.left" timestamp="1602504388450">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1919" height="288" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1590000259769" />
-    <state width="1919" height="356" key="GridCell.Tab.1.bottom" timestamp="1589994129707">
+    <state width="1875" height="347" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602504388450" />
+    <state width="1875" height="347" key="GridCell.Tab.1.right" timestamp="1602504388450">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1919" height="356" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589994129707" />
-    <state width="1919" height="356" key="GridCell.Tab.1.center" timestamp="1589994129707">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1919" height="356" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589994129707" />
-    <state width="1919" height="356" key="GridCell.Tab.1.left" timestamp="1589994129707">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1919" height="356" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589994129707" />
-    <state width="1919" height="356" key="GridCell.Tab.1.right" timestamp="1589994129707">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1919" height="356" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589994129707" />
-    <state x="440" y="94" key="SettingsEditor" timestamp="1588181975734">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588181975734" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1589994084380">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1589994084380" />
+    <state width="1875" height="347" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602504388450" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/Cipher.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

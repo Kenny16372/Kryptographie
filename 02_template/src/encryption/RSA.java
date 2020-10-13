@@ -20,7 +20,7 @@ public class RSA {
     }
 
     public Map<String, Map<Character, String>> generateKeyPair(int keyLength) {
-        // schema of map: (privateKey/publicKey -> (e/n -> value))
+        // schema of map: ("privateKey"/"publicKey" -> ('e'/'n' -> value))
         Map<String, Map<Character, String>> map = new HashMap<>();
 
         int counter = 1;

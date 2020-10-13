@@ -1,4 +1,9 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.math.BigInteger;
+import java.util.Arrays;
 import java.util.Base64;
 
 public class Cipher {
@@ -20,7 +25,8 @@ public class Cipher {
         }
 
         byte[] bytes = plainMessage.getBytes();
-        String cipherText = Base64.getEncoder().encodeToString(crypt(new BigInteger(bytes), key).toByteArray());
+        BigInteger crypt = crypt(new BigInteger(bytes), key);
+        String cipherText = Base64.getEncoder().encodeToString(crypt.toByteArray());
 
         if (debug) {
             System.out.println("Ciphertext: " + cipherText);
@@ -35,6 +41,13 @@ public class Cipher {
         if (debug) {
             System.out.println("Decrypting message: " + cipher);
         }
+
+        byte[] value = Base64.getDecoder().decode(cipher);
+
+        BigInteger bigInteger = new BigInteger(value);
+        System.out.println(bigInteger);
+
+        String res = new String(crypt(bigInteger, key).toByteArray());
 
         String msg = new String(crypt(new BigInteger(Base64.getDecoder().decode(cipher)), key).toByteArray());
 

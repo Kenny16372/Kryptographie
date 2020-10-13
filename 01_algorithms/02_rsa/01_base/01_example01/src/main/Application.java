@@ -4,7 +4,7 @@ import java.util.Base64;
 
 public class Application {
     public static void main(String... args) {
-        String plainMessage = "abc";
+        String plainMessage = "qwerty";
 
         Cipher cipher = new Cipher(true);
         String encryptedMessage = cipher.encrypt(plainMessage, new File(System.getProperty("user.dir") + "/data/SYD_pub.txt"));

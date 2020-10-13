@@ -18,7 +18,7 @@ public class CrackingHandler {
             MatchResult result = scanner.match();
             scanner.close();
 
-            if (result.groupCount() <= 6) {
+            if (result.groupCount() != 6) {
                 throw new RuntimeException("Wrong format");
             }
 
@@ -42,11 +42,11 @@ public class CrackingHandler {
                 throw new RuntimeException("Expected keyword \"using\"");
             }
 
-            String algorithm = result.group(pos++);
+            String algorithm = result.group(pos);
 
             Cracker cracker = new Cracker();
 
-            String plaintext = cracker.decrypt(message, algorithm, "keyFileName");
+            String plaintext = cracker.decrypt(message, algorithm);
 
             String resultText = plaintext.indexOf(',') == -1 ? plaintext : "The plaintext word probably is one of these: " + plaintext;
             output.setText(resultText);

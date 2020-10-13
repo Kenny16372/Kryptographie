@@ -77,6 +77,7 @@ public class EncryptionHandler implements IHandler {
             output.setText(returnedString);
 
         } catch (RuntimeException e) {
+            e.printStackTrace();
             String errorMessage = "Error parsing input\nMessage:\n" +
                     e.getMessage() +
                     "\nPlease use the format:\n" +

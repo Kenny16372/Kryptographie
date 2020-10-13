@@ -6,6 +6,7 @@ import general.ComponentLoader;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 public class Encryption {
 
@@ -24,13 +25,13 @@ public class Encryption {
 
             // create instance of Cipher
             CipherFactory factory = new CipherFactory();
-            Object cipher = factory.getCipher(Cipher, algorithm);
+            List<Object> cipher = factory.getCipher(Cipher, algorithm);
 
             // get keyfile
             File keyFile = new File(Configuration.instance.keyFileDirectory + keyFileName);
 
             // decrypt ciphertext
-            return (String) Cipher.getMethod((encrypt ? "en" : "de") + "crypt", String.class, File.class).invoke(cipher, cipherText, keyFile);
+            return (String) Cipher.getMethod((encrypt ? "en" : "de") + "crypt", String.class, File.class).invoke(cipher.get(0), cipherText, keyFile);
 
         } catch (IllegalAccessException | NoSuchMethodException | ClassNotFoundException e) {
             e.printStackTrace();
