@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2994c55f-25a1-424a-9316-44653ebdc10d" name="Default Changelist" comment="Register participants">
+    <list default="true" id="2994c55f-25a1-424a-9316-44653ebdc10d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/02_template/hsqldb/datastore.db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/hsqldb/datastore.db.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/02_template/hsqldb/datastore.db.script" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/hsqldb/datastore.db.script" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/src/network/Branch.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/network/Branch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/src/network/Participant.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/network/Participant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02_template/src/parser/SendMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/parser/SendMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02_template/src/persistence/HSQLDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/02_template/src/persistence/HSQLDB.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,7 +227,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602585968428</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Send messages">
+      <created>1602595878489</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1602595878489</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -243,7 +248,8 @@
     <MESSAGE value="Einlesen Algorithmen funktioniert; nebenbei Bug entfernt, dass die DB nicht geschlossen wird" />
     <MESSAGE value="cracking geht kurzzeitig nicht mehr; intrude im inputParser geadded" />
     <MESSAGE value="cracking kaputt; mal schauen, wie wir es fixen" />
-    <option name="LAST_COMMIT_MESSAGE" value="cracking kaputt; mal schauen, wie wir es fixen" />
+    <MESSAGE value="Send messages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Send messages" />
   </component>
   <component name="WindowStateProjectService">
     <state x="439" y="93" key="#Project_Structure" timestamp="1602412062691">
@@ -271,42 +277,43 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="430" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601920900228" />
-    <state x="613" y="113" key="CommitChangelistDialog2" timestamp="1602585967512">
+    <state x="613" y="113" key="CommitChangelistDialog2" timestamp="1602595877831">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="613" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1602585967512" />
     <state x="817" y="152" key="CommitChangelistDialog2/0.0.2560.1400@0.0.2560.1400" timestamp="1596398162747" />
+    <state x="613" y="113" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602595877831" />
     <state x="665" y="260" key="FileChooserDialogImpl" timestamp="1602148116133">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="665" y="260" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1602148116133" />
-    <state width="1877" height="151" key="GridCell.Tab.0.bottom" timestamp="1602595824670">
+    <state width="1877" height="137" key="GridCell.Tab.0.bottom" timestamp="1602596597998">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1875" height="288" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602588982843" />
     <state width="2559" height="499" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292156" />
-    <state width="1877" height="151" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602595824670" />
+    <state width="1877" height="137" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602596597998" />
     <state width="1875" height="256" key="GridCell.Tab.0.bottom/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368740" />
-    <state width="1877" height="151" key="GridCell.Tab.0.center" timestamp="1602595824670">
+    <state width="1877" height="137" key="GridCell.Tab.0.center" timestamp="1602596597998">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1875" height="288" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602588982843" />
     <state width="2559" height="499" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292156" />
-    <state width="1877" height="151" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602595824670" />
+    <state width="1877" height="137" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602596597998" />
     <state width="1875" height="256" key="GridCell.Tab.0.center/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368739" />
-    <state width="1877" height="151" key="GridCell.Tab.0.left" timestamp="1602595824670">
+    <state width="1877" height="137" key="GridCell.Tab.0.left" timestamp="1602596597998">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1875" height="288" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602588982843" />
     <state width="2559" height="499" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292156" />
-    <state width="1877" height="151" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602595824670" />
+    <state width="1877" height="137" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602596597998" />
     <state width="1875" height="256" key="GridCell.Tab.0.left/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368739" />
-    <state width="1877" height="151" key="GridCell.Tab.0.right" timestamp="1602595824670">
+    <state width="1877" height="137" key="GridCell.Tab.0.right" timestamp="1602596597998">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1875" height="288" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602588982843" />
     <state width="2559" height="499" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1596398292156" />
-    <state width="1877" height="151" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602595824670" />
+    <state width="1877" height="137" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602596597998" />
     <state width="1875" height="256" key="GridCell.Tab.0.right/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601995368740" />
     <state width="1877" height="334" key="GridCell.Tab.1.bottom" timestamp="1602595428711">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -408,11 +415,12 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="460" y="164" key="SettingsEditor/1920.7.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1601977297556" />
-    <state x="551" y="252" key="Vcs.Push.Dialog.v2" timestamp="1602585974592">
+    <state x="551" y="252" key="Vcs.Push.Dialog.v2" timestamp="1602595880289">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="551" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1602585974592" />
     <state x="735" y="339" key="Vcs.Push.Dialog.v2/0.0.2560.1400@0.0.2560.1400" timestamp="1596398209241" />
+    <state x="551" y="252" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602595880289" />
     <state x="768" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602424654640">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -443,11 +451,6 @@
           <url>file://$PROJECT_DIR$/02_template/src/parser/ShowHandler.java</url>
           <line>9</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/02_template/src/persistence/HSQLDB.java</url>
-          <line>502</line>
-          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -496,11 +496,11 @@ public enum HSQLDB {
     }
 
     public void insertDataTablePostbox(String participantName, int participantFromID, String message) {
-        int nextID = getNextID("participants") + 1;
+        int nextID = getNextID("postbox_" + participantName.toLowerCase()) + 1;
         StringBuilder sqlStringBuilder = new StringBuilder();
         sqlStringBuilder.append("INSERT INTO postbox_").append(participantName.toLowerCase()).append(" (").append("id").append(",").append("participant_from_id").append(",").append("message").append(",").append("timestamp").append(")");
         sqlStringBuilder.append(" VALUES ");
-        sqlStringBuilder.append("(").append(nextID).append(",").append(participantFromID).append(",").append("'").append(message).append("'").append(",").append(System.currentTimeMillis());
+        sqlStringBuilder.append("(").append(nextID).append(",").append(participantFromID).append(",").append("'").append(message).append("'").append(",").append(System.currentTimeMillis() / 1000);
         sqlStringBuilder.append(")");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
         update(sqlStringBuilder.toString());
