@@ -80,6 +80,11 @@ public class EncryptionHandler implements IHandler {
             } else {
                 returnedString = encryption.decrypt(message, algorithm, keyfile);
             }
+
+            if(returnedString == null){
+                output.setText("ERROR\nCan't use the RSA Cracker to " + (encrypt ? "en" : "de") + "crypt messages");
+            }
+
             if (logger != null) {
                 logger.close();
             }

@@ -22,6 +22,8 @@ public class CrackingHandler {
                 throw new RuntimeException("Wrong format");
             }
 
+            output.setText("This might take up to 30 seconds");
+
             int pos = 1;
 
             if (!result.group(pos++).replaceAll("\\s+", "").equals("encryptedmessage")) {
@@ -46,11 +48,20 @@ public class CrackingHandler {
 
             Cracker cracker = new Cracker();
 
-            output.setText("This might take up to 30 seconds");
+            // It would be possible to check the database for the key file name, but this would make the whole cracking process unnecessary, since
+            // the decrypted message stands in the same table and no views were to be defined that only contain the encrypted message and the keyfile
+            // Thus, the Cracker will be checking all key files inside the key file directory
+            String plaintext = cracker.decrypt(message, algorithm, null, true);
 
-            String plaintext = cracker.decrypt(message, algorithm);
+            String resultText;
+            boolean allFilesDone = Cracker.didFinishAllFiles();
 
-            String resultText = plaintext.indexOf(',') == -1 ? plaintext : "The plaintext word probably is one of these: " + plaintext;
+            if(plaintext.contains("\n")){
+                resultText = "The decrypted message is " + (allFilesDone ? "probably ": "") + "one of these:\n" + plaintext;
+            } else {
+                resultText = "The decrypted message " + (allFilesDone ? "probably ": "") + "is:\n" + plaintext;
+            }
+
             output.setText(resultText);
 
         } catch (RuntimeException e) {

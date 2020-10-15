@@ -98,11 +98,6 @@ public class SendMessage {
             output.appendText("Warning\nDid you mean to use the public key?\n");
         }
 
-        if(!keyfile.substring(0, keyfile.length() - 8).equals(branchTo.getName())){
-            output.appendText("ERROR\nTo prevent security leaks, you need to use the keyfile of the target branch\n");
-            return false;
-        }
-
         String encrypted = encryption.encrypt(message, algorithm, keyfile);
 
         Network.instance.postMessage(channelName, message, encrypted, branchFrom.getId(), branchTo.getId(), algorithm, keyfile);

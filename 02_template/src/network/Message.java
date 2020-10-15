@@ -4,12 +4,13 @@ public class Message {
     private final String content;
     private final String algorithm;
     private final int idSender;
-    // the keyfile will not be sent to increase the workload on the intruder
+    private final String keyFile;
 
-    public Message(String content, String algorithm, int idSender) {
+    public Message(String content, String algorithm, int idSender, String keyFile) {
         this.content = content;
         this.algorithm = algorithm;
         this.idSender = idSender;
+        this.keyFile = keyFile;
     }
 
     public String getAlgorithm() {
@@ -18,6 +19,10 @@ public class Message {
 
     public int getIdSender() {
         return idSender;
+    }
+
+    public String getKeyFileName() {
+        return keyFile;
     }
 
     @Override

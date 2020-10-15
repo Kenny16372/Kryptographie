@@ -20,8 +20,11 @@ public class Intruder extends Participant {
     // intercept messages
     @Subscribe
     public void handleMessage(Message message) {
-        String decrypted = cracker.decrypt(message.toString(), message.getAlgorithm());
+        String keyFile = message.getKeyFileName() + "_pub.txt";
+
+        String decrypted = cracker.decrypt(message.toString(), message.getAlgorithm(), keyFile, false);
+
         GUI.getOutputArea().appendText("Intruder " + name + " intercepted a message from " + ParticipantController.instance.getParticipant(message.getIdSender()).getName() +
-                ":\n" + "it is one of the following\n" + decrypted + "\n");
+                ":\n" + decrypted + "\n");
     }
 }

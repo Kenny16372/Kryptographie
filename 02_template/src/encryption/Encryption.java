@@ -32,6 +32,10 @@ public class Encryption {
             CipherFactory factory = new CipherFactory();
             List<Object> cipher = factory.getCipher(Cipher, algorithm);
 
+            if(cipher == null){
+                return null;
+            }
+
             // get keyfile
             File keyFile = new File(Configuration.instance.keyFileDirectory + keyFileName);
 

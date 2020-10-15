@@ -54,7 +54,14 @@ public class Logger {
     }
 
     public static void displayLatestLogFile(TextArea output) {
-        try (BufferedReader br = new BufferedReader(new FileReader(Configuration.instance.logDirectory + getLatestFile()))) {
+        String latestFile = getLatestFile();
+
+        if(latestFile == null){
+            output.setText("Please generate a log file first\n");
+            return;
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader(Configuration.instance.logDirectory + latestFile))){
             output.setText(br.lines().collect(Collectors.joining("\n")));
         } catch (IOException e) {
             e.printStackTrace();

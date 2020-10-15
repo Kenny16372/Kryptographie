@@ -7,7 +7,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class CipherFactory {
-    public List<Object> getCipher(Class<?> clazz, String algorithm) {
+
+    public List<Object> getCipher(Class<?> clazz, String algorithm){
+        return getCipher(clazz, algorithm, null, false);
+    }
+
+    public List<Object> getCipher(Class<?> clazz, String algorithm, String keyFile, boolean checkAllFiles) {
         if (clazz == null || algorithm == null) {
             return null;
         }
@@ -21,9 +26,13 @@ public class CipherFactory {
                     returnValue.add(clazz.getDeclaredConstructor(boolean.class).newInstance(Configuration.instance.debugMode));
                     break;
                 case "rsa_cracker":
+                    if(keyFile == null && !checkAllFiles){
+                        return null;
+                    }
+
                     // list of all possible keys
                     // since there is no way of knowing which keyfile was used to encrypt the message, we need to try all of them
-                    List<Map<Character, BigInteger>> keys = this.loadKeys();
+                    List<Map<Character, BigInteger>> keys = this.loadKeys(keyFile, checkAllFiles);
 
                     // the next lines instantiate the Objects with the key components ('e' and 'n')
                     // returned is a list of Objects containing the Cracker instances
@@ -53,12 +62,17 @@ public class CipherFactory {
         return returnValue;
     }
 
-    private List<Map<Character, BigInteger>> loadKeys() {
+    private List<Map<Character, BigInteger>> loadKeys(String keyFileName, boolean checkAllFiles) {
         List<Map<Character, BigInteger>> keys = new ArrayList<>();
 
         File keyFileDir = new File(Configuration.instance.keyFileDirectory);
 
-        FilenameFilter fileNameFilter = (dir, name) -> name.endsWith("_pub.txt");
+        FilenameFilter fileNameFilter;
+        if(checkAllFiles){
+            fileNameFilter = (dir, name) -> name.endsWith("_pub.txt");
+        } else {
+            fileNameFilter = (dir, name) -> name.equals(keyFileName);
+        }
 
         for(File keyFile: Objects.requireNonNull(keyFileDir.listFiles(fileNameFilter))) {
             Map<Character, BigInteger> map = new HashMap<>();

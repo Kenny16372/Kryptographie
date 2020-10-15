@@ -14,7 +14,17 @@ import java.util.concurrent.*;
 import java.util.stream.Collectors;
 
 public class Cracker {
-    public String decrypt(String cipherText, String algorithm) {
+    private static boolean didFinishAllFiles = true;
+
+    public static boolean didFinishAllFiles(){
+        return didFinishAllFiles;
+    }
+
+    public String decrypt(String cipherText, String algorithm, boolean checkAllFiles){
+        return decrypt(cipherText, algorithm, null, checkAllFiles);
+    }
+
+    public String decrypt(String cipherText, String algorithm, String keyFile, boolean checkAllFiles) {
         algorithm = algorithm.toLowerCase() + "_cracker";
 
         try {
@@ -23,7 +33,7 @@ public class Cracker {
             Method decrypt = Cipher.getMethod("decrypt", String.class);
 
             CipherFactory factory = new CipherFactory();
-            List<Object> ciphers = factory.getCipher(Cipher, algorithm);
+            List<Object> ciphers = factory.getCipher(Cipher, algorithm, keyFile, checkAllFiles);
 
             ExecutorService executor = Executors.newFixedThreadPool(ciphers.size());
 
@@ -46,9 +56,11 @@ public class Cracker {
 
             // wait 30 seconds or until the task runners complete
             executor.shutdown();
-            executor.awaitTermination(30L, TimeUnit.SECONDS);
+            executor.awaitTermination(29900L, TimeUnit.MILLISECONDS);
             executor.shutdownNow();
             executor.awaitTermination(100L, TimeUnit.MILLISECONDS);
+
+            didFinishAllFiles = futures.stream().noneMatch(FutureTask::isCancelled);
 
             // return the cracked passwords as comma separated string
             return futures.stream().filter(FutureTask::isDone).filter(future -> !future.isCancelled()).map(future -> {
@@ -58,7 +70,7 @@ public class Cracker {
                     e.printStackTrace();
                 }
                 return null;
-            }).filter(Objects::nonNull).collect(Collectors.joining(", "));
+            }).filter(Objects::nonNull).collect(Collectors.joining("\n"));
 
         } catch (NoSuchMethodException | ClassNotFoundException | InterruptedException e) {
             e.printStackTrace();
