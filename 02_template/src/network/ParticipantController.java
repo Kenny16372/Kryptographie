@@ -68,7 +68,7 @@ public enum ParticipantController {
     }
 
     public Participant getParticipantByName(String name) {
-        return participantMap.values().stream().filter(participant -> participant.name.equals(name)).findFirst().orElse(null);
+        return participantMap.values().stream().filter(participant -> participant.name.equalsIgnoreCase(name)).findFirst().orElse(null);
     }
 
     // returns a set of participant objects corresponding to the given participant names

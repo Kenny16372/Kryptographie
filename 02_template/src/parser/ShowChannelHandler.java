@@ -8,14 +8,21 @@ import network.Participant;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class ShowChannel {
-    public static void display(TextArea output) {
+public class ShowChannelHandler extends Handler{
+
+    public ShowChannelHandler() {
+        this.successor = new ShowAlgorithmHandler();
+        this.pattern = Pattern.compile("^\\s*show\\s+channel\\s*$", Pattern.CASE_INSENSITIVE);
+    }
+
+    @Override
+    protected void handle(Matcher matcher, TextArea output) {
         // Channel name -> Branch names
         Map<String, Set<String>> channels = getChannels();
-
-        output.clear();
 
         if (channels.size() == 0) {
             output.setText("No channels available");

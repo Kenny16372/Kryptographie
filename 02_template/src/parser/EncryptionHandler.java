@@ -7,99 +7,62 @@ import logging.Logger;
 
 import java.util.Scanner;
 import java.util.regex.MatchResult;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class EncryptionHandler implements IHandler {
+public class EncryptionHandler extends Handler {
 
-    public void handle(String command, TextArea output) {
-        output.clear();
+    public EncryptionHandler() {
+        this.successor = new CrackingHandler();
+        this.pattern = Pattern.compile("^\\s*(en|de)crypt\\s+message\\s+\"([^\"]*)\"\\s+using\\s+(\\S*)\\s+and\\s+keyfile\\s+(\\S*)\\s*$", Pattern.CASE_INSENSITIVE);
+    }
 
-        Scanner scanner = new Scanner(command);
-        scanner.findInLine("^\\s*(en|de)crypt\\s+(message)\\s+(\")([^\"]*)(\")\\s+(using)\\s+(\\S*)\\s+(and\\s+keyfile)\\s+(\\S*)\\s*$");
-
-        MatchResult result = scanner.match();
-        scanner.close();
-
+    protected void handle(Matcher matcher, TextArea output) {
         boolean encrypt = true;
-        try {
-            int pos = 1;
 
-            // true: encryption; false: decryption; InputHandler assures that only commands starting with encrypt or decrypt are submitted
-            encrypt = result.group(pos++).equals("en");
+        // true: encryption; false: decryption
+        encrypt = matcher.group(1).equals("en");
 
-            if (!result.group(pos++).equals("message")) {
-                throw new RuntimeException("Expected keyword \"message\"");
+        String message = matcher.group(2);
+        String algorithm = matcher.group(3);
+        String keyFile = matcher.group(4);
+
+        // check if correct key was used
+        if(encrypt){
+            if(!keyFile.endsWith("pub.txt")){
+                output.appendText("Warning\nDid you mean to use a public key?");
             }
-
-            if (!result.group(pos++).equals("\"")) {
-                throw new RuntimeException("Expected token (\")");
+        } else{
+            if(!keyFile.endsWith("pri.txt")){
+                output.appendText("Warning\nDid you mean to use a private key?");
             }
-
-            // get message
-            String message = result.group(pos++);
-
-            if (!result.group(pos++).equals("\"")) {
-                throw new RuntimeException("Expected token (\")");
-            }
-
-            if (!result.group(pos++).equals("using")) {
-                throw new RuntimeException("Expected keyword \"using\"");
-            }
-
-            // get algorithm
-            String algorithm = result.group(pos++);
-
-            if (!result.group(pos++).replaceAll("\\s+", "").equals("andkeyfile")) {
-                throw new RuntimeException("Expected keyword \"and keyfile\"");
-            }
-
-            // get name of keyfile
-            String keyfile = result.group(pos);
-
-            // check if correct key was used
-            if(encrypt){
-                if(!keyfile.endsWith("pub.txt")){
-                    output.appendText("Warning\nDid you mean to use a public key?");
-                }
-            } else{
-                if(!keyfile.endsWith("pri.txt")){
-                    output.appendText("Warning\nDid you mean to use a private key?");
-                }
-            }
-
-            // logging
-            Logger logger = null;
-            if (Configuration.instance.debugMode) {
-                logger = new Logger();
-                logger.startLogging(encrypt, algorithm);
-            }
-
-            Encryption encryption = new Encryption();
-            String returnedString;
-            if (encrypt) {
-                returnedString = encryption.encrypt(message, algorithm, keyfile);
-            } else {
-                returnedString = encryption.decrypt(message, algorithm, keyfile);
-            }
-
-            if(returnedString == null){
-                output.setText("ERROR\nCan't use the RSA Cracker to " + (encrypt ? "en" : "de") + "crypt messages");
-            }
-
-            if (logger != null) {
-                logger.close();
-            }
-
-            // display text
-            output.setText(returnedString);
-
-        } catch (RuntimeException e) {
-            e.printStackTrace();
-            String errorMessage = "Error parsing input\nMessage:\n" +
-                    e.getMessage() +
-                    "\nPlease use the format:\n" +
-                    (encrypt ? "en" : "de") + "crypt message \"[message]\" using [algorithm] and keyfile [filename]";
-            output.setText(errorMessage);
         }
+
+        // logging
+        Logger logger = null;
+        if (Configuration.instance.debugMode) {
+            logger = new Logger();
+            logger.startLogging(encrypt, algorithm);
+        }
+
+        Encryption encryption = new Encryption();
+        String returnedString;
+        if (encrypt) {
+            returnedString = encryption.encrypt(message, algorithm, keyFile);
+        } else {
+            returnedString = encryption.decrypt(message, algorithm, keyFile);
+        }
+
+        if(returnedString == null){
+            output.setText("ERROR\nCan't use the RSA Cracker to " + (encrypt ? "en" : "de") + "crypt messages");
+        }
+
+        if (logger != null) {
+            logger.close();
+        }
+
+        // display text
+        output.setText(returnedString);
 
     }
 }

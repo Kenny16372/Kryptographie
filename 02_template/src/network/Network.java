@@ -2,7 +2,7 @@ package network;
 
 import com.google.common.eventbus.EventBus;
 import javafx.util.Pair;
-import parser.ShowAlgorithm;
+import parser.ShowAlgorithmHandler;
 import persistence.HSQLDB;
 
 import java.util.*;
@@ -47,7 +47,7 @@ public enum Network {
     }
 
     private void updateAlgorithms() {
-        for (String name : ShowAlgorithm.getComponentNames()) {
+        for (String name : ShowAlgorithmHandler.getComponentNames()) {
             if (!name.endsWith("_cracker")) {
                 HSQLDB.instance.insertDataTableAlgorithms(name);
             }

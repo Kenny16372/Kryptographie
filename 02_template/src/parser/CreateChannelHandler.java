@@ -5,32 +5,22 @@ import network.Network;
 
 import java.util.Scanner;
 import java.util.regex.MatchResult;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CreateChannel {
-    public static void handle(String text, TextArea output) {
-        output.clear();
-        Scanner scanner = new Scanner(text);
-        scanner.findInLine(Pattern.compile("^\\s*(?:channel)\\s+(\\w+)\\s+(?:from)\\s+(\\w+)\\s+(?:to)\\s+(\\w+)\\s*$", Pattern.CASE_INSENSITIVE));
+public class CreateChannelHandler extends Handler{
 
-        MatchResult result = null;
-        try {
-            result = scanner.match();
-        } catch (IllegalStateException e) {
-            output.setText("ERROR\nCouldn't parse input. Please use the following format:\ncreate channel <CHANNEL_NAME> from <PARTICIPANT_1> to <PARTICIPANT_2>");
-            return;
-        } finally {
-            scanner.close();
-        }
+    public CreateChannelHandler() {
+        this.successor = new DropHandler();
+        this.pattern = Pattern.compile("^\\s*create\\s+channel\\s+(\\w+)\\s+from\\s+(\\w+)\\s+to\\s+(\\w+)\\s*$", Pattern.CASE_INSENSITIVE);
+    }
 
-        if (result.groupCount() != 3) {
-            output.setText("ERROR\nCouldn't parse input. Please use the following format:\ncreate channel <CHANNEL_NAME> from <PARTICIPANT_1> to <PARTICIPANT_2>");
-            return;
-        }
+    @Override
+    protected void handle(Matcher matcher, TextArea output) {
 
-        String channelName = result.group(1);
-        String participant1 = result.group(2);
-        String participant2 = result.group(3);
+        String channelName = matcher.group(1);
+        String participant1 = matcher.group(2);
+        String participant2 = matcher.group(3);
 
         // Check if participants are valid branches
         if (!Network.instance.participantNameUnused(participant1)) {
@@ -62,12 +52,8 @@ public class CreateChannel {
             return;
         }
 
-        channelName = createEventBus(channelName, participant1, participant2);
+        channelName = Network.instance.createChannel(channelName, participant1, participant2);
 
         output.setText(String.format("Channel %s from %s to %s successfully created", channelName, participant1, participant2));
-    }
-
-    public static String createEventBus(String channelName, String participant1, String participant2) {
-        return Network.instance.createChannel(channelName, participant1, participant2);
     }
 }

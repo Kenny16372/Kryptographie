@@ -17,11 +17,12 @@ import logging.Logger;
 import network.Branch;
 import network.Network;
 import network.ParticipantController;
-import parser.InputHandler;
+import parser.Handler;
+import parser.SendMessageHandler;
 import persistence.HSQLDB;
 
 public class GUI extends Application {
-    private InputHandler handler = new InputHandler();
+    private final Handler handler = new SendMessageHandler();
     private TextArea inputArea;
     private static TextArea outputArea;
     private Button execute;
@@ -55,7 +56,7 @@ public class GUI extends Application {
         outputArea.setEditable(false);
 
         this.inputArea = commandLineArea;
-        this.outputArea = outputArea;
+        GUI.outputArea = outputArea;
         this.execute = executeButton;
         this.close = closeButton;
 
@@ -86,11 +87,6 @@ public class GUI extends Application {
                 Logger.displayLatestLogFile(outputArea);
             } else if (e.getCode() == KeyCode.F5) {
                 this.handleExecute();
-            } else if (e.getCode() == KeyCode.K) {        // create test key files
-                RSA rsa = new RSA();
-                ParticipantController.instance.createParticipant("test32bit", "normal");
-                Branch branch = (Branch) ParticipantController.instance.getParticipantByName("test32bit");
-                branch.storeKeys(rsa.generateKeyPair(32));
             }
         });
 
@@ -104,8 +100,7 @@ public class GUI extends Application {
 
     private void handleExecute(ActionEvent event) {
         // get input and handle it
-        String raw = inputArea.getText();
-        handler.handle(raw, outputArea);
+        handler.accept(inputArea.getText(), outputArea);
     }
 
     private void handleExecute() {

@@ -19,7 +19,8 @@ public class Intruder extends Participant {
 
     // intercept messages
     @Subscribe
-    public void handleMessage(Message message) {
+    @Override
+    public void receiveMessage(Message message) {
         String keyFile = message.getKeyFileName() + "_pub.txt";
 
         String decrypted = cracker.decrypt(message.toString(), message.getAlgorithm(), keyFile, false);

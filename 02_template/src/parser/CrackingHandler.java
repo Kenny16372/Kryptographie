@@ -5,71 +5,38 @@ import javafx.scene.control.TextArea;
 
 import java.util.Scanner;
 import java.util.regex.MatchResult;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class CrackingHandler {
-    public void handle(String command, TextArea output) {
+public class CrackingHandler extends Handler{
 
-        output.clear();
+    public CrackingHandler() {
+        this.successor = new CreateChannelHandler();
+        this.pattern = Pattern.compile("^crack\\s+encrypted\\s+message\\s+\"([^\"]*)\"\\s+using\\s+(\\S+)\\s*$", Pattern.CASE_INSENSITIVE);
+    }
 
-        try {
-            Scanner scanner = new Scanner(command);
-            scanner.findInLine("^(encrypted\\s+message)\\s+(\")([^\"]*)(\")\\s+(using)\\s+(\\S+)\\s*$");
+    @Override
+    protected void handle(Matcher matcher, TextArea output) {
+        output.setText("This might take up to 30 seconds");
+        String message = matcher.group(1);
+        String algorithm = matcher.group(2);
 
-            MatchResult result = scanner.match();
-            scanner.close();
+        Cracker cracker = new Cracker();
 
-            if (result.groupCount() != 6) {
-                throw new RuntimeException("Wrong format");
-            }
+        // It would be possible to check the database for the key file name, but this would make the whole cracking process unnecessary, since
+        // the decrypted message stands in the same table and no views were to be defined that only contain the encrypted message and the keyfile
+        // Thus, the Cracker will be checking all key files inside the key file directory
+        String plaintext = cracker.decrypt(message, algorithm, null, true);
 
-            output.setText("This might take up to 30 seconds");
+        String resultText;
+        boolean allFilesDone = Cracker.didFinishAllFiles();
 
-            int pos = 1;
-
-            if (!result.group(pos++).replaceAll("\\s+", "").equals("encryptedmessage")) {
-                throw new RuntimeException("Expected keyword \"encrypted message\"");
-            }
-
-            if (!result.group(pos++).equals("\"")) {
-                throw new RuntimeException("Expected token (\")");
-            }
-
-            String message = result.group(pos++);
-
-            if (!result.group(pos++).equals("\"")) {
-                throw new RuntimeException("Expected token (\")");
-            }
-
-            if (!result.group(pos++).equals("using")) {
-                throw new RuntimeException("Expected keyword \"using\"");
-            }
-
-            String algorithm = result.group(pos);
-
-            Cracker cracker = new Cracker();
-
-            // It would be possible to check the database for the key file name, but this would make the whole cracking process unnecessary, since
-            // the decrypted message stands in the same table and no views were to be defined that only contain the encrypted message and the keyfile
-            // Thus, the Cracker will be checking all key files inside the key file directory
-            String plaintext = cracker.decrypt(message, algorithm, null, true);
-
-            String resultText;
-            boolean allFilesDone = Cracker.didFinishAllFiles();
-
-            if(plaintext.contains("\n")){
-                resultText = "The decrypted message is " + (allFilesDone ? "probably ": "") + "one of these:\n" + plaintext;
-            } else {
-                resultText = "The decrypted message " + (allFilesDone ? "probably ": "") + "is:\n" + plaintext;
-            }
-
-            output.setText(resultText);
-
-        } catch (RuntimeException e) {
-            String errorMessage = "Error parsing input\nMessage:\n" +
-                    e.toString() +
-                    "\nPlease use the format:\n" +
-                    "crack encrypted message \"[message]\" using [algorithm]";
-            output.setText(errorMessage);
+        if(plaintext.contains("\n")){
+            resultText = "The decrypted message is " + (allFilesDone ? "probably ": "") + "one of these:\n" + plaintext;
+        } else {
+            resultText = "The decrypted message " + (allFilesDone ? "probably ": "") + "is:\n" + plaintext;
         }
+
+        output.setText(resultText);
     }
 }
