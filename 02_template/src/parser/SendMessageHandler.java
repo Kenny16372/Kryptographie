@@ -61,10 +61,6 @@ public class SendMessageHandler extends Handler{
             return;
         }
 
-        if(!keyfile.endsWith("pub.txt")){
-            output.appendText("Warning\nDid you mean to use the public key?\n");
-        }
-
         String encrypted = encryption.encrypt(message, algorithm, keyfile);
 
         Network.instance.postMessage(channelName, message, encrypted, branchFrom.getId(), branchTo.getId(), algorithm, keyfile);

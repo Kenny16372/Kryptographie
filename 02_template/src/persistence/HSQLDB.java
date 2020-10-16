@@ -91,8 +91,8 @@ public enum HSQLDB {
 
         StringBuilder sqlStringBuilder01 = new StringBuilder();
         sqlStringBuilder01.append("CREATE TABLE types ( ");
-        sqlStringBuilder01.append("id TINYINT NOT NULL").append(",");
-        sqlStringBuilder01.append("name VARCHAR(10) NOT NULL").append(",");
+        sqlStringBuilder01.append("id TINYINT NOT NULL").append(", ");
+        sqlStringBuilder01.append("name VARCHAR(10) NOT NULL").append(", ");
         sqlStringBuilder01.append("PRIMARY KEY (id)");
         sqlStringBuilder01.append(" )");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder01.toString());
@@ -107,9 +107,9 @@ public enum HSQLDB {
     public void insertDataTableTypes(String name) {
         int nextID = getNextID("types") + 1;
         StringBuilder sqlStringBuilder = new StringBuilder();
-        sqlStringBuilder.append("INSERT INTO types (").append("id").append(",").append("name").append(")");
+        sqlStringBuilder.append("INSERT INTO types (").append("id").append(", ").append("name").append(")");
         sqlStringBuilder.append(" VALUES ");
-        sqlStringBuilder.append("(").append(nextID).append(",").append("'").append(name.toLowerCase()).append("'");
+        sqlStringBuilder.append("(").append(nextID).append(", ").append("'").append(name.toLowerCase()).append("'");
         sqlStringBuilder.append(")");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
         update(sqlStringBuilder.toString());
@@ -132,9 +132,9 @@ public enum HSQLDB {
 
         StringBuilder sqlStringBuilder01 = new StringBuilder();
         sqlStringBuilder01.append("CREATE TABLE participants ( ");
-        sqlStringBuilder01.append("id TINYINT NOT NULL").append(",");
-        sqlStringBuilder01.append("name VARCHAR(50) NOT NULL").append(",");
-        sqlStringBuilder01.append("type_id TINYINT NOT NULL").append(",");
+        sqlStringBuilder01.append("id TINYINT NOT NULL").append(", ");
+        sqlStringBuilder01.append("name VARCHAR(50) NOT NULL").append(", ");
+        sqlStringBuilder01.append("type_id TINYINT NOT NULL").append(", ");
         sqlStringBuilder01.append("PRIMARY KEY (id)");
         sqlStringBuilder01.append(" )");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder01.toString());
@@ -158,9 +158,9 @@ public enum HSQLDB {
         System.out.println("--- createParticipant " + name.toLowerCase());
         int nextID = getNextID("participants") + 1;
         StringBuilder sqlStringBuilder = new StringBuilder();
-        sqlStringBuilder.append("INSERT INTO participants (").append("id").append(",").append("name").append(",").append("type_id").append(")");
+        sqlStringBuilder.append("INSERT INTO participants (").append("id").append(", ").append("name").append(", ").append("type_id").append(")");
         sqlStringBuilder.append(" VALUES ");
-        sqlStringBuilder.append("(").append(nextID).append(",").append("'").append(name.toLowerCase()).append("'").append(",").append(typeID);
+        sqlStringBuilder.append("(").append(nextID).append(", ").append("'").append(name.toLowerCase()).append("'").append(", ").append(typeID);
         sqlStringBuilder.append(")");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
         update(sqlStringBuilder.toString());
@@ -218,8 +218,8 @@ public enum HSQLDB {
 
         StringBuilder sqlStringBuilder01 = new StringBuilder();
         sqlStringBuilder01.append("CREATE TABLE algorithms ( ");
-        sqlStringBuilder01.append("id TINYINT NOT NULL").append(",");
-        sqlStringBuilder01.append("name VARCHAR(10) NOT NULL").append(",");
+        sqlStringBuilder01.append("id TINYINT NOT NULL").append(", ");
+        sqlStringBuilder01.append("name VARCHAR(10) NOT NULL").append(", ");
         sqlStringBuilder01.append("PRIMARY KEY (id)");
         sqlStringBuilder01.append(" )");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder01.toString());
@@ -239,9 +239,9 @@ public enum HSQLDB {
 
         int nextID = getNextID("algorithms") + 1;
         StringBuilder sqlStringBuilder = new StringBuilder();
-        sqlStringBuilder.append("INSERT INTO algorithms (").append("id").append(",").append("name").append(")");
+        sqlStringBuilder.append("INSERT INTO algorithms (").append("id").append(", ").append("name").append(")");
         sqlStringBuilder.append(" VALUES ");
-        sqlStringBuilder.append("(").append(nextID).append(",").append("'").append(name.toLowerCase()).append("'");
+        sqlStringBuilder.append("(").append(nextID).append(", ").append("'").append(name.toLowerCase()).append("'");
         sqlStringBuilder.append(")");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
         update(sqlStringBuilder.toString());
@@ -284,9 +284,9 @@ public enum HSQLDB {
 
         StringBuilder sqlStringBuilder01 = new StringBuilder();
         sqlStringBuilder01.append("CREATE TABLE channel ( ");
-        sqlStringBuilder01.append("name VARCHAR(25) NOT NULL").append(",");
-        sqlStringBuilder01.append("participant_01 TINYINT NOT NULL").append(",");
-        sqlStringBuilder01.append("participant_02 TINYINT NOT NULL").append(",");
+        sqlStringBuilder01.append("name VARCHAR(25) NOT NULL").append(", ");
+        sqlStringBuilder01.append("participant_01 TINYINT NOT NULL").append(", ");
+        sqlStringBuilder01.append("participant_02 TINYINT NOT NULL").append(", ");
         sqlStringBuilder01.append("PRIMARY KEY (name)");
         sqlStringBuilder01.append(" )");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder01.toString());
@@ -311,9 +311,9 @@ public enum HSQLDB {
 
     public void insertDataTableChannel(String name, int participant01, int participant02) {
         StringBuilder sqlStringBuilder = new StringBuilder();
-        sqlStringBuilder.append("INSERT INTO channel (").append("name").append(",").append("participant_01").append(",").append("participant_02").append(")");
+        sqlStringBuilder.append("INSERT INTO channel (").append("name").append(", ").append("participant_01").append(", ").append("participant_02").append(")");
         sqlStringBuilder.append(" VALUES ");
-        sqlStringBuilder.append("(").append("'").append(name).append("'").append(",").append(participant01).append(",").append(participant02);
+        sqlStringBuilder.append("(").append("'").append(name).append("'").append(", ").append(participant01).append(", ").append(participant02);
         sqlStringBuilder.append(")");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
         update(sqlStringBuilder.toString());
@@ -373,14 +373,14 @@ public enum HSQLDB {
 
         StringBuilder sqlStringBuilder01 = new StringBuilder();
         sqlStringBuilder01.append("CREATE TABLE messages ( ");
-        sqlStringBuilder01.append("id TINYINT NOT NULL").append(",");
-        sqlStringBuilder01.append("participant_from_id TINYINT NOT NULL").append(",");
-        sqlStringBuilder01.append("participant_to_id TINYINT NOT NULL").append(",");
-        sqlStringBuilder01.append("plain_message VARCHAR(50) NOT NULL").append(",");
-        sqlStringBuilder01.append("algorithm_id TINYINT NOT NULL").append(",");
-        sqlStringBuilder01.append("encrypted_message VARCHAR(50) NOT NULL").append(",");
-        sqlStringBuilder01.append("keyfile VARCHAR(50) NOT NULL").append(",");
-        sqlStringBuilder01.append("timestamp INTEGER").append(",");
+        sqlStringBuilder01.append("id TINYINT NOT NULL").append(", ");
+        sqlStringBuilder01.append("participant_from_id TINYINT NOT NULL").append(", ");
+        sqlStringBuilder01.append("participant_to_id TINYINT NOT NULL").append(", ");
+        sqlStringBuilder01.append("plain_message VARCHAR(50) NOT NULL").append(", ");
+        sqlStringBuilder01.append("algorithm_id TINYINT NOT NULL").append(", ");
+        sqlStringBuilder01.append("encrypted_message VARCHAR(50) NOT NULL").append(", ");
+        sqlStringBuilder01.append("keyfile VARCHAR(50) NOT NULL").append(", ");
+        sqlStringBuilder01.append("timestamp INTEGER").append(", ");
         sqlStringBuilder01.append("PRIMARY KEY (id)");
         sqlStringBuilder01.append(" )");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder01.toString());
@@ -417,43 +417,44 @@ public enum HSQLDB {
         int nextID = getNextID("messages") + 1;
         StringBuilder sqlStringBuilder = new StringBuilder();
         sqlStringBuilder.append("INSERT INTO messages (")
-                .append("id").append(",")
+                .append("id")
+                .append(", ")
                 .append("participant_from_id")
-                .append(",")
+                .append(", ")
                 .append("participant_to_id")
-                .append(',')
+                .append(", ")
                 .append("plain_message")
-                .append(",")
+                .append(", ")
                 .append("algorithm_id")
-                .append(",")
+                .append(", ")
                 .append("encrypted_message")
-                .append(",")
+                .append(", ")
                 .append("keyfile")
-                .append(",")
+                .append(", ")
                 .append("timestamp")
                 .append(")");
         sqlStringBuilder.append(" VALUES ");
         sqlStringBuilder.append("(")
                 .append(nextID)
-                .append(",")
+                .append(", ")
                 .append(participantFromID)
-                .append(",")
+                .append(", ")
                 .append(participantToID)
-                .append(",")
+                .append(", ")
                 .append("'")
                 .append(plainMessage)
                 .append("'")
-                .append(",")
+                .append(", ")
                 .append(algorithmId)
-                .append(",")
+                .append(", ")
                 .append("'")
                 .append(encryptedMessage)
                 .append("'")
-                .append(",")
+                .append(", ")
                 .append("'")
                 .append(keyfile)
                 .append("'")
-                .append(",")
+                .append(", ")
                 .append(System.currentTimeMillis() / 1000);
         sqlStringBuilder.append(")");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
@@ -476,13 +477,13 @@ public enum HSQLDB {
         System.out.println("--- createTablePostbox_" + participantName.toLowerCase());
 
         StringBuilder sqlStringBuilder01 = new StringBuilder();
-        sqlStringBuilder01.append("CREATE TABLE postbox_").append(participantName.toLowerCase()).append(" ( ");
-        sqlStringBuilder01.append("id TINYINT NOT NULL").append(",");
-        sqlStringBuilder01.append("participant_from_id TINYINT NOT NULL").append(",");
-        sqlStringBuilder01.append("message VARCHAR(50) NOT NULL").append(",");
-        sqlStringBuilder01.append("timestamp INTEGER").append(",");
+        sqlStringBuilder01.append("CREATE TABLE postbox_").append(participantName.toLowerCase()).append(" (");
+        sqlStringBuilder01.append("id TINYINT NOT NULL").append(", ");
+        sqlStringBuilder01.append("participant_from_id TINYINT NOT NULL").append(", ");
+        sqlStringBuilder01.append("message VARCHAR(50) NOT NULL").append(", ");
+        sqlStringBuilder01.append("timestamp INTEGER").append(", ");
         sqlStringBuilder01.append("PRIMARY KEY (id)");
-        sqlStringBuilder01.append(" )");
+        sqlStringBuilder01.append(")");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder01.toString());
         update(sqlStringBuilder01.toString());
 
@@ -498,9 +499,9 @@ public enum HSQLDB {
     public void insertDataTablePostbox(String participantName, int participantFromID, String message) {
         int nextID = getNextID("postbox_" + participantName.toLowerCase()) + 1;
         StringBuilder sqlStringBuilder = new StringBuilder();
-        sqlStringBuilder.append("INSERT INTO postbox_").append(participantName.toLowerCase()).append(" (").append("id").append(",").append("participant_from_id").append(",").append("message").append(",").append("timestamp").append(")");
+        sqlStringBuilder.append("INSERT INTO postbox_").append(participantName.toLowerCase()).append(" (").append("id").append(", ").append("participant_from_id").append(", ").append("message").append(", ").append("timestamp").append(")");
         sqlStringBuilder.append(" VALUES ");
-        sqlStringBuilder.append("(").append(nextID).append(",").append(participantFromID).append(",").append("'").append(message).append("'").append(",").append(System.currentTimeMillis() / 1000);
+        sqlStringBuilder.append("(").append(nextID).append(", ").append(participantFromID).append(", ").append("'").append(message).append("'").append(", ").append(System.currentTimeMillis() / 1000);
         sqlStringBuilder.append(")");
         System.out.println("sqlStringBuilder : " + sqlStringBuilder.toString());
         update(sqlStringBuilder.toString());

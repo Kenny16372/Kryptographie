@@ -27,17 +27,6 @@ public class EncryptionHandler extends Handler {
         String algorithm = matcher.group(3);
         String keyFile = matcher.group(4);
 
-        // check if correct key was used
-        if(encrypt){
-            if(!keyFile.endsWith("pub.txt")){
-                output.appendText("Warning\nDid you mean to use a public key?");
-            }
-        } else{
-            if(!keyFile.endsWith("pri.txt")){
-                output.appendText("Warning\nDid you mean to use a private key?");
-            }
-        }
-
         // logging
         Logger logger = null;
         if (Configuration.instance.debugMode) {

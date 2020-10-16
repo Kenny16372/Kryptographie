@@ -19,7 +19,7 @@ public class DropHandler extends Handler{
     @Override
     protected void handle(Matcher matcher, TextArea output) {
 
-        String channelName = matcher.group(0);
+        String channelName = matcher.group(1);
 
         if (Network.instance.dropChannel(channelName)) {
             output.setText("Channel " + channelName + " deleted");
