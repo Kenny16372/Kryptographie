@@ -5,8 +5,6 @@ import encryption.Encryption;
 import javafx.scene.control.TextArea;
 import logging.Logger;
 
-import java.util.Scanner;
-import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -42,7 +40,7 @@ public class EncryptionHandler extends Handler {
             returnedString = encryption.decrypt(message, algorithm, keyFile);
         }
 
-        if(returnedString == null){
+        if (returnedString == null) {
             output.setText("ERROR\nCan't use the RSA Cracker to " + (encrypt ? "en" : "de") + "crypt messages");
         }
 

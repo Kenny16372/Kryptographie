@@ -4,12 +4,10 @@ import com.google.common.eventbus.EventBus;
 import javafx.scene.control.TextArea;
 import network.*;
 
-import java.util.Scanner;
-import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class IntrudeHandler extends Handler{
+public class IntrudeHandler extends Handler {
 
     public IntrudeHandler() {
         this.successor = new RegisterHandler();

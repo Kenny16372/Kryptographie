@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public enum ParticipantController {
     instance;
 
-    private Map<Integer, Participant> participantMap = new HashMap<>();
+    private final Map<Integer, Participant> participantMap = new HashMap<>();
 
     public boolean createParticipant(String name, int id, String type) {
         Participant participant;

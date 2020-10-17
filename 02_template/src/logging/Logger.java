@@ -13,14 +13,53 @@ public class Logger {
     private File logFile = null;
     private PrintStream redirection = null;
 
+    public static void displayLatestLogFile(TextArea output) {
+        String latestFile = getLatestFile();
+
+        if (latestFile == null) {
+            output.setText("Please generate a log file first\n");
+            return;
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader(Configuration.instance.logDirectory + latestFile))) {
+            output.setText(br.lines().collect(Collectors.joining("\n")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static String getLatestFile() {
+        File[] logFiles = new File(Configuration.instance.logDirectory).listFiles();
+        Map<Long, String> map = new HashMap<>();
+        long max = 0L;
+
+        if (logFiles == null) {
+            return null;
+        }
+
+        for (File file : logFiles) {
+            String filename = file.getName();
+
+            int indexLastUnderscore = filename.lastIndexOf('_');
+
+            long value = Long.parseLong(filename.substring(indexLastUnderscore + 1, filename.length() - 4));
+
+            max = Math.max(max, value);
+
+            map.put(value, filename);
+        }
+
+        return map.get(max);
+    }
+
     public void startLogging(boolean encrypt, String algorithm) {
         this.out = System.out;
 
         long timestamp = System.currentTimeMillis() / 1000L;
         try {
             File logDir = new File(Configuration.instance.logDirectory);
-            if(!logDir.exists()){
-                if(!logDir.mkdir()){
+            if (!logDir.exists()) {
+                if (!logDir.mkdir()) {
                     System.err.println("Couldn't create log directory");
                 }
             }
@@ -51,44 +90,5 @@ public class Logger {
         System.setOut(this.out);
 
         this.out = null;
-    }
-
-    public static void displayLatestLogFile(TextArea output) {
-        String latestFile = getLatestFile();
-
-        if(latestFile == null){
-            output.setText("Please generate a log file first\n");
-            return;
-        }
-
-        try (BufferedReader br = new BufferedReader(new FileReader(Configuration.instance.logDirectory + latestFile))){
-            output.setText(br.lines().collect(Collectors.joining("\n")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static String getLatestFile() {
-        File[] logFiles = new File(Configuration.instance.logDirectory).listFiles();
-        Map<Long, String> map = new HashMap<>();
-        long max = 0L;
-
-        if (logFiles == null) {
-            return null;
-        }
-
-        for (File file : logFiles) {
-            String filename = file.getName();
-
-            int indexLastUnderscore = filename.lastIndexOf('_');
-
-            long value = Long.parseLong(filename.substring(indexLastUnderscore + 1, filename.length() - 4));
-
-            max = Math.max(max, value);
-
-            map.put(value, filename);
-        }
-
-        return map.get(max);
     }
 }

@@ -1,13 +1,10 @@
 package encryption;
 
 import configuration.CipherFactory;
-import configuration.Configuration;
 import general.ComponentLoader;
 
-import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.*;
@@ -16,11 +13,11 @@ import java.util.stream.Collectors;
 public class Cracker {
     private static boolean didFinishAllFiles = true;
 
-    public static boolean didFinishAllFiles(){
+    public static boolean didFinishAllFiles() {
         return didFinishAllFiles;
     }
 
-    public String decrypt(String cipherText, String algorithm, boolean checkAllFiles){
+    public String decrypt(String cipherText, String algorithm, boolean checkAllFiles) {
         return decrypt(cipherText, algorithm, null, checkAllFiles);
     }
 
@@ -38,7 +35,7 @@ public class Cracker {
             ExecutorService executor = Executors.newFixedThreadPool(ciphers.size());
 
             // decrypt ciphertext
-            if(ciphers.size() == 0){
+            if (ciphers.size() == 0) {
                 System.out.println("ERROR\nCouldn't decrypt ciphertext");
                 return null;
             }
@@ -50,7 +47,7 @@ public class Cracker {
             List<FutureTask<String>> futures = taskRunners.stream().map(FutureTask::new).collect(Collectors.toList());
 
             // execute task runners
-            for(FutureTask<String> futureTask: futures){
+            for (FutureTask<String> futureTask : futures) {
                 executor.execute(futureTask);
             }
 
@@ -93,7 +90,7 @@ public class Cracker {
         }
 
         @Override
-        public String call(){
+        public String call() {
             try {
                 return (String) decrypt.invoke(cipher, cipherText);
             } catch (IllegalAccessException | InvocationTargetException e) {

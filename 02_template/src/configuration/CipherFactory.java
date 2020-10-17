@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class CipherFactory {
 
-    public List<Object> getCipher(Class<?> clazz, String algorithm){
+    public List<Object> getCipher(Class<?> clazz, String algorithm) {
         return getCipher(clazz, algorithm, null, false);
     }
 
@@ -26,7 +26,7 @@ public class CipherFactory {
                     returnValue.add(clazz.getDeclaredConstructor(boolean.class).newInstance(Configuration.instance.debugMode));
                     break;
                 case "rsa_cracker":
-                    if(keyFile == null && !checkAllFiles){
+                    if (keyFile == null && !checkAllFiles) {
                         return null;
                     }
 
@@ -50,7 +50,7 @@ public class CipherFactory {
                     }).filter(Objects::nonNull).collect(Collectors.toList()));
                     break;
                 case "shift_cracker":
-                    returnValue.add(clazz.getDeclaredConstructor().newInstance());    // TODO Debugmode
+                    returnValue.add(clazz.getDeclaredConstructor().newInstance());
                     break;
                 default:
                     System.out.println("No such algorithm: " + algorithm);
@@ -68,13 +68,13 @@ public class CipherFactory {
         File keyFileDir = new File(Configuration.instance.keyFileDirectory);
 
         FilenameFilter fileNameFilter;
-        if(checkAllFiles){
+        if (checkAllFiles) {
             fileNameFilter = (dir, name) -> name.endsWith("_pub.txt");
         } else {
             fileNameFilter = (dir, name) -> name.equals(keyFileName);
         }
 
-        for(File keyFile: Objects.requireNonNull(keyFileDir.listFiles(fileNameFilter))) {
+        for (File keyFile : Objects.requireNonNull(keyFileDir.listFiles(fileNameFilter))) {
             Map<Character, BigInteger> map = new HashMap<>();
 
             try (BufferedReader br = new BufferedReader(new FileReader(keyFile))) {

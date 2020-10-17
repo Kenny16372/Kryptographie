@@ -154,7 +154,7 @@ public enum HSQLDB {
         update(sqlStringBuilder03.toString());
     }
 
-    public int insertDataTableParticipants(String name, int typeID) {      // TODO: Escaping user input
+    public int insertDataTableParticipants(String name, int typeID) {
         System.out.println("--- createParticipant " + name.toLowerCase());
         int nextID = getNextID("participants") + 1;
         StringBuilder sqlStringBuilder = new StringBuilder();
@@ -507,7 +507,7 @@ public enum HSQLDB {
         update(sqlStringBuilder.toString());
     }
 
-    public void updateDataTablePostbox(String participantName, String message){
+    public void updateDataTablePostbox(String participantName, String message) {
 
         String sqlString = "UPDATE postbox_" + participantName.toLowerCase() +
                 " SET message='" + message + "'" +

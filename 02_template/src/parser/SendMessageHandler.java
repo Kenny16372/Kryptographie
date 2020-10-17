@@ -5,13 +5,11 @@ import javafx.scene.control.TextArea;
 import network.*;
 
 import java.util.HashSet;
-import java.util.Scanner;
 import java.util.Set;
-import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class SendMessageHandler extends Handler{
+public class SendMessageHandler extends Handler {
     private final Encryption encryption = new Encryption();
 
     public SendMessageHandler() {
@@ -35,7 +33,7 @@ public class SendMessageHandler extends Handler{
 
         Participant participantFrom = ParticipantController.instance.getParticipantByName(sender);
 
-        if(participantFrom == null){
+        if (participantFrom == null) {
             output.setText("ERROR\nNo such participant: " + sender);
             return;
         }
@@ -48,7 +46,7 @@ public class SendMessageHandler extends Handler{
 
         Participant participantTo = ParticipantController.instance.getParticipantByName(receiver);
 
-        if(participantTo == null){
+        if (participantTo == null) {
             output.setText("ERROR\nNo such participant: " + receiver);
             return;
         }
@@ -75,7 +73,7 @@ public class SendMessageHandler extends Handler{
 
         String encrypted = encryption.encrypt(message, algorithm, keyfile);
 
-        if(encrypted == null){
+        if (encrypted == null) {
             output.setText("ERROR\nEncryption failed. Please check the algorithm and the key file\n");
             return;
         }

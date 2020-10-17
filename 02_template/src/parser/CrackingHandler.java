@@ -3,12 +3,10 @@ package parser;
 import encryption.Cracker;
 import javafx.scene.control.TextArea;
 
-import java.util.Scanner;
-import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CrackingHandler extends Handler{
+public class CrackingHandler extends Handler {
 
     public CrackingHandler() {
         this.successor = new CreateChannelHandler();
@@ -31,14 +29,14 @@ public class CrackingHandler extends Handler{
         String resultText;
         boolean allFilesDone = Cracker.didFinishAllFiles();
 
-        if(plaintext.contains("\n")){
-            resultText = "The decrypted message is " + (!allFilesDone ? "maybe ": "") + "one of these:\n" + plaintext;
-            if(!allFilesDone){
+        if (plaintext.contains("\n")) {
+            resultText = "The decrypted message is " + (!allFilesDone ? "maybe " : "") + "one of these:\n" + plaintext;
+            if (!allFilesDone) {
                 resultText += "\nCould not check all key files\n";
             }
         } else {
-            resultText = "The decrypted message " + (!allFilesDone ? "probably ": "") + "is:\n" + plaintext;
-            if(!allFilesDone){
+            resultText = "The decrypted message " + (!allFilesDone ? "probably " : "") + "is:\n" + plaintext;
+            if (!allFilesDone) {
                 resultText += "\nCould not check all key files\n";
             }
         }

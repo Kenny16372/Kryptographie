@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ComponentLoader {
-    private static Map<String, URLClassLoader> classLoaderMap = new HashMap<>();
+    private static final Map<String, URLClassLoader> classLoaderMap = new HashMap<>();
 
     public static URLClassLoader getClassLoader(String algorithm) {
         algorithm = algorithm.toLowerCase();

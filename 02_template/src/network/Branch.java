@@ -48,13 +48,13 @@ public class Branch extends Participant {
     @Subscribe
     @Override
     public void receiveMessage(Message message) {
-        if(message.getIdSender() == id){
+        if (message.getIdSender() == id) {
             return;
         }
 
         String keyFileName = message.getKeyFileName();
 
-        if(keyFileName.endsWith("pub.txt")){
+        if (keyFileName.endsWith("pub.txt")) {
             keyFileName = keyFileName.substring(0, keyFileName.lastIndexOf('_')) + "_pri.txt";
         }
 
@@ -63,7 +63,7 @@ public class Branch extends Participant {
         GUI.getOutputArea().appendText("Branch " + name + " received a new message: " + decrypted + "\n");
     }
 
-    private void createKeys(){
+    private void createKeys() {
         RSA rsa = new RSA();
         Map<String, Map<Character, String>> keys = rsa.generateKeyPair();
         storeKeys(keys);

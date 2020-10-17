@@ -7,7 +7,7 @@ import gui.GUI;
 import persistence.HSQLDB;
 
 public class Intruder extends Participant {
-    private Cracker cracker = new Cracker();
+    private final Cracker cracker = new Cracker();
 
     public Intruder(String name, int id) {
         super(name, ParticipantType.intruder, id);
@@ -30,7 +30,7 @@ public class Intruder extends Participant {
 
         String sender = ParticipantController.instance.getParticipant(message.getIdSender()).getName();
 
-        if(Cracker.didFinishAllFiles()){
+        if (Cracker.didFinishAllFiles()) {
             GUI.getOutputArea().appendText("intruder " + name + " cracked message from participant " + sender + " | " + decrypted + "\n");
             HSQLDB.instance.updateDataTablePostbox(this.name, decrypted);
         } else {

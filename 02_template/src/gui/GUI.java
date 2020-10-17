@@ -1,7 +1,6 @@
 package gui;
 
 import configuration.Configuration;
-import encryption.RSA;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -14,19 +13,21 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import logging.Logger;
-import network.Branch;
 import network.Network;
-import network.ParticipantController;
 import parser.Handler;
 import parser.SendMessageHandler;
 import persistence.HSQLDB;
 
 public class GUI extends Application {
+    private static TextArea outputArea;
     private final Handler handler = new SendMessageHandler();
     private TextArea inputArea;
-    private static TextArea outputArea;
     private Button execute;
     private Button close;
+
+    public static TextArea getOutputArea() {
+        return outputArea;
+    }
 
     public void init() {
         HSQLDB.instance.setupConnection();
@@ -109,10 +110,6 @@ public class GUI extends Application {
 
     public TextArea getInputArea() {
         return inputArea;
-    }
-
-    public static TextArea getOutputArea() {
-        return outputArea;
     }
 
     public Button getExecute() {

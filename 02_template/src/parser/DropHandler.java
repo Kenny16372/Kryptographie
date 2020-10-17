@@ -4,12 +4,10 @@ package parser;
 import javafx.scene.control.TextArea;
 import network.Network;
 
-import java.util.Scanner;
-import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DropHandler extends Handler{
+public class DropHandler extends Handler {
 
     public DropHandler() {
         this.successor = new IntrudeHandler();

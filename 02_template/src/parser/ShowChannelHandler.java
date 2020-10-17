@@ -12,11 +12,27 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class ShowChannelHandler extends Handler{
+public class ShowChannelHandler extends Handler {
 
     public ShowChannelHandler() {
         this.successor = new ShowAlgorithmHandler();
         this.pattern = Pattern.compile("^\\s*show\\s+channel\\s*$", Pattern.CASE_INSENSITIVE);
+    }
+
+    private static Map<String, Set<String>> getChannels() {
+        Map<String, Set<Branch>> channels = Network.instance.getChannels();
+
+        Map<String, Set<String>> channelNames = new HashMap<>();
+
+        for (String channel : channels.keySet()) {
+            Set<Branch> branches = channels.get(channel);
+
+            Set<String> branchNames = branches.stream().map(Participant::getName).collect(Collectors.toSet());
+
+            channelNames.put(channel, branchNames);
+        }
+
+        return channelNames;
     }
 
     @Override
@@ -38,21 +54,5 @@ public class ShowChannelHandler extends Handler{
             output.appendText(String.join(" and ", branchNames));
             output.appendText("\n");
         }
-    }
-
-    private static Map<String, Set<String>> getChannels() {
-        Map<String, Set<Branch>> channels = Network.instance.getChannels();
-
-        Map<String, Set<String>> channelNames = new HashMap<>();
-
-        for (String channel : channels.keySet()) {
-            Set<Branch> branches = channels.get(channel);
-
-            Set<String> branchNames = branches.stream().map(Participant::getName).collect(Collectors.toSet());
-
-            channelNames.put(channel, branchNames);
-        }
-
-        return channelNames;
     }
 }

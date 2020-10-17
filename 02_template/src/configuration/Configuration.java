@@ -19,7 +19,7 @@ public enum Configuration {
 
     // encryption
     public String keyFileDirectory = userDirectory + fileSeparator + "data" + fileSeparator;
-    public int defaultKeyLength = 16;
+    public int defaultKeyLength = 64;
 
     // logging
     public String logDirectory = userDirectory + fileSeparator + "log" + fileSeparator;

@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Encryption {
 
-    public String decrypt(Message message, String keyFile){
+    public String decrypt(Message message, String keyFile) {
         return decrypt(message.toString(), message.getAlgorithm(), keyFile);
     }
 
@@ -32,14 +32,14 @@ public class Encryption {
             CipherFactory factory = new CipherFactory();
             List<Object> cipher = factory.getCipher(Cipher, algorithm);
 
-            if(cipher == null){
+            if (cipher == null) {
                 return null;
             }
 
             // get keyfile
             File keyFile = new File(Configuration.instance.keyFileDirectory + keyFileName);
 
-            if(!keyFile.exists()){
+            if (!keyFile.exists()) {
                 return null;
             }
 

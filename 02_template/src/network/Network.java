@@ -12,7 +12,7 @@ public enum Network {
     instance;
 
     // channels: Identifier -> (EventBus, Branch)
-    private Map<String, Pair<EventBus, Set<Branch>>> channels = new HashMap<>();
+    private final Map<String, Pair<EventBus, Set<Branch>>> channels = new HashMap<>();
 
     public void startup() {
         ParticipantController.instance.startup();
@@ -38,7 +38,7 @@ public enum Network {
 
             EventBus eventBus = new EventBus(channelName);
 
-            for(Branch branch: branches){
+            for (Branch branch : branches) {
                 eventBus.register(branch);
             }
 

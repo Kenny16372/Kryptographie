@@ -5,7 +5,7 @@ import javafx.scene.control.TextArea;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class HelpHandler extends Handler{
+public class HelpHandler extends Handler {
 
     public HelpHandler() {
         this.successor = null;

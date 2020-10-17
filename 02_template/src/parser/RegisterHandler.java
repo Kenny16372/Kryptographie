@@ -1,14 +1,12 @@
 package parser;
 
 import javafx.scene.control.TextArea;
-import network.Participant;
 import network.ParticipantController;
 
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegisterHandler extends Handler{
+public class RegisterHandler extends Handler {
 
     public RegisterHandler() {
         this.successor = new ShowChannelHandler();
