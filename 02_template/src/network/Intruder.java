@@ -21,7 +21,7 @@ public class Intruder extends Participant {
     @Subscribe
     @Override
     public void receiveMessage(Message message) {
-        String keyFile = message.getKeyFileName() + "_pub.txt";
+        String keyFile = message.getKeyFileName();
 
         String decrypted = cracker.decrypt(message.toString(), message.getAlgorithm(), keyFile, false);
 

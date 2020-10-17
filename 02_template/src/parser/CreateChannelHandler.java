@@ -2,6 +2,8 @@ package parser;
 
 import javafx.scene.control.TextArea;
 import network.Network;
+import network.ParticipantController;
+import network.ParticipantType;
 
 import java.util.Scanner;
 import java.util.regex.MatchResult;
@@ -39,6 +41,12 @@ public class CreateChannelHandler extends Handler{
             if (!participant1.equals(participant2)) {
                 output.appendText("\nBranch names are case-insensitive");
             }
+            return;
+        }
+
+        if(ParticipantController.instance.getParticipantByName(participant1).getType() == ParticipantType.intruder ||
+            ParticipantController.instance.getParticipantByName(participant2).getType() == ParticipantType.intruder){
+            output.setText("At least one of the participants is an intruder; They can't be part of a channel");
             return;
         }
 

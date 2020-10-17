@@ -29,6 +29,8 @@ public class ShowChannelHandler extends Handler{
             return;
         }
 
+        output.clear();
+
         for (String channelName : channels.keySet()) {
             Set<String> branchNames = channels.get(channelName);
 

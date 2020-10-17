@@ -28,6 +28,6 @@ public class Cracker {
 
         Scanner scanner = new Scanner(outputStream.toString());
 
-        return scanner.findAll("\\t(\\w+)[\\r\\n]+").map(MatchResult::group).map(String::trim).collect(Collectors.joining(", "));
+        return scanner.findAll("\\t(\\w+)[\\r\\n]+").map(MatchResult::group).map(String::trim).collect(Collectors.joining("\n"));
     }
 }

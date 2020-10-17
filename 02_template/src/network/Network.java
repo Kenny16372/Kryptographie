@@ -139,9 +139,8 @@ public enum Network {
 
     // wrapper for sending messages to a channel
     public void postMessage(String channelName, String plaintext, String encrypted, int fromId, int toId, String algorithm, String keyfile) {
-        String keyFileName = keyfile.substring(0, keyfile.lastIndexOf('_'));
 
-        Message message = new Message(encrypted, algorithm, fromId, keyFileName);
+        Message message = new Message(encrypted, algorithm, fromId, keyfile);
 
         EventBus eventBus = channels.get(channelName).getKey();
 

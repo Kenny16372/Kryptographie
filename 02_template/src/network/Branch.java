@@ -52,7 +52,13 @@ public class Branch extends Participant {
             return;
         }
 
-        String decrypted = encryption.decrypt(message, message.getKeyFileName() + "_pri.txt");
+        String keyFileName = message.getKeyFileName();
+
+        if(keyFileName.endsWith("pub.txt")){
+            keyFileName = keyFileName.substring(0, keyFileName.lastIndexOf('_')) + "_pri.txt";
+        }
+
+        String decrypted = encryption.decrypt(message, keyFileName);
         HSQLDB.instance.insertDataTablePostbox(this.name, message.getIdSender(), decrypted);
         GUI.getOutputArea().appendText("Branch " + name + " received a new message: " + decrypted + "\n");
     }
