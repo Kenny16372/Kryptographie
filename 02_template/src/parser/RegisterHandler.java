@@ -27,11 +27,11 @@ public class RegisterHandler extends Handler{
             ParticipantController.instance.createParticipant(participantName, type);
             ParticipantController.instance.createPostbox(participantName);
         } else {
-            output.setText("Participant " + participantName + " already exists");
+            output.setText("participant " + participantName + " already exists, using existing postbox_" + participantName);
             return;
         }
 
-        output.setText("Successfully created participant " + participantName + " with type " + type);
+        output.setText("participant " + participantName + " with type" + type + " registered and postbox_" + participantName + " created");
     }
 
 }

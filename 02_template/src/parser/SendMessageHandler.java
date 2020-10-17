@@ -34,6 +34,12 @@ public class SendMessageHandler extends Handler{
         Branch branchTo = null;
 
         Participant participantFrom = ParticipantController.instance.getParticipantByName(sender);
+
+        if(participantFrom == null){
+            output.setText("ERROR\nNo such participant: " + sender);
+            return;
+        }
+
         if (participantFrom.getType() != ParticipantType.normal) {
             output.appendText("ERROR\nCan't send message from " + participantFrom.getName() + "\n");
         } else {
@@ -41,6 +47,12 @@ public class SendMessageHandler extends Handler{
         }
 
         Participant participantTo = ParticipantController.instance.getParticipantByName(receiver);
+
+        if(participantTo == null){
+            output.setText("ERROR\nNo such participant: " + receiver);
+            return;
+        }
+
         if (participantTo.getType() != ParticipantType.normal) {
             output.appendText("ERROR\nCan't send message to " + participantTo.getName() + "\n");
         } else {
@@ -62,6 +74,11 @@ public class SendMessageHandler extends Handler{
         }
 
         String encrypted = encryption.encrypt(message, algorithm, keyfile);
+
+        if(encrypted == null){
+            output.setText("ERROR\nEncryption failed. Please check the algorithm and the key file\n");
+            return;
+        }
 
         Network.instance.postMessage(channelName, message, encrypted, branchFrom.getId(), branchTo.getId(), algorithm, keyfile);
     }

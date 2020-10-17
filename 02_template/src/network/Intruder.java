@@ -4,6 +4,7 @@ import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import encryption.Cracker;
 import gui.GUI;
+import persistence.HSQLDB;
 
 public class Intruder extends Participant {
     private Cracker cracker = new Cracker();
@@ -23,9 +24,17 @@ public class Intruder extends Participant {
     public void receiveMessage(Message message) {
         String keyFile = message.getKeyFileName();
 
+        HSQLDB.instance.insertDataTablePostbox(this.name, message.getIdSender(), "unknown");
+
         String decrypted = cracker.decrypt(message.toString(), message.getAlgorithm(), keyFile, false);
 
-        GUI.getOutputArea().appendText("Intruder " + name + " intercepted a message from " + ParticipantController.instance.getParticipant(message.getIdSender()).getName() +
-                ":\n" + decrypted + "\n");
+        String sender = ParticipantController.instance.getParticipant(message.getIdSender()).getName();
+
+        if(Cracker.didFinishAllFiles()){
+            GUI.getOutputArea().appendText("intruder " + name + " cracked message from participant " + sender + " | " + decrypted + "\n");
+            HSQLDB.instance.updateDataTablePostbox(this.name, decrypted);
+        } else {
+            GUI.getOutputArea().appendText("intruder " + name + " | crack message from participant " + sender + " failed\n");
+        }
     }
 }

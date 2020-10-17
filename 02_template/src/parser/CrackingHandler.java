@@ -34,12 +34,12 @@ public class CrackingHandler extends Handler{
         if(plaintext.contains("\n")){
             resultText = "The decrypted message is " + (!allFilesDone ? "maybe ": "") + "one of these:\n" + plaintext;
             if(!allFilesDone){
-                resultText += "Could not check all key files\n";
+                resultText += "\nCould not check all key files\n";
             }
         } else {
             resultText = "The decrypted message " + (!allFilesDone ? "probably ": "") + "is:\n" + plaintext;
             if(!allFilesDone){
-                resultText += "Could not check all key files\n";
+                resultText += "\nCould not check all key files\n";
             }
         }
 

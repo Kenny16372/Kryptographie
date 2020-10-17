@@ -507,6 +507,14 @@ public enum HSQLDB {
         update(sqlStringBuilder.toString());
     }
 
+    public void updateDataTablePostbox(String participantName, String message){
+
+        String sqlString = "UPDATE postbox_" + participantName.toLowerCase() +
+                " SET message='" + message + "'" +
+                " WHERE timestamp=(SELECT MAX(timestamp) FROM postbox_" + participantName + ")";
+        update(sqlString);
+    }
+
     public void shutdown() {
         System.out.println("--- shutdown");
 

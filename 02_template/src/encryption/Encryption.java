@@ -39,6 +39,10 @@ public class Encryption {
             // get keyfile
             File keyFile = new File(Configuration.instance.keyFileDirectory + keyFileName);
 
+            if(!keyFile.exists()){
+                return null;
+            }
+
             // decrypt ciphertext
             return (String) Cipher.getMethod((encrypt ? "en" : "de") + "crypt", String.class, File.class).invoke(cipher.get(0), cipherText, keyFile);
 

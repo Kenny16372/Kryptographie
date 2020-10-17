@@ -56,14 +56,12 @@ public class Cracker {
 
             // wait 30 seconds or until the task runners complete
             executor.shutdown();
-            executor.awaitTermination(29900L, TimeUnit.MILLISECONDS);
+            executor.awaitTermination(900L, TimeUnit.MILLISECONDS);
             executor.shutdownNow();
             executor.awaitTermination(100L, TimeUnit.MILLISECONDS);
 
-            didFinishAllFiles = futures.stream().noneMatch(FutureTask::isCancelled);
-
             // return the cracked passwords as comma separated string
-            return futures.stream().filter(FutureTask::isDone).filter(future -> !future.isCancelled()).map(future -> {
+            String result = futures.stream().filter(FutureTask::isDone).filter(future -> !future.isCancelled()).map(future -> {
                 try {
                     return future.get();
                 } catch (InterruptedException | ExecutionException e) {
@@ -71,6 +69,10 @@ public class Cracker {
                 }
                 return null;
             }).filter(Objects::nonNull).collect(Collectors.joining("\n"));
+
+            didFinishAllFiles = !result.equals("") && !result.startsWith("\n") && !result.endsWith("\n") && !result.contains("\n\n");
+
+            return result;
 
         } catch (NoSuchMethodException | ClassNotFoundException | InterruptedException e) {
             e.printStackTrace();
