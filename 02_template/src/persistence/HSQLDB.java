@@ -480,7 +480,7 @@ public enum HSQLDB {
         sqlStringBuilder01.append("CREATE TABLE postbox_").append(participantName.toLowerCase()).append(" (");
         sqlStringBuilder01.append("id TINYINT NOT NULL").append(", ");
         sqlStringBuilder01.append("participant_from_id TINYINT NOT NULL").append(", ");
-        sqlStringBuilder01.append("message VARCHAR(50) NOT NULL").append(", ");
+        sqlStringBuilder01.append("message VARCHAR(2500) NOT NULL").append(", ");
         sqlStringBuilder01.append("timestamp INTEGER").append(", ");
         sqlStringBuilder01.append("PRIMARY KEY (id)");
         sqlStringBuilder01.append(")");
@@ -511,7 +511,7 @@ public enum HSQLDB {
 
         String sqlString = "UPDATE postbox_" + participantName.toLowerCase() +
                 " SET message='" + message + "'" +
-                " WHERE timestamp=(SELECT MAX(timestamp) FROM postbox_" + participantName + ")";
+                " WHERE timestamp=(SELECT MAX(timestamp) FROM postbox_" + participantName.toLowerCase() + ")";
         update(sqlString);
     }
 

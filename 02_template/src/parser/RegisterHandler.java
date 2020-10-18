@@ -29,7 +29,7 @@ public class RegisterHandler extends Handler {
             return;
         }
 
-        output.setText("participant " + participantName + " with type" + type + " registered and postbox_" + participantName + " created");
+        output.setText("participant " + participantName + " with type " + type + " registered and postbox_" + participantName + " created");
     }
 
 }
