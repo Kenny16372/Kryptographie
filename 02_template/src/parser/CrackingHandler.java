@@ -26,7 +26,7 @@ public class CrackingHandler extends Handler {
         // Thus, the Cracker will be checking all key files inside the key file directory
         String plaintext = cracker.decrypt(message, algorithm, null, true);
 
-        String resultText;
+        String resultText = "";
         boolean allFilesDone = Cracker.didFinishAllFiles();
 
         if (plaintext.contains("\n")) {
@@ -35,7 +35,11 @@ public class CrackingHandler extends Handler {
                 resultText += "\nCould not check all key files\n";
             }
         } else {
-            resultText = "The decrypted message " + (!allFilesDone ? "probably " : "") + "is:\n" + plaintext;
+            if(!plaintext.isEmpty()) {
+                resultText = "The decrypted message " + (!allFilesDone ? "probably " : "") + "is:\n" + plaintext;
+            } else {
+                resultText = "Didn't get any result";
+            }
             if (!allFilesDone) {
                 resultText += "\nCould not check all key files\n";
             }

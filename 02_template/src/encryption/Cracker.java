@@ -53,7 +53,7 @@ public class Cracker {
 
             // wait 30 seconds or until the task runners complete
             executor.shutdown();
-            executor.awaitTermination(900L, TimeUnit.MILLISECONDS);
+            executor.awaitTermination(29900L, TimeUnit.MILLISECONDS);
             executor.shutdownNow();
             executor.awaitTermination(100L, TimeUnit.MILLISECONDS);
 
